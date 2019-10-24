@@ -15,7 +15,7 @@ class ForceHTPPS
      */
     public function handle($request, Closure $next)
     {
-        if (!$request->secure() && App::environment() === 'production') {
+        if (!$request->secure() && config('app.env') === 'production') {
             return redirect()->secure($request->getRequestUri());
         }
 
