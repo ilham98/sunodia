@@ -17,6 +17,7 @@ class ForceHTPPS
     public function handle($request, Closure $next)
     {
         $url = parse_url(secure_url($request->getRequestUri()));
+        dd($url);
         if ($url['scheme'] != 'https' && config('app.env') === 'production') {
             return redirect(secure_url($request->getRequestUri()));
         }
