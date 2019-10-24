@@ -3,6 +3,7 @@
 namespace App\Http\Middleware;
 
 use Closure;
+use Illuminate\Http\Request;
 
 class ForceHTPPS
 {
@@ -15,8 +16,7 @@ class ForceHTPPS
      */
     public function handle($request, Closure $next)
     {
-        if (!$request->secure() && config('app.env') === 'production') {
-            dd($request->secure());
+        if (!request()->isSecure() && config('app.env') === 'production') {
             return redirect()->secure($request->getRequestUri());
         }
 
