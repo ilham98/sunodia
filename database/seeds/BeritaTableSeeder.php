@@ -10,6 +10,7 @@ class BeritaTableSeeder extends Seeder
      *
      * @return void
      */
+
     public function run()
     {
         DB::table('berita')->insert([
