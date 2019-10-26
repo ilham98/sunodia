@@ -16,10 +16,13 @@ class CreateRegistrasiSiswaTable extends Migration
         Schema::create('registrasi_siswa', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('nama')->nullable();
+            $table->string('jenis_kelamin')->nullable();
             $table->string('tempat_lahir')->nullable();
             $table->date('tanggal_lahir')->nullable();
             $table->string('agama')->nullable();
             $table->string('kewarganegaraan')->nullable();
+            $table->string('bergereja_di')->nullable();
+            $table->string('aktif_pelayan')->nullable();
             $table->string('alamat_rumah')->nullable();
             $table->string('kode_pos')->nullable();
             $table->string('telepon')->nullable();
@@ -33,6 +36,7 @@ class CreateRegistrasiSiswaTable extends Migration
             $table->string('alat_tempuh_sekolah')->nullable();
             $table->integer('tingkat')->nullable();
             $table->string('golongan_darah')->nullable();
+            $table->string('rhesus')->nullable();
             $table->string('asal_sekolah')->nullable();
             $table->string('alamat_sekolah')->nullable();
             $table->string('nomor_ijazah')->nullable();
@@ -52,7 +56,7 @@ class CreateRegistrasiSiswaTable extends Migration
         });
     }
 
-    /**
+    /**3
      * Reverse the migrations.
      *
      * @return void

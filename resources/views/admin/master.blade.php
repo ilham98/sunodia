@@ -58,11 +58,11 @@
                             <div class="widget-content-wrapper">
                                 <div class="widget-content-left  ml-3 header-user-info">
                                     <div class="widget-heading">
-                                        Alina Mclourd
+                                        Admin
                                     </div>
-                                    <div class="widget-subheading">
+                                    {{-- <div class="widget-subheading">
                                         VP People Manager
-                                    </div>
+                                    </div> --}}
                                 </div>
                                 <div class="widget-content-left ml-3">
                                     <div class="btn-group">
@@ -77,6 +77,11 @@
                                             <button type="button" tabindex="0" class="dropdown-item">Actions</button>
                                             <div tabindex="-1" class="dropdown-divider"></div>
                                             <button type="button" tabindex="0" class="dropdown-item">Dividers</button>
+                                            <button type="button" id="btn-logout" onclick="event.preventDefault();
+                                            document.getElementById('logout-form').submit();" tabindex="0" class="dropdown-item">Logout</button>
+                                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                                @csrf
+                                            </form>
                                         </div>
                                     </div>
                                 </div>
@@ -111,23 +116,28 @@
                 </div>
                 <div class="app-header__menu">
                     <span>
-                            <button type="button" class="btn-icon btn-icon-only btn btn-primary btn-sm mobile-toggle-header-nav">
-                                <span class="btn-icon-wrapper">
-                                    <i class="fa fa-ellipsis-v fa-w-6"></i>
-                                </span>
+                        <button type="button" class="btn-icon btn-icon-only btn btn-primary btn-sm mobile-toggle-header-nav">
+                        <span class="btn-icon-wrapper">
+                            <i class="fa fa-ellipsis-v fa-w-6"></i>
+                        </span>
                     </button>
                     </span>
                 </div>
                 <div class="scrollbar-sidebar">
-                    <div class="app-sidebar__inner">
+                    <div class="app-sidebar__inner" style="max-height: calc(100vh - 60px); height: calc(100vh-60px); overflow: auto">
                         <ul class="vertical-nav-menu">
                             <li class="app-sidebar__heading">Main</li>
                             <li>
-                                <a href="index.html" class="mm-active">
+                                <a href="{{ url('a') }}" class="mm-active">
                                     <i class="metismenu-icon pe-7s-rocket"></i> Dashboard
                                 </a>
                             </li>
                             <li class="app-sidebar__heading">Manajemen</li>
+                            <li>
+                                <a href="{{ url('a/berita') }}">
+                                    <i class="metismenu-icon pe-7s-rocket"></i> Berita
+                                </a>
+                            </li>
                             <li>
                                 <a href="#">
                                     <i class="metismenu-icon pe-7s-diamond"></i> Profil Sekolah
@@ -160,6 +170,56 @@
                                 </ul>
                             </li>
                             <li class="app-sidebar__heading">Manajemen Persekolah</li>
+                            @foreach([
+                                ['TK/KB', 'tk-kb'],
+                                ['SD', 'sd'],
+                                ['SMP', 'smp'],
+                                ['SMA', 'sma']
+                            ] as $_)
+                                <li>
+                                    <a href="#">
+                                        <i class="metismenu-icon pe-7s-diamond"></i> {{ $_[0] }}
+                                        <i class="metismenu-state-icon pe-7s-angle-down caret-left"></i>
+                                    </a>
+                                    <ul>
+                                        <li>
+                                            <a href="{{ url('a/'.$_[1].'/profil') }}">
+                                                <i class="metismenu-icon"></i>Profil
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="{{ url('a/'.$_[1].'/mars') }}">
+                                                <i class="metismenu-icon"></i>Struktur Organisasi
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="{{ url('a/'.$_[1].'/mars') }}">
+                                                <i class="metismenu-icon"></i>Fasilitas
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="{{ url('a/'.$_[1].'/agenda') }}">
+                                                <i class="metismenu-icon"></i>Agenda Sekolah
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="{{ url('a/'.$_[1].'/berita') }}">
+                                                <i class="metismenu-icon"></i>Berita
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="{{ url('a/'.$_[1].'/mars') }}">
+                                                <i class="metismenu-icon"></i>Prestasi  
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="{{ url('a/'.$_[1].'/mars') }}">
+                                                <i class="metismenu-icon"></i>Kegiatan  
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </li>   
+                            @endforeach                                
                         </ul>
                     </div>
                 </div>

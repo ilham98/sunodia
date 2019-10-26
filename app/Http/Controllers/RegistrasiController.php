@@ -100,8 +100,9 @@ class RegistrasiController extends Controller
     }
 
     public function step2_submit(Request $request) {
-        $request->validate([
+        $validate = [
             'nama' => 'required',
+            'jenis_kelamin' => 'required',
             'tempat_lahir' => 'required',
             'tanggal_lahir' => 'required',
             'agama' => 'required',
@@ -111,13 +112,20 @@ class RegistrasiController extends Controller
             'telepon' => 'required',
             'tinggal_dengan' => 'required',
             'no_hp_calon_siswa' => 'required',
-            'email_calon_siswa' => 'required|email',
             'anak_ke' => 'required|integer',
             'jumlah_saudara' => 'required|integer',
             'jarak_tempuh_sekolah' => 'required|integer',
             'waktu_tempuh_sekolah' => 'required|integer',
             'alat_tempuh_sekolah' => 'required',
-        ]);
+        ];
+
+        if($request->agama == 'Kristen' || $request->agama == 'Katolik')
+            $validate = array_merge($validate, [
+                'bergereja_di' => 'required',
+                'aktif_pelayan' => 'required'
+            ]);
+
+        $request->validate($validate);
 
         $reg = RegistrasiSiswa::find($this->reg_id);
         $reg->update($request->all());
@@ -158,14 +166,20 @@ class RegistrasiController extends Controller
     }
 
     public function step3_submit(Request $request) {
-        $request->validate([
-            'asal_sekolah' => 'required',
-            'alamat_sekolah' => 'required',
-            'nomor_ijazah' => 'required',
-            'lama_belajar' => 'required|integer',
-            'jumlah_nilai_ijazah' => 'required|numeric' 
-        ]);
+        $reg = RegistrasiSiswa::find($this->reg_id);
+        $validate = [];
 
+        if($reg->tingkat == 1 || $reg->tingkat == 2) {
+
+        } else {
+            $validate = array_merge($validate, [
+                'asal_sekolah' => 'required',
+                'alamat_sekolah' => 'required',
+                'lama_belajar' => 'required|integer'
+            ]);
+        }
+
+        $request->validate($validate);
         $reg = RegistrasiSiswa::find($this->reg_id);
         $reg->update($request->all());
 
@@ -182,11 +196,9 @@ class RegistrasiController extends Controller
         $request->validate([
             'golongan_darah' => 'required',
             'pernah_melakukan_donor' => 'required',
-            'penyakit_yang_pernah_diderita' => 'required',
             'tinggi_badan' => 'required',
             'berat_badan' => 'required',
             'berkebutuhan_khusus' => 'required',
-            'ciri_khusus_lainnya' => 'required' 
         ]);
 
         $reg = RegistrasiSiswa::find($this->reg_id);
@@ -381,10 +393,9 @@ class RegistrasiController extends Controller
         }
 
         // Dokumen::where('registrasi_siswa_id', $id)->delete();
-        $reg->tingkat = $tingkat = (int)$request->tingkat;
-        $reg->save();
+        $tingkat = $reg->tingkat;
         $jenis_dokumen = new JenisDokumen;
-        if(in_array($tingkat, [-3, -2, -1, 0, 1, 2, 3, 4, 5, 6])) {
+        if(in_array($tingkat, [1,2,3])) {
             $jenis_dokumen = $jenis_dokumen->whereIn('id', [1, 2, 3, 4, 5]);
         } else {
             $jenis_dokumen = $jenis_dokumen->whereIn('id', [1, 2, 3, 4, 7, 8]);
@@ -421,7 +432,7 @@ class RegistrasiController extends Controller
     public function step7(Request $request) {
         $id = $request->cookie('registrasi_token');
         $reg = RegistrasiSiswa::find($id);
-        $dokumen = $reg->dokumen;
+        $dokumen = $reg->dokumen()->orderBy('id', 'asc')->get();
         return view('registrasi.step-7', compact('dokumen'));
     }
 

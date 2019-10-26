@@ -25,7 +25,7 @@
         <h5 class="m-0"><img height='40' src="https://img.icons8.com/dotty/80/000000/note.png"> Registrasi - Keterangan Kesehatan (4/7)</h5>
         <form action="{{ url('registrasi/4') }}" class="p-3" method="POST" enctype="multipart/form-data">
             <div class="row">
-                <div class="form-group col-sm-6">
+                <div class="form-group col-sm-4">
                     <label>Golongan Darah</label>
                     <br>
                     <input type="radio" name="golongan_darah" value='A' {{ (old('golongan_darah') ? old('golongan_darah') : $reg->golongan_darah) == 'A' ? 'checked' : '' }} class="ml-1"> A
@@ -36,7 +36,18 @@
                         <p class="text-danger">{{ $errors->first('golongan_darah') }}</p>
                     @endif
                 </div>
-                <div class="form-group col-sm-6">
+                <div class="form-group col-sm-4">
+                        <label>Rhesus</label>
+                        <br>
+                        <select name="rhesus" id="" class="form-control">
+                            <option value="positif" {{ (old('rhesus') ? old('rhesus') : $reg->rhesus) == 'positif' ? 'selected' : '' }}>Positif</option>
+                            <option value="negatif" {{ (old('rhesus') ? old('rhesus') : $reg->rhesus) == 'negatif' ? 'selected' : '' }}>Negatif</option>
+                        </select>
+                        @if($errors->has('rhesus'))
+                            <p class="text-danger">{{ $errors->first('rhesus') }}</p>
+                        @endif
+                    </div>
+                <div class="form-group col-sm-4">
                     <label>Pernah Melakukan Donor</label>
                     <br>
                     <input type="radio" name="pernah_melakukan_donor" value="0" {{ (old('pernah_melakukan_donor') ? old('pernah_melakukan_donor') : $reg->pernah_melakukan_donor) == 0 ? 'checked' : '' }} class="ml-1"> Ya
@@ -56,7 +67,10 @@
                 </div>
                 <div class="form-group col-sm-6">
                     <label>Berkebutuhan Khusus</label>
-                    <input type="text" name="berkebutuhan_khusus" value="{{ old('berkebutuhan_khusus') ? old('berkebutuhan_khusus') : $reg->berkebutuhan_khusus }}" class="form-control">
+                   <select name="berkebutuhan_khusus" class="form-control" id="">
+                        <option value="tidak" {{ (old('berkebutuhan_khusus') ? old('berkebutuhan_khusus') : $reg->berkebutuhan_khusus) == 'ya' ? 'selected' : '' }}>Tidak</option>
+                        <option value="ya" {{ (old('berkebutuhan_khusus') ? old('berkebutuhan_khusus') : $reg->berkebutuhan_khusus) == 'tidak' ? 'selected' : '' }}>Ya</option>
+                   </select>
                     @if($errors->has('berkebutuhan_khusus'))
                         <p class="text-danger">{{ $errors->first('berkebutuhan_khusus') }}</p>
                     @endif

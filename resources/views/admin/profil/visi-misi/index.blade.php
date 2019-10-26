@@ -20,7 +20,8 @@
             </div>
             @if($errors->has('visi'))
                 <p class="text-danger">{{$errors->first('visi') }}</p>
-            @endif
+            @end
+            if
             <h6 class="mt-3">Misi</h6>
             <div id="editor2" style="height: 200px">
                 {!! $profil->misi !!}

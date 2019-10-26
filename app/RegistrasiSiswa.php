@@ -12,10 +12,13 @@ class RegistrasiSiswa extends Model
         'tingkat',
 // ------------------------------ FORM 2 ------------------------------
         'nama',
+        'jenis_kelamin',
         'tempat_lahir',
         'tanggal_lahir',
         'agama',
         'kewarganegaraan',
+        'bergereja_di',
+        'aktif_pelayan',
         'alamat_rumah',
         'kode_pos',
         'telepon',

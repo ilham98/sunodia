@@ -43,12 +43,11 @@
     <div style='height: 60px; background: #0067c2'></div>
     <div class="container p-0 bg-white register-box mt-3">
         <h5 class="m-0"><img height='40' src="https://img.icons8.com/dotty/80/000000/note.png"> Registrasi</h5>
-        
             @foreach($dokumen ?? '' as $d)
                 <form action="{{ url('registrasi/7/dokumen/'.$d->id) }}" class="p-3" method="POST" enctype="multipart/form-data">
                     <label for="dokumen[{{ $d->id }}]">{{ $d->jenis_dokumen->nama }}</label>
                     <br>
-                    <input class="inputfile" name="dokumen" id="dokumen" type="file">
+                    <input class="inputfile" name="dokumen" target='_blank' id="dokumen" type="file">
                     @if($errors->has('dokumen') && session('error-id') == $d->id)
                         <p class="text-danger">{{ $errors->first('dokumen') }}</p>   
                     @endif

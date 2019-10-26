@@ -8,29 +8,37 @@
 @endsection
 
 @section('content')
-    @component('admin.components.content')
-        @slot('title', 'Berita')
-        <div class="form-group">
-            <label>Judul</label>
-            <input type="text" class="form-control" id="title-show" value="{{ old('title') }}">
-            @if($errors->has('title'))
-                <p class="text-danger">{{$errors->first('title') }}</p>
-            @endif
+    <div class="mb-3 card" style="height: 800px">
+        <div class="card-header-tab card-header-tab-animation card-header">
+            <div class="card-header-title">
+                <i class="header-icon lnr-apartment icon-gradient bg-love-kiss"> </i> Berita
+            </div>
         </div>
-        <div id="editor">
-            @if(old('body'))
-                {!! old('body') !!}
-            @else
-                <p>Hello World!</p>
-                <p>Some initial <strong>bold</strong> text</p>
-                <p><br></p>
+        <div class="card-body">
+            <div class="form-group">
+                <label>Judul</label>
+                <input type="text" class="form-control" id="title-show" value="{{ old('title') }}">
+                @if($errors->has('title'))
+                    <p class="text-danger">{{$errors->first('title') }}</p>
+                @endif
+            </div>
+            <div id="editor" style="height: 500px">
+                @if(old('body'))
+                    {!! old('body') !!}
+                @else
+                    <p>Hello World!</p>
+                    <p>Some initial <strong>bold</strong> text</p>
+                    <p><br></p>
+                @endif
+            </div>
+            @if($errors->has('body'))
+                <p class="text-danger">{{$errors->first('body') }}</p>
             @endif
+            <div class="d-flex justify-content-end">
+                <input type="button" value="Simpan" id="btn-save" class="btn btn-primary mt-2">
+            </div>
         </div>
-        @if($errors->has('body'))
-            <p class="text-danger">{{$errors->first('body') }}</p>
-        @endif
-        <input type="button" value="Simpan" id="btn-save" class="btn btn-primary mt-2">
-    @endcomponent
+    </div>
     <form action="{{ url('a/'.$tingkat.'/berita') }}" id="form" method="POST" hidden>
         <textarea name="body" id="body" id="" cols="30" rows="10"></textarea>
         <input type="text" id="title" name="title">

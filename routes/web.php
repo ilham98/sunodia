@@ -11,10 +11,32 @@
 |
 */
 
+use App\RegistrasiSiswa;
 use Illuminate\Support\Facades\Hash;
 
 Route::get('test', function() {
-    return Hash::make('admin');
+    $reg = RegistrasiSiswa::first();
+    $tingkat = '';
+    switch($reg->tingkat) {
+        case 1:
+            $tingkat = 'KB';
+            break;
+        case 2:
+            $tingkat = 'TK';
+            break;
+        case 3:
+            $tingkat = 'SD';
+            break;
+        case 4:
+            $tingkat = 'SMP';
+            break;
+        case 5:
+            $tingkat = 'SMA';
+            break;
+    }
+    $pdf = PDF::loadView('pdf.registrasi', compact('reg', 'tingkat'));
+    return $pdf->stream();
+    // return Hash::make('admin');
 });
 
 Route::get('/', function () {
@@ -22,7 +44,7 @@ Route::get('/', function () {
     foreach($berita as $b) {
         $first_img = '';
         $output = preg_match_all('/<img.+?src=[\'"]([^\'"]+)[\'"].*?>/i', $b->isi, $matches);
-        $first_img = $matches[0][0];
+        $first_img = isset($matches[0][0])  ? $matches[0][0] : null;
         if(empty($first_img)) {
             $first_img = null;
         }
@@ -49,12 +71,19 @@ Route::get('a/example', function() {
 
 });
 
-Route::get('a/{tingkat}/berita', 'Managemen\BeritaController@index');
-Route::get('a/{tingkat}/berita/tambah', 'Managemen\BeritaController@create');
-Route::get('a/{tingkat}/berita/{id}/edit', 'Managemen\BeritaController@edit');
-Route::put('a/{tingkat}/berita/{id}', 'Managemen\BeritaController@update');
-Route::post('a/{tingkat}/berita', 'Managemen\BeritaController@store');
-Route::delete('a/{tingkat}/berita/{id}', 'Managemen\BeritaController@destroy');
+Route::get('a/berita', 'Manajemen\BeritaController@index');
+Route::get('a/berita/tambah', 'Manajemen\BeritaController@create');
+Route::get('a/berita/{id}/edit', 'Manajemen\BeritaController@edit');
+Route::put('a/berita/{id}', 'Manajemen\BeritaController@update');
+Route::post('a/berita', 'Manajemen\BeritaController@store');
+Route::delete('a/berita/{id}', 'Manajemen\BeritaController@destroy');
+
+Route::get('a/{tingkat}/berita', 'ManajemenPersekolah\BeritaController@index');
+Route::get('a/{tingkat}/berita/tambah', 'ManajemenPersekolah\BeritaController@create');
+Route::get('a/{tingkat}/berita/{id}/edit', 'ManajemenPersekolah\BeritaController@edit');
+Route::put('a/{tingkat}/berita/{id}', 'ManajemenPersekolah\BeritaController@update');
+Route::post('a/{tingkat}/berita', 'ManajemenPersekolah\BeritaController@store');
+Route::delete('a/{tingkat}/berita/{id}', 'ManajemenPersekolah\BeritaController@destroy');
 
 Route::get('a/visi-misi', 'Profil\VisiMisiController@index');
 Route::put('a/visi-misi', 'Profil\VisiMisiController@update');
@@ -101,3 +130,4 @@ Route::post('registrasi/8', 'RegistrasiController@step8_submit');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+

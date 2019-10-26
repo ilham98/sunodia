@@ -23,15 +23,26 @@
     <div style='height: 60px; background: #0067c2'></div>
     <div class="container p-0 bg-white register-box mt-3">
         <h5 class="m-0"><img height='40' src="https://img.icons8.com/dotty/80/000000/note.png"> Registrasi - Data Calon Siswa (2/7)</h5>
-        <form action="{{ url('registrasi/2') }}" class="p-3" method="POST" enctype="multipart/form-data">
+        <form action="{{ url('registrasi/2') }}" class="p-3" id="biodata-form" method="POST" enctype="multipart/form-data">
             <div class="row">
-                <div class="form-group col-sm-12">
+                <div class="form-group col-sm-8">
                     <label>Nama</label>
                     <input name="nama" type="text" class="form-control" value="{{ old('nama') ? old('nama') : $reg->nama }}">
                     @if($errors->has('nama'))
                         <p class="text-danger">{{ $errors->first('nama') }}</p>
                     @endif
                 </div>
+                <div class="form-group col-sm-4">
+                        <label>Jenis Kelamin</label>
+                        <select name="jenis_kelamin" class="form-control">
+                            <option value="">Pilih Jenis Kelamin</option>
+                            <option value="Laki-laki" {{ (old('jenis_kelamin') ? old('jenis_kelamin') : $reg->jenis_kelamin ) == 'Laki-laki' ? 'selected' : ''  }}>Laki-laki</option>
+                            <option value="Perempuan" {{ (old('jenis_kelamin') ? old('jenis_kelamin') : $reg->jenis_kelamin ) == 'Perempuan' ? 'selected' : ''  }}>Perempuan</option>
+                        </select>
+                        @if($errors->has('jenis_kelamin'))
+                            <p class="text-danger">{{ $errors->first('jenis_kelamin') }}</p>
+                        @endif
+                    </div>
             </div>
             <div class="row">
                 <div class="form-group col-sm-6">
@@ -52,7 +63,7 @@
             <div class="row">
                 <div class="form-group col-sm-6">
                     <label>Agama</label>
-                    <select name="agama" id="" class="form-control">
+                    <select name="agama" id="agama" class="form-control">
                         <option value="">Pilih Agama</option>
                         <option value="Kristen" {{ (old('agama') ? old('agama') : $reg->agama) == 'Kristen' ? 'selected' : '' }}>Kristen</option>
                         <option value="Katolik" {{ (old('agama') ? old('agama') : $reg->agama) == 'Katolik' ? 'selected' : '' }}>Katolik</option>
@@ -67,6 +78,22 @@
                     <input type="text" value="{{ old('kewarganegaraan') ? old('kewarganegaraan') : $reg->kewarganegaraan }}" name="kewarganegaraan" class="form-control">
                     @if($errors->has('kewarganegaraan'))
                         <p class="text-danger">{{ $errors->first('kewarganegaraan') }}</p>
+                    @endif
+                </div>
+            </div>
+            <div class="row" id="tambahan-kristen" style="display: none">
+                <div class="form-group col-sm-6">
+                    <label>Jika Kristen / Katolik Bergereja di</label>
+                    <input type="text" class='form-control' name='bergereja_di' value="{{ old('bergereja_di') ? old('bergereja_di') : $reg->bergereja_di }}">
+                    @if($errors->has('bergereja_di'))
+                        <p class="text-danger">{{ $errors->first('bergereja_di') }}</p>
+                    @endif
+                </div>
+                <div class="form-group col-sm-6">
+                    <label>Aktif / Pelajayan sebagai</label>
+                    <input type="text" class='form-control' name='aktif_pelayan' value="{{ old('aktif_pelayan') ? old('aktif_pelayan') : $reg->aktif_pelayan }}">
+                    @if($errors->has('aktif_pelayan'))
+                        <p class="text-danger">{{ $errors->first('aktif_pelayan') }}</p>
                     @endif
                 </div>
             </div>
@@ -165,13 +192,13 @@
                             @endforeach  
                             <tr>
                                 <td>{{ $saudara->count() + 1 }}</td>
-                                <td><input type="text" id="temp_saudara_nama" name="temp_saudara_nama" class="form-control" value="{{ old('saudara_nama') }}"></td>
-                                <td><input type="text" id="temp_saudara_umur" name="temp_saudara_umur" class="form-control" value="{{ old('saudara_umur') }}"></td>
-                                <td><input type="text" id="temp_saudara_pendidikan" name="temp_saudara_pendidikan" class="form-control" value="{{ old('saudara_pendidikan') }}"></td>
+                                <td><input type="text" id="temp_saudara_nama" name="temp_saudara_nama" class="form-control" value=""></td>
+                                <td><input type="text" id="temp_saudara_umur" name="temp_saudara_umur" class="form-control" value=""></td>
+                                <td><input type="text" id="temp_saudara_pendidikan" name="temp_saudara_pendidikan" class="form-control" value=""></td>
                                 <td>
-                                    <input type="radio" name="temp_saudara_status" value="Kakak" {{ old('saudara_status') == 'Kakak' ? 'checked' : '' }}> Kakak
+                                    <input type="radio" name="temp_saudara_status" value="Kakak"> Kakak
                                     <br>
-                                    <input type="radio" name="temp_saudara_status" value="Adik" {{ old('saudara_status') == 'Adik' ? 'checked' : '' }}> Adik
+                                    <input type="radio" name="temp_saudara_status" value="Adik"> Adik
                                 </td>
                                 <td><input type="button" class="btn btn-success" id="saudara-tambah-btn" value="Tambah"></td>
                             </tr>                           
@@ -263,6 +290,7 @@
     <script>
         $('#saudara-tambah-btn').click(function(e) {
             e.preventDefault();
+            $( "#biodata-form" ).children().clone().appendTo("#saudara_form");
             $('#saudara_nama').val($('#temp_saudara_nama').val());
             $('#saudara_umur').val($('#temp_saudara_umur').val());
             $('#saudara_pendidikan').val($('#temp_saudara_pendidikan').val());
@@ -272,9 +300,24 @@
 
         $('.saudara-delete-btn').click(function(e) {
             e.preventDefault();
+            $("#biodata-form" ).children().clone().prependTo("#saudara_delete_form");
+            // console.log( $(`#saudara_delete_form`).filter(':input'));
             var id = $(this).data('id');
             $('#saudara_delete_form').attr('action', `{!! url('registrasi/2/saudara') !!}/${id}`);
             $('#saudara_delete_form').submit();
         });
+
+        $('#agama').change(function() {
+            var agama = $(this).val();
+            if(agama == 'Kristen' || agama == 'Katolik') {
+                $('#tambahan-kristen').show();
+            } else  {
+                $('#tambahan-kristen').hide();
+            }
+        });
+
+        @if(old('agama') == 'Kristen' || old('agama') == 'Katolik')
+            $('#tambahan-kristen').show();
+        @endif
     </script>
 @endsection

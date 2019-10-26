@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Managemen;
+namespace App\Http\Controllers\ManajemenPersekolah;
 
 use App\Berita;
 use App\Http\Controllers\Controller;
