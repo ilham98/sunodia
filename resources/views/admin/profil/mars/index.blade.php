@@ -7,21 +7,29 @@
 @endsection
 
 @section('content')
-    @component('admin.components.content')
-        @slot('title', 'Mars')
-        <div id="editor">
-            {!! $profil->mars !!}
+    <div class="mb-3 card">
+        <div class="card-header-tab card-header-tab-animation card-header">
+            <div class="card-header-title">
+                <i class="header-icon lnr-apartment icon-gradient bg-love-kiss"> </i> Mars
+            </div>
         </div>
-        @if($errors->has('mars'))
-            <p class="text-danger">{{$errors->first('mars') }}</p>
-        @endif
-        <input type="button" value="Simpan" id="btn-save" class="btn btn-primary mt-2">
-    @endcomponent
-    <form action="{{ url('a/mars') }}" id="form" method="POST" hidden>
-        <textarea name="mars" id="mars" id="" cols="30" rows="10"></textarea>
-        @csrf
-        @method('PUT')
-    </form>
+        <div class="card-body" style="height: 450px">
+            <div id="editor" style="height: 300px">
+                {!! $profil->mars !!}
+            </div>
+            @if($errors->has('mars'))
+                <p class="text-danger">{{$errors->first('mars') }}</p>
+            @endif
+            <div class="d-flex justify-content-end">
+                <input type="button" value="Simpan" id="btn-save" class="btn btn-primary mt-2">
+            </div>
+        </div>
+        <form action="{{ url('a/mars') }}" id="form" method="POST" hidden>
+            <textarea name="mars" id="mars" id="" cols="30" rows="10"></textarea>
+            @csrf
+            @method('PUT')
+        </form>
+    </div>
 @endsection
 
 @section('js')

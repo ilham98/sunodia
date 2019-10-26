@@ -79,6 +79,9 @@
                         <li class="nav-item active">
                             <a class="nav-link" href="{{ url('galeri') }}">Galeri</span></a>
                         </li>
+                        <li class="nav-item active">
+                            <a class="nav-link" href="{{ url('login') }}">Login</span></a>
+                        </li>
                     </ul>
                 </div>
             </nav>

@@ -7,21 +7,29 @@
 @endsection
 
 @section('content')
-    @component('admin.components.content')
-        @slot('title', 'Logo')
-        <div id="editor">
-            {!! $profil->logo !!}
+    <div class="mb-3 card">
+        <div class="card-header-tab card-header-tab-animation card-header">
+            <div class="card-header-title">
+                <i class="header-icon lnr-apartment icon-gradient bg-love-kiss"> </i> Logo
+            </div>
         </div>
-        @if($errors->has('logo'))
-            <p class="text-danger">{{$errors->first('logo') }}</p>
-        @endif
-        <input type="button" value="Simpan" id="btn-save" class="btn btn-primary mt-2">
-    @endcomponent
-    <form action="{{ url('a/logo') }}" id="form" method="POST" hidden>
-        <textarea name="logo" id="logo" id="" cols="30" rows="10"></textarea>
-        @csrf
-        @method('PUT')
-    </form>
+        <div class="card-body" style="height: 450px">
+            <div id="editor" style="height: 300px">
+                {!! $profil->logo !!}
+            </div>
+            @if($errors->has('logo'))
+                <p class="text-danger">{{$errors->first('logo') }}</p>
+            @endif
+            <div class="d-flex justify-content-end">
+                <input type="button" value="Simpan" id="btn-save" class="btn btn-primary mt-2">
+            </div>
+        </div>
+        <form action="{{ url('a/logo') }}" id="form" method="POST" hidden>
+            <textarea name="logo" id="logo" id="" cols="30" rows="10"></textarea>
+            @csrf
+            @method('PUT')
+        </form>
+    </div>
 @endsection
 
 @section('js')

@@ -7,24 +7,33 @@
 @endsection
 
 @section('content')
-    @component('admin.components.content')
-        @slot('title', 'Visi & Misi')
-        <h6>Visi</h6>
-        <div id="editor">
-            {!! $profil->visi !!}
+    <div class="mb-3 card">
+        <div class="card-header-tab card-header-tab-animation card-header">
+            <div class="card-header-title">
+                <i class="header-icon lnr-apartment icon-gradient bg-love-kiss"> </i> Visi & Misi
+            </div>
         </div>
-        @if($errors->has('visi'))
-            <p class="text-danger">{{$errors->first('visi') }}</p>
-        @endif
-        <h6 class="mt-3">Misi</h6>
-        <div id="editor2">
-            {!! $profil->misi !!}
+        <div class="card-body" style='height: 680px'>
+            <h6>Visi</h6>
+            <div id="editor" style="height: 200px">
+                {!! $profil->visi !!}
+            </div>
+            @if($errors->has('visi'))
+                <p class="text-danger">{{$errors->first('visi') }}</p>
+            @endif
+            <h6 class="mt-3">Misi</h6>
+            <div id="editor2" style="height: 200px">
+                {!! $profil->misi !!}
+            </div>
+            @if($errors->has('misi'))
+                <p class="text-danger">{{$errors->first('misi') }}</p>
+            @endif
+            <div class="d-flex justify-content-end">
+                <input type="button" value="Simpan" id="btn-save" class="btn btn-primary mt-2">
+            </div>
+            
         </div>
-        @if($errors->has('misi'))
-            <p class="text-danger">{{$errors->first('misi') }}</p>
-        @endif
-        <input type="button" value="Simpan" id="btn-save" class="btn btn-primary mt-2">
-    @endcomponent
+    </div>
     <form action="{{ url('a/visi-misi') }}" id="form" method="POST" hidden>
         <textarea name="visi" id="visi" id="" cols="30" rows="10"></textarea>
         <textarea name="misi" id="misi" id="" cols="30" rows="10"></textarea>
@@ -82,13 +91,11 @@
     </script>
     @if(session()->has('success'))
         <script>
-            setTimeout(function() {
-                Swal.fire({
-                    title: 'Sukses!',
-                    text: `{!! session('success') !!}`,
-                    type: 'success'
-                });
-            }, 1000); 
+            Swal.fire({
+                title: 'Sukses!',
+                text: `{!! session('success') !!}`,
+                type: 'success'
+            });
         </script>
     @endif
 @endsection

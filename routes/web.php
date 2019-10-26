@@ -14,7 +14,7 @@
 use Illuminate\Support\Facades\Hash;
 
 Route::get('test', function() {
-    return view('test');
+    return Hash::make('admin');
 });
 
 Route::get('/', function () {
