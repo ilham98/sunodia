@@ -87,17 +87,17 @@
                 <div class="form-group">
                     <label>Pendidikan Terakhir</label>
                     <select name="pendidikan_terakhir_ayah" value="" type="text" class="form-control">
-                            <option {{ (old('pendidikan_terakhir_ayah') ? old('pendidikan_terakhir_ayah') : $ayah->pendidikan_terakhir ) == '' ? 'selected' : '' }} value="">Pilih Pendidikan Terakhir</option>
-                            <option {{ (old('pendidikan_terakhir_ayah') ? old('pendidikan_terakhir_ayah') : $ayah->pendidikan_terakhir ) == 'Tidak Bersekolah' ? 'selected' : '' }} value="Tidak Bersekolah">Tidak Bersekolah</option>
-                            <option {{ (old('pendidikan_terakhir_ayah') ? old('pendidikan_terakhir_ayah') : $ayah->pendidikan_terakhir ) == 'SD' ? 'selected' : '' }} value="SD">SD</option>
-                            <option {{ (old('pendidikan_terakhir_ayah') ? old('pendidikan_terakhir_ayah') : $ayah->pendidikan_terakhir ) == 'SLTP/SMP' ? 'selected' : '' }} value="SLTP/SMP">SLTP/SMP</option>
-                            <option {{ (old('pendidikan_terakhir_ayah') ? old('pendidikan_terakhir_ayah') : $ayah->pendidikan_terakhir ) == 'SLTA/SMA' ? 'selected' : '' }} value="SLTA/SMA">SLTA/SMA</option>
-                            <option {{ (old('pendidikan_terakhir_ayah') ? old('pendidikan_terakhir_ayah') : $ayah->pendidikan_terakhir ) == 'D1' ? 'selected' : '' }} value="D1">D1</option>
-                            <option {{ (old('pendidikan_terakhir_ayah') ? old('pendidikan_terakhir_ayah') : $ayah->pendidikan_terakhir ) == 'D2' ? 'selected' : '' }} value="D2">D2</option>
-                            <option {{ (old('pendidikan_terakhir_ayah') ? old('pendidikan_terakhir_ayah') : $ayah->pendidikan_terakhir ) == 'D3' ? 'selected' : '' }} value="D3">D3</option>
-                            <option {{ (old('pendidikan_terakhir_ayah') ? old('pendidikan_terakhir_ayah') : $ayah->pendidikan_terakhir ) == 'S1/D4' ? 'selected' : '' }} value="S1/D4">S1/D4</option>
-                            <option {{ (old('pendidikan_terakhir_ayah') ? old('pendidikan_terakhir_ayah') : $ayah->pendidikan_terakhir ) == 'S2' ? 'selected' : '' }} value="S2">S2</option>
-                            <option {{ (old('pendidikan_terakhir_ayah') ? old('pendidikan_terakhir_ayah') : $ayah->pendidikan_terakhir ) == 'S3' ? 'selected' : '' }} value="S3">S3</option>
+                            <option {{ (old('pendidikan_terakhir_ayah') ? old('pendidikan_terakhir_ayah') : ($ayah ? $ayah->pendidikan_terakhir : null) ) == '' ? 'selected' : '' }} value="">Pilih Pendidikan Terakhir</option>
+                            <option {{ (old('pendidikan_terakhir_ayah') ? old('pendidikan_terakhir_ayah') : ($ayah ? $ayah->pendidikan_terakhir : null) ) == 'Tidak Bersekolah' ? 'selected' : '' }} value="Tidak Bersekolah">Tidak Bersekolah</option>
+                            <option {{ (old('pendidikan_terakhir_ayah') ? old('pendidikan_terakhir_ayah') : ($ayah ? $ayah->pendidikan_terakhir : null) ) == 'SD' ? 'selected' : '' }} value="SD">SD</option>
+                            <option {{ (old('pendidikan_terakhir_ayah') ? old('pendidikan_terakhir_ayah') : ($ayah ? $ayah->pendidikan_terakhir : null) ) == 'SLTP/SMP' ? 'selected' : '' }} value="SLTP/SMP">SLTP/SMP</option>
+                            <option {{ (old('pendidikan_terakhir_ayah') ? old('pendidikan_terakhir_ayah') : ($ayah ? $ayah->pendidikan_terakhir : null) ) == 'SLTA/SMA' ? 'selected' : '' }} value="SLTA/SMA">SLTA/SMA</option>
+                            <option {{ (old('pendidikan_terakhir_ayah') ? old('pendidikan_terakhir_ayah') : ($ayah ? $ayah->pendidikan_terakhir : null) ) == 'D1' ? 'selected' : '' }} value="D1">D1</option>
+                            <option {{ (old('pendidikan_terakhir_ayah') ? old('pendidikan_terakhir_ayah') : ($ayah ? $ayah->pendidikan_terakhir : null) ) == 'D2' ? 'selected' : '' }} value="D2">D2</option>
+                            <option {{ (old('pendidikan_terakhir_ayah') ? old('pendidikan_terakhir_ayah') : ($ayah ? $ayah->pendidikan_terakhir : null) ) == 'D3' ? 'selected' : '' }} value="D3">D3</option>
+                            <option {{ (old('pendidikan_terakhir_ayah') ? old('pendidikan_terakhir_ayah') : ($ayah ? $ayah->pendidikan_terakhir : null) ) == 'S1/D4' ? 'selected' : '' }} value="S1/D4">S1/D4</option>
+                            <option {{ (old('pendidikan_terakhir_ayah') ? old('pendidikan_terakhir_ayah') : ($ayah ? $ayah->pendidikan_terakhir : null) ) == 'S2' ? 'selected' : '' }} value="S2">S2</option>
+                            <option {{ (old('pendidikan_terakhir_ayah') ? old('pendidikan_terakhir_ayah') : ($ayah ? $ayah->pendidikan_terakhir : null) ) == 'S3' ? 'selected' : '' }} value="S3">S3</option>
                         </select>
                     @if($errors->has('pendidikan_terakhir_ayah'))
                         <p class="text-danger">{{ $errors->first('pendidikan_terakhir_ayah') }}</p>
@@ -189,17 +189,17 @@
                 <div class="form-group">
                     <label>Pendidikan Terakhir</label>
                     <select name="pendidikan_terakhir_ibu" value="" type="text" class="form-control">
-                        <option {{ (old('pendidikan_terakhir_ibu') ? old('pendidikan_terakhir_ibu') : $ibu->pendidikan_terakhir ) == '' ? 'selected' : '' }} value="">Pilih Pendidikan Terakhir</option>
-                        <option {{ (old('pendidikan_terakhir_ibu') ? old('pendidikan_terakhir_ibu') : $ibu->pendidikan_terakhir ) == 'Tidak Bersekolah' ? 'selected' : '' }} value="Tidak Bersekolah">Tidak Bersekolah</option>
-                        <option {{ (old('pendidikan_terakhir_ibu') ? old('pendidikan_terakhir_ibu') : $ibu->pendidikan_terakhir ) == 'SD' ? 'selected' : '' }} value="SD">SD</option>
-                        <option {{ (old('pendidikan_terakhir_ibu') ? old('pendidikan_terakhir_ibu') : $ibu->pendidikan_terakhir ) == 'SLTP/SMP' ? 'selected' : '' }} value="SLTP/SMP">SLTP/SMP</option>
-                        <option {{ (old('pendidikan_terakhir_ibu') ? old('pendidikan_terakhir_ibu') : $ibu->pendidikan_terakhir ) == 'SLTA/SMA' ? 'selected' : '' }} value="SLTA/SMA">SLTA/SMA</option>
-                        <option {{ (old('pendidikan_terakhir_ibu') ? old('pendidikan_terakhir_ibu') : $ibu->pendidikan_terakhir ) == 'D1' ? 'selected' : '' }} value="D1">D1</option>
-                        <option {{ (old('pendidikan_terakhir_ibu') ? old('pendidikan_terakhir_ibu') : $ibu->pendidikan_terakhir ) == 'D2' ? 'selected' : '' }} value="D2">D2</option>
-                        <option {{ (old('pendidikan_terakhir_ibu') ? old('pendidikan_terakhir_ibu') : $ibu->pendidikan_terakhir ) == 'D3' ? 'selected' : '' }} value="D3">D3</option>
-                        <option {{ (old('pendidikan_terakhir_ibu') ? old('pendidikan_terakhir_ibu') : $ibu->pendidikan_terakhir ) == 'S1/D4' ? 'selected' : '' }} value="S1/D4">S1/D4</option>
-                        <option {{ (old('pendidikan_terakhir_ibu') ? old('pendidikan_terakhir_ibu') : $ibu->pendidikan_terakhir ) == 'S2' ? 'selected' : '' }} value="S2">S2</option>
-                        <option {{ (old('pendidikan_terakhir_ibu') ? old('pendidikan_terakhir_ibu') : $ibu->pendidikan_terakhir ) == 'S3' ? 'selected' : '' }} value="S3">S3</option>
+                        <option {{ (old('pendidikan_terakhir_ibu') ? old('pendidikan_terakhir_ibu') : ($ibu ? $ibu->pendidikan_terakhir : '') ) == '' ? 'selected' : '' }} value="">Pilih Pendidikan Terakhir</option>
+                        <option {{ (old('pendidikan_terakhir_ibu') ? old('pendidikan_terakhir_ibu') : ($ibu ? $ibu->pendidikan_terakhir : '') ) == 'Tidak Bersekolah' ? 'selected' : '' }} value="Tidak Bersekolah">Tidak Bersekolah</option>
+                        <option {{ (old('pendidikan_terakhir_ibu') ? old('pendidikan_terakhir_ibu') : ($ibu ? $ibu->pendidikan_terakhir : '') ) == 'SD' ? 'selected' : '' }} value="SD">SD</option>
+                        <option {{ (old('pendidikan_terakhir_ibu') ? old('pendidikan_terakhir_ibu') : ($ibu ? $ibu->pendidikan_terakhir : '') ) == 'SLTP/SMP' ? 'selected' : '' }} value="SLTP/SMP">SLTP/SMP</option>
+                        <option {{ (old('pendidikan_terakhir_ibu') ? old('pendidikan_terakhir_ibu') : ($ibu ? $ibu->pendidikan_terakhir : '') ) == 'SLTA/SMA' ? 'selected' : '' }} value="SLTA/SMA">SLTA/SMA</option>
+                        <option {{ (old('pendidikan_terakhir_ibu') ? old('pendidikan_terakhir_ibu') : ($ibu ? $ibu->pendidikan_terakhir : '') ) == 'D1' ? 'selected' : '' }} value="D1">D1</option>
+                        <option {{ (old('pendidikan_terakhir_ibu') ? old('pendidikan_terakhir_ibu') : ($ibu ? $ibu->pendidikan_terakhir : '') ) == 'D2' ? 'selected' : '' }} value="D2">D2</option>
+                        <option {{ (old('pendidikan_terakhir_ibu') ? old('pendidikan_terakhir_ibu') : ($ibu ? $ibu->pendidikan_terakhir : '') ) == 'D3' ? 'selected' : '' }} value="D3">D3</option>
+                        <option {{ (old('pendidikan_terakhir_ibu') ? old('pendidikan_terakhir_ibu') : ($ibu ? $ibu->pendidikan_terakhir : '') ) == 'S1/D4' ? 'selected' : '' }} value="S1/D4">S1/D4</option>
+                        <option {{ (old('pendidikan_terakhir_ibu') ? old('pendidikan_terakhir_ibu') : ($ibu ? $ibu->pendidikan_terakhir : '') ) == 'S2' ? 'selected' : '' }} value="S2">S2</option>
+                        <option {{ (old('pendidikan_terakhir_ibu') ? old('pendidikan_terakhir_ibu') : ($ibu ? $ibu->pendidikan_terakhir : '') ) == 'S3' ? 'selected' : '' }} value="S3">S3</option>
                     </select>
                     @if($errors->has('pendidikan_terakhir_ibu'))
                         <p class="text-danger">{{ $errors->first('pendidikan_terakhir_ibu') }}</p>
@@ -293,17 +293,17 @@
                 <div class="form-group">
                     <label>Pendidikan Terakhir</label>
                     <select name="pendidikan_terakhir_wali" value="" type="text" class="form-control">
-                        <option {{ (old('pendidikan_terakhir_wali') ? old('pendidikan_terakhir_wali') : $wali->pendidikan_terakhir ) == '' ? 'selected' : '' }} value="">Pilih Pendidikan Terakhir</option>
-                        <option {{ (old('pendidikan_terakhir_wali') ? old('pendidikan_terakhir_wali') : $wali->pendidikan_terakhir ) == 'Tidak Bersekolah' ? 'selected' : '' }} value="Tidak Bersekolah">Tidak Bersekolah</option>
-                        <option {{ (old('pendidikan_terakhir_wali') ? old('pendidikan_terakhir_wali') : $wali->pendidikan_terakhir ) == 'SD' ? 'selected' : '' }} value="SD">SD</option>
-                        <option {{ (old('pendidikan_terakhir_wali') ? old('pendidikan_terakhir_wali') : $wali->pendidikan_terakhir ) == 'SLTP/SMP' ? 'selected' : '' }} value="SLTP/SMP">SLTP/SMP</option>
-                        <option {{ (old('pendidikan_terakhir_wali') ? old('pendidikan_terakhir_wali') : $wali->pendidikan_terakhir ) == 'SLTA/SMA' ? 'selected' : '' }} value="SLTA/SMA">SLTA/SMA</option>
-                        <option {{ (old('pendidikan_terakhir_wali') ? old('pendidikan_terakhir_wali') : $wali->pendidikan_terakhir ) == 'D1' ? 'selected' : '' }} value="D1">D1</option>
-                        <option {{ (old('pendidikan_terakhir_wali') ? old('pendidikan_terakhir_wali') : $wali->pendidikan_terakhir ) == 'D2' ? 'selected' : '' }} value="D2">D2</option>
-                        <option {{ (old('pendidikan_terakhir_wali') ? old('pendidikan_terakhir_wali') : $wali->pendidikan_terakhir ) == 'D3' ? 'selected' : '' }} value="D3">D3</option>
-                        <option {{ (old('pendidikan_terakhir_wali') ? old('pendidikan_terakhir_wali') : $wali->pendidikan_terakhir ) == 'S1/D4' ? 'selected' : '' }} value="S1/D4">S1/D4</option>
-                        <option {{ (old('pendidikan_terakhir_wali') ? old('pendidikan_terakhir_wali') : $wali->pendidikan_terakhir ) == 'S2' ? 'selected' : '' }} value="S2">S2</option>
-                        <option {{ (old('pendidikan_terakhir_wali') ? old('pendidikan_terakhir_wali') : $wali->pendidikan_terakhir ) == 'S3' ? 'selected' : '' }} value="S3">S3</option>
+                        <option {{ (old('pendidikan_terakhir_wali') ? old('pendidikan_terakhir_wali') : ($wali ? $wali->pendidikan_terakhir : null) ) == '' ? 'selected' : '' }} value="">Pilih Pendidikan Terakhir</option>
+                        <option {{ (old('pendidikan_terakhir_wali') ? old('pendidikan_terakhir_wali') : ($wali ? $wali->pendidikan_terakhir : null) ) == 'Tidak Bersekolah' ? 'selected' : '' }} value="Tidak Bersekolah">Tidak Bersekolah</option>
+                        <option {{ (old('pendidikan_terakhir_wali') ? old('pendidikan_terakhir_wali') : ($wali ? $wali->pendidikan_terakhir : null) ) == 'SD' ? 'selected' : '' }} value="SD">SD</option>
+                        <option {{ (old('pendidikan_terakhir_wali') ? old('pendidikan_terakhir_wali') : ($wali ? $wali->pendidikan_terakhir : null) ) == 'SLTP/SMP' ? 'selected' : '' }} value="SLTP/SMP">SLTP/SMP</option>
+                        <option {{ (old('pendidikan_terakhir_wali') ? old('pendidikan_terakhir_wali') : ($wali ? $wali->pendidikan_terakhir : null) ) == 'SLTA/SMA' ? 'selected' : '' }} value="SLTA/SMA">SLTA/SMA</option>
+                        <option {{ (old('pendidikan_terakhir_wali') ? old('pendidikan_terakhir_wali') : ($wali ? $wali->pendidikan_terakhir : null) ) == 'D1' ? 'selected' : '' }} value="D1">D1</option>
+                        <option {{ (old('pendidikan_terakhir_wali') ? old('pendidikan_terakhir_wali') : ($wali ? $wali->pendidikan_terakhir : null) ) == 'D2' ? 'selected' : '' }} value="D2">D2</option>
+                        <option {{ (old('pendidikan_terakhir_wali') ? old('pendidikan_terakhir_wali') : ($wali ? $wali->pendidikan_terakhir : null) ) == 'D3' ? 'selected' : '' }} value="D3">D3</option>
+                        <option {{ (old('pendidikan_terakhir_wali') ? old('pendidikan_terakhir_wali') : ($wali ? $wali->pendidikan_terakhir : null) ) == 'S1/D4' ? 'selected' : '' }} value="S1/D4">S1/D4</option>
+                        <option {{ (old('pendidikan_terakhir_wali') ? old('pendidikan_terakhir_wali') : ($wali ? $wali->pendidikan_terakhir : null) ) == 'S2' ? 'selected' : '' }} value="S2">S2</option>
+                        <option {{ (old('pendidikan_terakhir_wali') ? old('pendidikan_terakhir_wali') : ($wali ? $wali->pendidikan_terakhir : null) ) == 'S3' ? 'selected' : '' }} value="S3">S3</option>
                     </select>
                     @if($errors->has('pendidikan_terakhir_wali'))
                         <p class="text-danger">{{ $errors->first('pendidikan_terakhir_wali') }}</p>
