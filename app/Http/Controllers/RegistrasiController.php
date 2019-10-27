@@ -209,8 +209,8 @@ class RegistrasiController extends Controller
 
     public function step5(Request $request) {
         $reg = RegistrasiSiswa::find($this->reg_id);
-        $kegemaran = $reg->kegemaran_prestasi()->where('jenis_', 'kegemaran')->get();
-        $prestasi = $reg->kegemaran_prestasi()->where('jenis_', 'prestasi')->get();
+    $kegemaran = $reg->kegemaran_prestasi()->where('jenis_', 'kegemaran')->get();
+    $prestasi = $reg->kegemaran_prestasi()->where('jenis_', 'prestasi')->get();
         return view('registrasi.step-5', compact('kegemaran', 'prestasi'));
     }
 
@@ -468,38 +468,16 @@ class RegistrasiController extends Controller
 
     public function getNamaTingkat($tingkat) {
         switch($tingkat) {
-            case -3: 
-                return 'KB Kecil';
-            case -2:
-                return 'KB Besar';
-            case -1:
-                return 'TK A';
-            case 0:
-                return 'TK B';
             case 1:
-                return 'SD 1';
+                return 'KB';
             case 2:
-                return 'SD 2';
+                return 'TK';
             case 3:
-                return 'SD 3';
+                return 'SD';
             case 4:
-                return 'SD 4';
+                return 'SMP';
             case 5:
-                return 'SD 5';
-            case 6:
-                return 'SD 6';
-            case 7:
-                return 'SMP 1';
-            case 8:
-                return 'SMP 2';
-            case 9:
-                return 'SMP 3';
-            case 10:
-                return 'SMA 1';
-            case 11:
-                return 'SMA 2';
-            case 12:
-                return 'SMA 3';
+                return 'SMA';
         }
     }
 
@@ -550,8 +528,25 @@ class RegistrasiController extends Controller
 
     public function step8_submit() {
         $reg = RegistrasiSiswa::find($this->reg_id);
+        $nomor_registrasi = RegistrasiSiswa::latest('saved')->first()->nomor_registrasi;
+        if(!$nomor_registrasi) {
+            $reg->nomor_registrasi == 'OL-001';
+        } else {
+            $new_no = explode('-', $nomor_registrasi);
+            $int_no = (int)$new_no[1]+1;
+            if($int_no < 10)
+                $new_no = '0'.'0'.(string)$int_no;
+            elseif($int_no < 100)
+                $new_no = '0'.(string)$int_no;
+            else {
+                $new_no = (string)$int_no;
+            }
+            $new_no = 'OL-'.$new_no;
+            $reg->nomor_registrasi = $new_no;
+        }
         $reg->saved = 1;
         $reg->saved_date = \Carbon\Carbon::now();
+
         $reg->save();
 
         return redirect(url()->previous());

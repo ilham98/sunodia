@@ -14,30 +14,7 @@
 use App\RegistrasiSiswa;
 use Illuminate\Support\Facades\Hash;
 
-Route::get('test', function() {
-    $reg = RegistrasiSiswa::first();
-    $tingkat = '';
-    switch($reg->tingkat) {
-        case 1:
-            $tingkat = 'KB';
-            break;
-        case 2:
-            $tingkat = 'TK';
-            break;
-        case 3:
-            $tingkat = 'SD';
-            break;
-        case 4:
-            $tingkat = 'SMP';
-            break;
-        case 5:
-            $tingkat = 'SMA';
-            break;
-    }
-    $pdf = PDF::loadView('pdf.registrasi', compact('reg', 'tingkat'));
-    return $pdf->stream();
-    // return Hash::make('admin');
-});
+Route::get('pdf/registrasi-form/{id}', 'PDF\RegistrasiForm@index');
 
 Route::get('/', function () {
     $berita = \App\Berita::orderBy('created_at', 'desc')->get();

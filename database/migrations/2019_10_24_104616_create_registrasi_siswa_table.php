@@ -51,6 +51,7 @@ class CreateRegistrasiSiswaTable extends Migration
             $table->string('tinggal_bersama')->nullable();
             $table->string('last_step')->nullable();
             $table->integer('saved')->default(0);
+            $table->string('nomor_registrasi')->nullable();
             $table->timestamp('saved_date')->nullable();
             $table->timestamps();
         });

@@ -83,7 +83,7 @@
             <div class="modal-body">
                 <form action="" method="POST" id="form">
                     <div class="form-group">
-                        <label>Nama</label>
+                        <label id="label-nama">Nama</label>
                         <input type="text" name="nama" class="form-control" value="{{ old('nama') }}">
                         @if($errors->has('nama'))
                             <p class="text-danger">{{ $errors->first('nama') }}</p>
@@ -92,10 +92,11 @@
                     <div class="form-group">
                         <label>Jenis</label>
                         <select name="jenis" id="" class="form-control">
+                            <option value="">Pilih Jenis</option>
                             <option value="Akademik" {{ old('jenis') == 'Akademik' ? 'selected' : '' }}>Akademik</option>
                             <option value="Seni" {{ old('jenis') == 'Seni' ? 'selected' : '' }}>Seni</option>
-                            <option value="Olahraga" {{ old('Olahraga') == '' ? 'selected' : '' }}>Olahraga</option>
-                            <option value="Lainnya" {{ old('Lainnya') == '' ? 'selected' : '' }}>Lainnya</option>
+                            <option value="Olahraga" {{ old('Olahraga') == 'Olahraga' ? 'selected' : '' }}>Olahraga</option>
+                            <option value="Lainnya" {{ old('Lainnya') == 'Lainnya' ? 'selected' : '' }}>Lainnya</option>
                         </select>
                         @if($errors->has('jenis'))
                             <p class="text-danger">{{ $errors->first('jenis') }}</p>
@@ -125,6 +126,7 @@
             var type = $(this).data('type');
             var extra = 'Tambah ' + type.charAt(0).toUpperCase() + type.slice(1);
             $('#form').attr('action', `{!! url('registrasi/5') !!}/` + type);
+            $('#label-nama').html('Nama '+ type.charAt(0).toUpperCase() + type.slice(1))
             $('.modal-title').html(extra);
             $('#btn-tambah').html(extra);
        });
@@ -143,6 +145,7 @@
         <script>
             var type = `{!! session('error-type') !!}`;
             var extra = 'Tambah ' + type.charAt(0).toUpperCase() + type.slice(1);
+            $('#label-nama').html('Nama '+ type.charAt(0).toUpperCase() + type.slice(1));
             $('#form').attr('action', `{!! url('registrasi/5') !!}/` + type);
             $('.modal-title').html(extra);
             $('#btn-tambah').html(extra);

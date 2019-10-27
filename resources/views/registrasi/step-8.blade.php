@@ -40,6 +40,11 @@
     <div class="container p-0 bg-white register-box mt-3">
         <h5 class="m-0"><img height='40' src="https://img.icons8.com/dotty/80/000000/note.png"> Registrasi</h5>
         @if($reg->saved == 1)
+            <div class="text-right m-3">
+                <a target='_blank' href="{{ url('pdf/registrasi-form/'.$reg->id) }}" class="btn btn-success"><i class='fa fa-pdf'></i> Unduh PDF</a>
+            </div>
+        @endif
+        @if($reg->saved == 1)
             <div class="m-2 alert alert-warning">Data telah disimpan dan tak dapat diubah.</div>
         @endif
         {{-- ----------------------------------------- STEP 1 ----------------------------------------- --}}
@@ -55,12 +60,13 @@
         {{-- ----------------------------------------- STEP 2 ----------------------------------------- --}}
         <form action="{{ url('registrasi/2') }}" class="px-3" method="POST" enctype="multipart/form-data">
             <div class="row">
-                <div class="form-group col-sm-12">
+                <div class="form-group col-sm-8">
                     <label>Nama</label>
                     <input readonly name="nama" type="text" class="form-control" value="{{ old('nama') ? old('nama') : $reg->nama }}">
-                    @if($errors->has('nama'))
-                        <p class="text-danger">{{ $errors->first('nama') }}</p>
-                    @endif
+                </div>
+                <div class="form-group col-sm-4">
+                    <label>Jenis Kelamin</label>
+                    <input readonly name="nama" type="text" class="form-control" value="{{ old('jenis_kelamin') ? old('jenis_kelamin') : $reg->jenis_kelamin }}">
                 </div>
             </div>
             <div class="row">
@@ -88,6 +94,18 @@
                     <input type="text" value="{{ old('kewarganegaraan') ? old('kewarganegaraan') : $reg->kewarganegaraan }}" name="kewarganegaraan" class="form-control" readonly>
                 </div>
             </div>
+            @if($reg->agama == 'Kristen' || $reg->agama == 'Katolik')
+                <div class="row" id="tambahan-kristen">
+                    <div class="form-group col-sm-6">
+                        <label>Jika Kristen / Katolik Bergereja di</label>
+                        <input type="text" class='form-control' name='bergereja_di' value="{{ old('bergereja_di') ? old('bergereja_di') : $reg->bergereja_di }}" readonly>
+                    </div>
+                    <div class="form-group col-sm-6">
+                        <label>Aktif / Pelajayan sebagai</label>
+                        <input type="text" class='form-control' name='aktif_pelayan' value="{{ old('aktif_pelayan') ? old('aktif_pelayan') : $reg->aktif_pelayan }}" readonly>
+                    </div>
+                </div>
+            @endif
             <div class="row">
                 <div class="form-group col-sm-12">
                     <label>Alamat Rumah</label>

@@ -56,12 +56,17 @@
         .table-form tr td:nth-child(3) {
             width: 2%;
         }
+
+        .bold {
+            font-weight: bold;
+            margin: 5px 0;
+        }
     </style>
 </head>
 <body>
     {{-- ---------------------------------------------------- COVER -------------------------------------------------- --}}
-    @component('pdf.registrasi-header')
-    @endcomponent
+    @include('pdf.registrasi-header')
+    
     <div>
         <div style="text-align: center">
             <h1 style="text-decoration: underline">FORMULIR PENDAFTARAN</h1>
@@ -95,11 +100,12 @@
     </div>
     <div class="page_break"></div>
     {{-- -------------------------------------------------- PAGE 1 ---------------------- --}}
-    @component('pdf.registrasi-header')
-    @endcomponent
+    @include('pdf.registrasi-header')
+    
     @php
         $index = 97;
     @endphp
+    <div class="bold">I. Data Calon Siswa</div>
     <table class="table-form">
         <tr>
             <td>{{ chr($index) }}.</td>
@@ -233,7 +239,7 @@
             <td>{{ chr($index) }}.</td>
             <td>Alamat E-mail Calon Siswa</td>
             <td>:</td>
-            <td>{{ $reg->email_calon_siswa }}</td>
+            <td>{{ $reg->email_calon_siswa ? $reg->email_calon_siswa : '' }}</td>
             @php
                 $index++;
             @endphp
@@ -312,5 +318,313 @@
             $index++;
         @endphp
     </table>
+    <div class="page_break"></div>
+    {{-- -------------------------------------------------- Page 1 End -------------------------------------------------- --}}
+    @include('pdf.registrasi-header')
+    
+    <div class="bold">II. Keterangan Pendidikan Sebelumnya</div>
+    <table class="table-form">
+        <tr>
+            <td>a.</td>
+            <td>Asal Sekolah</td>
+            <td>:</td>
+            <td>{{ $reg->asal_sekolah ? $reg->asal_sekolah : '-' }}</td>
+        </tr>
+        <tr>
+            <td>b.</td>
+            <td>Alamat</td>
+            <td>:</td>
+            <td>{{ $reg->alamat ? $reg->alamat : '-' }}</td>
+        </tr>
+        <tr>
+            <td>c.</td>
+            <td>Nomor Ijazah</td>
+            <td>:</td>
+            <td>{{ $reg->nomor_ijazah ? $reg->nomor_ijazah : '-' }}</td>
+        </tr>
+        <tr>
+            <td>d.</td>
+            <td>Lama Belajar</td>
+            <td>:</td>
+            <td>{{ $reg->lama_belajar ? $reg->lama_belajar : '-' }}</td>
+        </tr>
+        <tr>
+            <td>e.</td>
+            <td>Jumlah Nilai</td>
+            <td>:</td>
+            <td>{{ $reg->jumlah_nilai ? $reg->jumlah_nilai : '-' }}</td>
+        </tr>
+    </table>
+    <div class="bold">III. Keterangan Kesehatan</div>
+    <table class="table-form">
+        <tr>
+            <td>a.</td>
+            <td>Golongan darah</td>
+            <td>:</td>
+            <td>{{ $reg->golongan_darah }}{{ $reg->rhesus == 'Positif' ? '+' : '-' }}</td>
+        </tr>
+        <tr>
+            <td>b.</td>
+            <td>Penyakit yang pernah diderita</td>
+            <td>:</td>
+            <td>{{ $reg->penyakit_yang_pernah_diderita ? $reg->penyakit_yang_pernah_diderita : '-' }}</td>
+        </tr>
+        <tr>
+            <td>c.</td>
+            <td>Berkebutuhan khusus</td>
+            <td>:</td>
+            <td>{{ $reg->berkebutuhan_khusus }}</td>
+        </tr>
+        <tr>
+            <td>d.</td>
+            <td>Tinggi badan</td>
+            <td>:</td>
+            <td>{{ $reg->tinggi_badan }} cm</td>
+        </tr>
+        <tr>
+            <td>e.</td>
+            <td>Berat badan</td>
+            <td>:</td>
+            <td>{{ $reg->berat_badan }} kg</td>
+        </tr>
+        <tr>
+            <td>f.</td>
+            <td>Ciri khusus lainnya</td>
+            <td>:</td>
+            <td>{{ $reg->ciri_khusus_lainnya ? $reg->ciri_khusus_lainnya : '-' }}</td>
+        </tr>
+    </table>
+    <div class="bold">IV. Keterangan Kegemaran / Hobby dan Prestasi</div>
+    <div>Kegemaran : @if($kegemaran->count() == 0) Tidak ada kegemaran yang ditambahkan @endif</div>
+    <ol style="margin: 3px">
+        @foreach($kegemaran as $k) 
+            <li>{{ $k->nama }} ({{ $k->jenis }})</li>
+        @endforeach
+    </ol>
+    <div>Prestasi : @if($prestasi->count() == 0) Tidak ada prestasi yang ditambahkan @endif</div>
+    <ol style="margin: 3px">
+        @foreach($prestasi as $p) 
+            <li>{{ $p->nama }} ({{ $p->jenis }})</li>
+        @endforeach
+    </ol>
+    <div class="page_break"></div>
+    {{-- -------------------------------------------------- Page 1 End -------------------------------------------------- --}}
+    @include('pdf.registrasi-header')
+    
+    <div class="bold">V. Keterangan Orang tua / Wali siswa</div>
+    @if($reg->tinggal_bersama == 'orang_tua')
+        <div style='margin: 5px 0; font-weight: bold'>Ayah</div>
+        <table class="table-form" style="width: 100%">
+            <tr>
+                <td>a.</td>
+                <td>Nama Lengkap</td>
+                <td>:</td>
+                <td>{{ $ayah->nama }}</td>
+            </tr>
+            <tr>
+                <td>b.</td>
+                <td>Tempat Lahir</td>
+                <td>:</td>
+                <td>{{ $ayah->tempat_lahir }}</td>
+            </tr>
+            <tr>
+                <td>c.</td>
+                <td>Tanggal Lahir</td>
+                <td>:</td>
+                <td>{{ $ayah->tanggal_lahir }}</td>
+            </tr>
+            <tr>
+                <td>d.</td>
+                <td>Agama</td>
+                <td>:</td>
+                <td>{{ $ayah->agama }}</td>
+            </tr>
+            <tr>
+                <td>e.</td>
+                <td>Kewarganegaraan</td>
+                <td>:</td>
+                <td>{{ $ayah->kewarganegaraan }}</td>
+            </tr>
+            <tr>
+                <td>f.</td>
+                <td>Pendidikan Terakhir</td>
+                <td>:</td>
+                <td>{{ $ayah->kewarganegaraan }}</td>
+            </tr>
+            <tr>
+                <td>g.</td>
+                <td>Pekerjaan / Jabatan</td>
+                <td>:</td>
+                <td>{{ $ayah->pekerjaan_jabatan }}</td>
+            </tr>
+            <tr>
+                <td>h.</td>
+                <td>Alamat Lengkap</td>
+                <td>:</td>
+                <td>{{ $ayah->alamat_lengkap }}</td>
+            </tr>
+            <tr>
+                <td>i.</td>
+                <td>Nomor telepon / HP</td>
+                <td>:</td>
+                <td>{{ $ayah->no_telepon }}</td>
+            </tr>
+            <tr>
+                <td>j.</td>
+                <td>Keterangan</td>
+                <td>:</td>
+                <td>{{ $ayah->keterangan }}</td>
+            </tr>
+            <tr>
+                <td>k.</td>
+                <td>Penghasilan Perbulan</td>
+                <td>:</td>
+                <td>{{ $penghasilan_ayah }}</td>
+            </tr>
+        </table>
+        <div style='margin: 5px 0; font-weight: bold'>Ibu</div>
+        <table class="table-form" style="width: 100%">
+            <tr>
+                <td>a.</td>
+                <td>Nama Lengkap</td>
+                <td>:</td>
+                <td>{{ $ibu->nama }}</td>
+            </tr>
+            <tr>
+                <td>b.</td>
+                <td>Tempat Lahir</td>
+                <td>:</td>
+                <td>{{ $ibu->tempat_lahir }}</td>
+            </tr>
+            <tr>
+                <td>c.</td>
+                <td>Tanggal Lahir</td>
+                <td>:</td>
+                <td>{{ $ibu->tanggal_lahir }}</td>
+            </tr>
+            <tr>
+                <td>d.</td>
+                <td>Agama</td>
+                <td>:</td>
+                <td>{{ $ibu->agama }}</td>
+            </tr>
+            <tr>
+                <td>e.</td>
+                <td>Kewarganegaraan</td>
+                <td>:</td>
+                <td>{{ $ibu->kewarganegaraan }}</td>
+            </tr>
+            <tr>
+                <td>f.</td>
+                <td>Pendidikan Terakhir</td>
+                <td>:</td>
+                <td>{{ $ibu->kewarganegaraan }}</td>
+            </tr>
+            <tr>
+                <td>g.</td>
+                <td>Pekerjaan / Jabatan</td>
+                <td>:</td>
+                <td>{{ $ibu->pekerjaan_jabatan }}</td>
+            </tr>
+            <tr>
+                <td>h.</td>
+                <td>Alamat Lengkap</td>
+                <td>:</td>
+                <td>{{ $ibu->alamat_lengkap }}</td>
+            </tr>
+            <tr>
+                <td>i.</td>
+                <td>Nomor telepon / HP</td>
+                <td>:</td>
+                <td>{{ $ibu->no_telepon }}</td>
+            </tr>
+            <tr>
+                <td>j.</td>
+                <td>Keterangan</td>
+                <td>:</td>
+                <td>{{ $ibu->keterangan }}</td>
+            </tr>
+            <tr>
+                <td>k.</td>
+                <td>Penghasilan Perbulan</td>
+                <td>:</td>
+                <td>{{ $penghasilan_ibu }}</td>
+            </tr>
+        </table>
+    @else
+    <div style='margin: 5px 0; font-weight: bold'>Wali</div>
+    <table class="table-form" style="width: 100%">
+        <tr>
+            <td>a.</td>
+            <td>Nama Lengkap</td>
+            <td>:</td>
+            <td>{{ $wali->nama }}</td>
+        </tr>
+        <tr>
+            <td>b.</td>
+            <td>Tempat Lahir</td>
+            <td>:</td>
+            <td>{{ $wali->tempat_lahir }}</td>
+        </tr>
+        <tr>
+            <td>c.</td>
+            <td>Tanggal Lahir</td>
+            <td>:</td>
+            <td>{{ $wali->tanggal_lahir }}</td>
+        </tr>
+        <tr>
+            <td>d.</td>
+            <td>Agama</td>
+            <td>:</td>
+            <td>{{ $wali->agama }}</td>
+        </tr>
+        <tr>
+            <td>e.</td>
+            <td>Kewarganegaraan</td>
+            <td>:</td>
+            <td>{{ $wali->kewarganegaraan }}</td>
+        </tr>
+        <tr>
+            <td>f.</td>
+            <td>Pendidikan Terakhir</td>
+            <td>:</td>
+            <td>{{ $wali->kewarganegaraan }}</td>
+        </tr>
+        <tr>
+            <td>g.</td>
+            <td>Pekerjaan / Jabatan</td>
+            <td>:</td>
+            <td>{{ $wali->pekerjaan_jabatan }}</td>
+        </tr>
+        <tr>
+            <td>h.</td>
+            <td>Alamat Lengkap</td>
+            <td>:</td>
+            <td>{{ $wali->alamat_lengkap }}</td>
+        </tr>
+        <tr>
+            <td>i.</td>
+            <td>Nomor telepon / HP</td>
+            <td>:</td>
+            <td>{{ $wali->no_telepon }}</td>
+        </tr>
+        <tr>
+            <td>j.</td>
+            <td>Keterangan</td>
+            <td>:</td>
+            <td>{{ $wali->keterangan }}</td>
+        </tr>
+        <tr>
+            <td>k.</td>
+            <td>Penghasilan Perbulan</td>
+            <td>:</td>
+            <td>{{ $penghasilan_wali }}</td>
+        </tr>
+    </table>
+    @endif
+    <div style="position: absolute; width: 200px; text-align: center; right: 50px; bottom: 0px; height: 151px">
+        <img src="{{ $foto_siswa }}" style="height: 100%;" alt="">
+        <div>Ilham</div>  
+    </div>
 </body>
 </html>
