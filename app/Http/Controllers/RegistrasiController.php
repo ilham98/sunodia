@@ -108,10 +108,10 @@ class RegistrasiController extends Controller
             'agama' => 'required',
             'kewarganegaraan' => 'required',
             'alamat_rumah' => 'required',
-            'kode_pos' => 'required',
-            'telepon' => 'required',
+            'kode_pos' => 'required|numeric|digits:5',
+            'telepon' => 'required|numeric',
             'tinggal_dengan' => 'required',
-            'no_hp_calon_siswa' => 'required',
+            'no_hp_calon_siswa' => 'required|numeric',
             'anak_ke' => 'required|integer',
             'jumlah_saudara' => 'required|integer',
             'jarak_tempuh_sekolah' => 'required|integer',
@@ -272,6 +272,7 @@ class RegistrasiController extends Controller
 
     public function step6(Request $request) { 
         $reg = RegistrasiSiswa::find($this->reg_id);
+        dd($reg);   
         $reg->update($request->all());
         $ayah = $reg->orang_tua()->where('jenis', 'ayah')->first();
         $ibu = $reg->orang_tua()->where('jenis', 'ibu')->first();
