@@ -274,7 +274,6 @@ class RegistrasiController extends Controller
         $reg = RegistrasiSiswa::find($this->reg_id);
         $reg->tinggal_bersama = '';
         $reg->save();
-        dd($reg);   
         $reg->update($request->all());
         $ayah = $reg->orang_tua()->where('jenis', 'ayah')->first();
         $ibu = $reg->orang_tua()->where('jenis', 'ibu')->first();
