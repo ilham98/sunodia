@@ -449,7 +449,7 @@
                 <td>f.</td>
                 <td>Pendidikan Terakhir</td>
                 <td>:</td>
-                <td>{{ $ayah->kewarganegaraan }}</td>
+                <td>{{ $ayah->pendidikan_terakhir }}</td>
             </tr>
             <tr>
                 <td>g.</td>
@@ -518,7 +518,7 @@
                 <td>f.</td>
                 <td>Pendidikan Terakhir</td>
                 <td>:</td>
-                <td>{{ $ibu->kewarganegaraan }}</td>
+                <td>{{ $ibu->pendidikan_terakhir }}</td>
             </tr>
             <tr>
                 <td>g.</td>
@@ -588,7 +588,7 @@
             <td>f.</td>
             <td>Pendidikan Terakhir</td>
             <td>:</td>
-            <td>{{ $wali->kewarganegaraan }}</td>
+            <td>{{ $wali->pendidikan_terakhir }}</td>
         </tr>
         <tr>
             <td>g.</td>

@@ -42,7 +42,7 @@
 @section('content')
     <div style='height: 60px; background: #0067c2'></div>
     <div class="container p-0 bg-white register-box mt-3">
-        <h5 class="m-0"><img height='40' src="https://img.icons8.com/dotty/80/000000/note.png"> Registrasi</h5>
+        <h5 class="m-0"><img height='40' src="https://img.icons8.com/dotty/80/000000/note.png"> Registrasi - Upload Berkas (7/7)</h5>
             @foreach($dokumen ?? '' as $d)
                 <form action="{{ url('registrasi/7/dokumen/'.$d->id) }}" class="p-3" method="POST" enctype="multipart/form-data">
                     <label for="dokumen[{{ $d->id }}]">{{ $d->jenis_dokumen->nama }}</label>
@@ -62,7 +62,6 @@
                     @method('POST')
                 </form>
             @endforeach
-
             <form action="{{ url('registrasi/7') }}" class="p-3" method="POST" enctype="multipart/form-data">
                 <div class="mt-5 d-flex justify-content-end">
                     <a href="{{ url('registrasi?goto=prev') }}" class="btn btn-info">Kembali</a>
