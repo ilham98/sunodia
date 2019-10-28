@@ -68,12 +68,12 @@
                 <div class="form-group">
                     <label>Agama</label>
                     <select name="agama_ayah" class="form-control" id="">
-                        <option value="Kristen" {{ (old('agama_ayah') ? old('agama_ayah') :  ($ayah ? $ayah->agama : null) == 'Kristen' ? 'selected' : '' }}>Kristen</option>
-                        <option value="Katolik" {{ (old('agama_ayah') ? old('agama_ayah') :  ($ayah ? $ayah->agama : null) == 'Katolik' ? 'selected' : '' }}>Katolik</option>
-                        <option value="Islam" {{ (old('agama_ayah') ? old('agama_ayah') :  ($ayah ? $ayah->agama : null) == 'Islam' ? 'selected' : '' }}>Islam</option>
-                        <option value="Hindu" {{ (old('agama_ayah') ? old('agama_ayah') :  ($ayah ? $ayah->agama : null) == 'Hindu' ? 'selected' : '' }}>Hindu</option>
-                        <option value="Buddha" {{ (old('agama_ayah') ? old('agama_ayah') :  ($ayah ? $ayah->agama : null) == 'Buddha' ? 'selected' : '' }}>Buddha</option>
-                        <option value="Konghucu" {{ (old('agama_ayah') ? old('agama_ayah') :  ($ayah ? $ayah->agama : null) == 'Konghucu' ? 'selected' : '' }}>Konghucu</option>
+                        <option value="Kristen" {{ (old('agama_ayah') ? old('agama_ayah') :  ($ayah ? $ayah->agama : null)) == 'Kristen' ? 'selected' : '' }}>Kristen</option>
+                        <option value="Katolik" {{ (old('agama_ayah') ? old('agama_ayah') :  ($ayah ? $ayah->agama : null)) == 'Katolik' ? 'selected' : '' }}>Katolik</option>
+                        <option value="Islam" {{ (old('agama_ayah') ? old('agama_ayah') :  ($ayah ? $ayah->agama : null)) == 'Islam' ? 'selected' : '' }}>Islam</option>
+                        <option value="Hindu" {{ (old('agama_ayah') ? old('agama_ayah') :  ($ayah ? $ayah->agama : null)) == 'Hindu' ? 'selected' : '' }}>Hindu</option>
+                        <option value="Buddha" {{ (old('agama_ayah') ? old('agama_ayah') :  ($ayah ? $ayah->agama : null)) == 'Buddha' ? 'selected' : '' }}>Buddha</option>
+                        <option value="Konghucu" {{ (old('agama_ayah') ? old('agama_ayah') :  ($ayah ? $ayah->agama : null)) == 'Konghucu' ? 'selected' : '' }}>Konghucu</option>
                     </select>
                     @if($errors->has('agama_ayah'))
                         <p class="text-danger">{{ $errors->first('agama_ayah') }}</p>
@@ -173,12 +173,12 @@
                 <div class="form-group">
                     <label>Agama</label>
                     <select name="agama_ibu" class="form-control" id="">
-                        <option value="Kristen" {{ (old('agama_ibu') ? old('agama_ibu') :  ($ibu ? $ibu->agama : null) == 'Kristen' ? 'selected' : '' }}>Kristen</option>
-                        <option value="Katolik" {{ (old('agama_ibu') ? old('agama_ibu') : ($ibu ? $ibu->agama : null) == 'Katolik' ? 'selected' : '' }}>Katolik</option>
-                        <option value="Islam" {{ (old('agama_ibu') ? old('agama_ibu') :  ($ibu ? $ibu->agama : null) == 'Islam' ? 'selected' : '' }}>Islam</option>
-                        <option value="Hindu" {{ (old('agama_ibu') ? old('agama_ibu') :  ($ibu ? $ibu->agama : null) == 'Hindu' ? 'selected' : '' }}>Hindu</option>
-                        <option value="Buddha" {{ (old('agama_ibu') ? old('agama_ibu') :  ($ibu ? $ibu->agama : null) == 'Buddha' ? 'selected' : '' }}>Buddha</option>
-                        <option value="Konghucu" {{ (old('agama_ibu') ? old('agama_ibu') :  ($ibu ? $ibu->agama : null) == 'Konghucu' ? 'selected' : '' }}>Konghucu</option>
+                        <option value="Kristen" {{ (old('agama_ibu') ? old('agama_ibu') :  ($ibu ? $ibu->agama : null)) == 'Kristen' ? 'selected' : '' }}>Kristen</option>
+                        <option value="Katolik" {{ (old('agama_ibu') ? old('agama_ibu') : ($ibu ? $ibu->agama : null)) == 'Katolik' ? 'selected' : '' }}>Katolik</option>
+                        <option value="Islam" {{ (old('agama_ibu') ? old('agama_ibu') :  ($ibu ? $ibu->agama : null)) == 'Islam' ? 'selected' : '' }}>Islam</option>
+                        <option value="Hindu" {{ (old('agama_ibu') ? old('agama_ibu') :  ($ibu ? $ibu->agama : null)) == 'Hindu' ? 'selected' : '' }}>Hindu</option>
+                        <option value="Buddha" {{ (old('agama_ibu') ? old('agama_ibu') :  ($ibu ? $ibu->agama : null)) == 'Buddha' ? 'selected' : '' }}>Buddha</option>
+                        <option value="Konghucu" {{ (old('agama_ibu') ? old('agama_ibu') :  ($ibu ? $ibu->agama : null)) == 'Konghucu' ? 'selected' : '' }}>Konghucu</option>
                     </select>
                     @if($errors->has('agama_ibu'))
                         <p class="text-danger">{{ $errors->first('agama_ibu') }}</p>
@@ -280,12 +280,12 @@
                 <div class="form-group">
                     <label>Agama</label>
                     <select name="agama_wali" class="form-control" id="">
-                            <option value="Kristen" {{ (old('agaagama_walima') ? old('agama_wali') : ($wali ? $wali->agama : null) == 'Kristen' ? 'selected' : '' }}>Kristen</option>
-                            <option value="Katolik" {{ (old('agama_wali') ? old('agama_wali') : ($wali ? $wali->agama : null) == 'Katolik' ? 'selected' : '' }}>Katolik</option>
-                            <option value="Islam" {{ (old('agama_wali') ? old('agama_wali') : ($wali ? $wali->agama : null) == 'Islam' ? 'selected' : '' }}>Islam</option>
-                            <option value="Hindu" {{ (old('agama_wali') ? old('agama_wali') : ($wali ? $wali->agama : null) == 'Hindu' ? 'selected' : '' }}>Hindu</option>
-                            <option value="Buddha" {{ (old('agama_wali') ? old('agama_wali') : ($wali ? $wali->agama : null) == 'Buddha' ? 'selected' : '' }}>Buddha</option>
-                            <option value="Konghucu" {{ (old('agama_wali') ? old('agama_wali') : ($wali ? $wali->agama : null) == 'Konghucu' ? 'selected' : '' }}>Konghucu</option>
+                            <option value="Kristen" {{ (old('agaagama_walima') ? old('agama_wali') : ($wali ? $wali->agama : null)) == 'Kristen' ? 'selected' : '' }}>Kristen</option>
+                            <option value="Katolik" {{ (old('agama_wali') ? old('agama_wali') : ($wali ? $wali->agama : null)) == 'Katolik' ? 'selected' : '' }}>Katolik</option>
+                            <option value="Islam" {{ (old('agama_wali') ? old('agama_wali') : ($wali ? $wali->agama : null)) == 'Islam' ? 'selected' : '' }}>Islam</option>
+                            <option value="Hindu" {{ (old('agama_wali') ? old('agama_wali') : ($wali ? $wali->agama : null)) == 'Hindu' ? 'selected' : '' }}>Hindu</option>
+                            <option value="Buddha" {{ (old('agama_wali') ? old('agama_wali') : ($wali ? $wali->agama : null)) == 'Buddha' ? 'selected' : '' }}>Buddha</option>
+                            <option value="Konghucu" {{ (old('agama_wali') ? old('agama_wali') : ($wali ? $wali->agama : null)) == 'Konghucu' ? 'selected' : '' }}>Konghucu</option>
                     </select>
                     @if($errors->has('agama_wali'))
                         <p class="text-danger">{{ $errors->first('agama_wali') }}</p>
