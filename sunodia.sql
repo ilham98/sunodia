@@ -58,27 +58,25 @@ INSERT INTO `agenda_sekolah` (`id`, `url_poster_penerimaan_siswa_baru`, `url_kal
 -- Dumping structure for table p002-sunodia.album
 DROP TABLE IF EXISTS `album`;
 CREATE TABLE IF NOT EXISTS `album` (
-  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `id` int(10) unsigned NOT NULL DEFAULT 0,
   `nama` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `tingkat` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Dumping data for table p002-sunodia.album: ~5 rows (approximately)
+-- Dumping data for table p002-sunodia.album: ~2 rows (approximately)
 /*!40000 ALTER TABLE `album` DISABLE KEYS */;
 INSERT INTO `album` (`id`, `nama`, `tingkat`, `created_at`, `updated_at`) VALUES
 	(2, 'kren', '', '2019-10-27 20:24:12', '2019-10-27 20:24:12'),
-	(3, 'keren', '', '2019-10-27 20:27:32', '2019-10-27 20:27:32'),
-	(4, 'ketika dia yang sepi anjay', '', '2019-10-27 20:28:10', '2019-10-27 20:28:10'),
-	(5, 'keren', 'tk-kb', '2019-10-27 20:37:05', '2019-10-27 20:37:05');
+	(3, 'keren', '', '2019-10-27 20:27:32', '2019-10-27 20:27:32');
 /*!40000 ALTER TABLE `album` ENABLE KEYS */;
 
 -- Dumping structure for table p002-sunodia.berita
 DROP TABLE IF EXISTS `berita`;
 CREATE TABLE IF NOT EXISTS `berita` (
-  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `judul` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `isi` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `tingkat` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
@@ -101,15 +99,11 @@ INSERT INTO `berita` (`id`, `judul`, `isi`, `tingkat`, `created_at`, `updated_at
 -- Dumping structure for table p002-sunodia.dokumen
 DROP TABLE IF EXISTS `dokumen`;
 CREATE TABLE IF NOT EXISTS `dokumen` (
-  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
-  `registrasi_siswa_id` bigint(20) unsigned NOT NULL,
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `registrasi_siswa_id` int(10) unsigned NOT NULL DEFAULT 0,
   `jenis_dokumen_id` bigint(20) unsigned NOT NULL,
   `url` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `dokumen_jenis_dokumen_id_foreign` (`jenis_dokumen_id`),
-  KEY `dokumen_registrasi_siswa_id_foreign` (`registrasi_siswa_id`),
-  CONSTRAINT `dokumen_jenis_dokumen_id_foreign` FOREIGN KEY (`jenis_dokumen_id`) REFERENCES `jenis_dokumen` (`id`) ON DELETE CASCADE,
-  CONSTRAINT `dokumen_registrasi_siswa_id_foreign` FOREIGN KEY (`registrasi_siswa_id`) REFERENCES `registrasi_siswa` (`id`) ON DELETE CASCADE
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=32 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Dumping data for table p002-sunodia.dokumen: ~9 rows (approximately)
@@ -129,30 +123,30 @@ INSERT INTO `dokumen` (`id`, `registrasi_siswa_id`, `jenis_dokumen_id`, `url`) V
 -- Dumping structure for table p002-sunodia.fasilitas
 DROP TABLE IF EXISTS `fasilitas`;
 CREATE TABLE IF NOT EXISTS `fasilitas` (
-  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `text` text DEFAULT NULL,
   `tingkat` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 
--- Dumping data for table p002-sunodia.fasilitas: ~3 rows (approximately)
+-- Dumping data for table p002-sunodia.fasilitas: ~4 rows (approximately)
 /*!40000 ALTER TABLE `fasilitas` DISABLE KEYS */;
 INSERT INTO `fasilitas` (`id`, `text`, `tingkat`) VALUES
 	(1, NULL, 'tk-kb'),
 	(2, '<p>keren gan</p>', 'sd'),
 	(3, NULL, 'smp'),
-	(4, NULL, 'sma');
+	(4, 'keren', 'sma');
 /*!40000 ALTER TABLE `fasilitas` ENABLE KEYS */;
 
 -- Dumping structure for table p002-sunodia.files
 DROP TABLE IF EXISTS `files`;
 CREATE TABLE IF NOT EXISTS `files` (
-  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `id` int(11) NOT NULL DEFAULT 0,
   `url` varchar(255) DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- Dumping data for table p002-sunodia.files: ~2 rows (approximately)
 /*!40000 ALTER TABLE `files` DISABLE KEYS */;
@@ -164,7 +158,7 @@ INSERT INTO `files` (`id`, `url`, `created_at`, `updated_at`) VALUES
 -- Dumping structure for table p002-sunodia.guru
 DROP TABLE IF EXISTS `guru`;
 CREATE TABLE IF NOT EXISTS `guru` (
-  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `nama` varchar(50) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `tingkat` varchar(50) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `jabatan` varchar(50) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
@@ -201,7 +195,7 @@ INSERT INTO `highlights` (`id`, `url`, `keterangan`, `created_at`, `updated_at`)
 -- Dumping structure for table p002-sunodia.jenis_dokumen
 DROP TABLE IF EXISTS `jenis_dokumen`;
 CREATE TABLE IF NOT EXISTS `jenis_dokumen` (
-  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `nama` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -229,16 +223,14 @@ INSERT INTO `jenis_dokumen` (`id`, `nama`) VALUES
 -- Dumping structure for table p002-sunodia.kegemaran_prestasi
 DROP TABLE IF EXISTS `kegemaran_prestasi`;
 CREATE TABLE IF NOT EXISTS `kegemaran_prestasi` (
-  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
-  `registrasi_siswa_id` bigint(20) unsigned NOT NULL,
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `registrasi_siswa_id` int(10) unsigned NOT NULL DEFAULT 0,
   `nama` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `jenis` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `jenis_` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `kegemaran_prestasi_registrasi_siswa_id_foreign` (`registrasi_siswa_id`),
-  CONSTRAINT `kegemaran_prestasi_registrasi_siswa_id_foreign` FOREIGN KEY (`registrasi_siswa_id`) REFERENCES `registrasi_siswa` (`id`)
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Dumping data for table p002-sunodia.kegemaran_prestasi: ~0 rows (approximately)
@@ -297,9 +289,9 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 -- Dumping structure for table p002-sunodia.orang_tua
 DROP TABLE IF EXISTS `orang_tua`;
 CREATE TABLE IF NOT EXISTS `orang_tua` (
-  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
-  `registrasi_siswa_id` bigint(20) unsigned NOT NULL,
-  `jenis` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `registrasi_siswa_id` int(10) unsigned NOT NULL DEFAULT 0,
+  `jenis` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `nama` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `tempat_lahir` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `tanggal_lahir` date NOT NULL,
@@ -311,9 +303,7 @@ CREATE TABLE IF NOT EXISTS `orang_tua` (
   `no_telepon` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `keterangan` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `penghasilan_perbulan` tinyint(4) NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `orang_tua_registrasi_siswa_id_foreign` (`registrasi_siswa_id`),
-  CONSTRAINT `orang_tua_registrasi_siswa_id_foreign` FOREIGN KEY (`registrasi_siswa_id`) REFERENCES `registrasi_siswa` (`id`)
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Dumping data for table p002-sunodia.orang_tua: ~2 rows (approximately)
@@ -339,43 +329,45 @@ CREATE TABLE IF NOT EXISTS `password_resets` (
 -- Dumping structure for table p002-sunodia.photos
 DROP TABLE IF EXISTS `photos`;
 CREATE TABLE IF NOT EXISTS `photos` (
-  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
-  `caption` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '0',
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `caption` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `url` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `width` double(8,2) NOT NULL,
   `height` double(8,2) NOT NULL,
   `album_id` bigint(20) unsigned NOT NULL,
   PRIMARY KEY (`id`),
-  KEY `photos_album_id_foreign` (`album_id`),
-  CONSTRAINT `photos_album_id_foreign` FOREIGN KEY (`album_id`) REFERENCES `album` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+  KEY `photos_album_id_foreign` (`album_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Dumping data for table p002-sunodia.photos: ~3 rows (approximately)
+-- Dumping data for table p002-sunodia.photos: ~0 rows (approximately)
 /*!40000 ALTER TABLE `photos` DISABLE KEYS */;
-INSERT INTO `photos` (`id`, `caption`, `url`, `width`, `height`, `album_id`) VALUES
-	(4, 'keren anjay', 'http://127.0.0.1:8000/uploads/galeri/5db5fec2d01d4.png', 1332.00, 442.00, 4),
-	(6, 'keren', 'http://127.0.0.1:8000/uploads/galeri/5db5ff91b85cf.png', 1332.00, 442.00, 4),
-	(7, 'mantap gan', 'http://127.0.0.1:8000/uploads/galeri/5db5ffff4bb26.png', 1332.00, 442.00, 5);
 /*!40000 ALTER TABLE `photos` ENABLE KEYS */;
 
 -- Dumping structure for table p002-sunodia.prestasi
 DROP TABLE IF EXISTS `prestasi`;
 CREATE TABLE IF NOT EXISTS `prestasi` (
-  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `nama` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `juara` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `nama_lomba` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `tingkat_lomba` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `tingkat` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `url` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Dumping data for table p002-sunodia.prestasi: ~0 rows (approximately)
 /*!40000 ALTER TABLE `prestasi` DISABLE KEYS */;
+INSERT INTO `prestasi` (`id`, `nama`, `juara`, `nama_lomba`, `tingkat_lomba`, `tingkat`, `url`, `created_at`, `updated_at`) VALUES
+	(3, 'sdfdsf, keren', '1', 'sdfsdfs', 'sdfsdfsdf', 'tk-kb', 'http://127.0.0.1:8000/uploads/prestasi/5db760bbbb2af.png', '2019-10-29 05:36:56', '2019-10-29 05:42:19');
 /*!40000 ALTER TABLE `prestasi` ENABLE KEYS */;
 
 -- Dumping structure for table p002-sunodia.profil
 DROP TABLE IF EXISTS `profil`;
 CREATE TABLE IF NOT EXISTS `profil` (
-  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `visi` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `misi` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `mars` text COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -393,7 +385,7 @@ INSERT INTO `profil` (`id`, `visi`, `misi`, `mars`, `sejarah`, `logo`) VALUES
 -- Dumping structure for table p002-sunodia.profil_sekolah
 DROP TABLE IF EXISTS `profil_sekolah`;
 CREATE TABLE IF NOT EXISTS `profil_sekolah` (
-  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `text` text COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '0',
   `tingkat` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
@@ -411,7 +403,7 @@ INSERT INTO `profil_sekolah` (`id`, `text`, `tingkat`) VALUES
 -- Dumping structure for table p002-sunodia.registrasi_siswa
 DROP TABLE IF EXISTS `registrasi_siswa`;
 CREATE TABLE IF NOT EXISTS `registrasi_siswa` (
-  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `nama` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `jenis_kelamin` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `tempat_lahir` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
@@ -455,26 +447,22 @@ CREATE TABLE IF NOT EXISTS `registrasi_siswa` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Dumping data for table p002-sunodia.registrasi_siswa: ~1 rows (approximately)
+-- Dumping data for table p002-sunodia.registrasi_siswa: ~0 rows (approximately)
 /*!40000 ALTER TABLE `registrasi_siswa` DISABLE KEYS */;
-INSERT INTO `registrasi_siswa` (`id`, `nama`, `jenis_kelamin`, `tempat_lahir`, `tanggal_lahir`, `agama`, `kewarganegaraan`, `bergereja_di`, `aktif_pelayan`, `alamat_rumah`, `kode_pos`, `telepon`, `tinggal_dengan`, `no_hp_calon_siswa`, `email_calon_siswa`, `anak_ke`, `jumlah_saudara`, `jarak_tempuh_sekolah`, `waktu_tempuh_sekolah`, `alat_tempuh_sekolah`, `tingkat`, `golongan_darah`, `rhesus`, `asal_sekolah`, `alamat_sekolah`, `nomor_ijazah`, `lama_belajar`, `jumlah_nilai_ijazah`, `pernah_melakukan_donor`, `tinggi_badan`, `berat_badan`, `penyakit_yang_pernah_diderita`, `berkebutuhan_khusus`, `ciri_khusus_lainnya`, `tinggal_bersama`, `last_step`, `saved`, `nomor_registrasi`, `tahun_pembelajaran`, `tahun_registrasi`, `saved_date`, `created_at`, `updated_at`) VALUES
-	(3, 'Ilham', 'Laki-laki', 'Bengalon', '2019-10-28', 'Kristen', 'Indonesia', 'disana', 'keren', 'bengalon', '12345', '2323123', 'Orang Tua', '12121212', NULL, 3, 3, 12, 12, 'Sepeda', 4, 'A', NULL, 'SD Keren', 'sdfdsf', NULL, 12, NULL, 0, 127.00, 15.00, NULL, 'ya', NULL, 'orang_tua', '9', 1, 'OL-001', '2019', NULL, '2019-10-27 22:44:48', '2019-10-27 22:25:18', '2019-10-27 22:44:48');
 /*!40000 ALTER TABLE `registrasi_siswa` ENABLE KEYS */;
 
 -- Dumping structure for table p002-sunodia.saudara
 DROP TABLE IF EXISTS `saudara`;
 CREATE TABLE IF NOT EXISTS `saudara` (
-  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
-  `registrasi_siswa_id` bigint(20) unsigned NOT NULL,
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `registrasi_siswa_id` int(10) unsigned NOT NULL DEFAULT 0,
   `saudara_nama` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `saudara_umur` int(11) NOT NULL,
   `saudara_pendidikan` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `saudara_status` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `saudara_registrasi_siswa_id_foreign` (`registrasi_siswa_id`),
-  CONSTRAINT `saudara_registrasi_siswa_id_foreign` FOREIGN KEY (`registrasi_siswa_id`) REFERENCES `registrasi_siswa` (`id`)
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Dumping data for table p002-sunodia.saudara: ~0 rows (approximately)
@@ -523,8 +511,8 @@ INSERT INTO `users` (`id`, `email`, `password`, `remember_token`, `created_at`, 
 -- Dumping structure for table p002-sunodia.wali
 DROP TABLE IF EXISTS `wali`;
 CREATE TABLE IF NOT EXISTS `wali` (
-  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
-  `registrasi_siswa_id` bigint(20) unsigned NOT NULL,
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `registrasi_siswa_id` int(10) unsigned NOT NULL,
   `nama` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `tempat_lahir` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `tanggal_lahir` date NOT NULL,
@@ -537,8 +525,7 @@ CREATE TABLE IF NOT EXISTS `wali` (
   `keterangan` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `penghasilan_perbulan` tinyint(4) NOT NULL,
   PRIMARY KEY (`id`),
-  KEY `wali_registrasi_siswa_id_foreign` (`registrasi_siswa_id`),
-  CONSTRAINT `wali_registrasi_siswa_id_foreign` FOREIGN KEY (`registrasi_siswa_id`) REFERENCES `registrasi_siswa` (`id`)
+  KEY `wali_registrasi_siswa_id_foreign` (`registrasi_siswa_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Dumping data for table p002-sunodia.wali: ~0 rows (approximately)
