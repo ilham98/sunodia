@@ -176,7 +176,7 @@
         <div class="row mt-3">
             @foreach(array_slice($berita->toArray(), 0, 2) as $b)
                 <div class="col-md-6 berita-single" style="border-right: 1px solid rgba(0, 0, 0, 0.1)">
-                    <a class="h5" href="{{ url('berita/'.$b['id']) }}">{{ $b['judul'] }}</a>
+                    <a class="h5 d-block" href="{{ url('berita/'.$b['id']) }}">{{ $b['judul'] }}</a>
                     {!! $b['first_img']  !!}
                     <p style="color: #555">{!! $b['isi'] !!}</p>
                 </div>
@@ -186,7 +186,7 @@
             <hr>
             <div class="row">
                 <div class="col-md-12 berita-single-big">
-                    <h5>{{ $berita[2]->judul }}</h5>
+                    <a class="h5 d-block" href="{{ url('berita/'.$berita[2]->id) }}">{{ $berita[2]->judul }}</a>
                     <div class="row">
                         @if($berita[2]->first_img)
                             <div class="col-sm-5 d-flex justify-content-center">{!! $berita[2]->first_img !!}</div>
