@@ -12,7 +12,7 @@ class BeritaController extends Controller
         foreach($berita as $b) {
             $first_img = '';
             $output = preg_match_all('/<img.+?src=[\'"]([^\'"]+)[\'"].*?>/i', $b->isi, $matches);
-            $first_img = $matches[0][0];
+            $first_img = isset($matches[0][0]) ? $matches[0][0] : null;
             if(empty($first_img)) {
                 $first_img = null;
             }

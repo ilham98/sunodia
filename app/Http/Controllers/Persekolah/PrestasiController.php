@@ -10,4 +10,8 @@ class PrestasiController extends Controller
     public function index($tingkat) {
         return view('persekolah.prestasi.index', compact('tingkat'));
     }
+
+    public function create($tingkat) {
+        return view('persekolah.prestasi.create', compact('tingkat'));
+    }
 }

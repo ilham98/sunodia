@@ -137,6 +137,11 @@
                                     <i class="metismenu-icon pe-7s-rocket"></i> Registrasi
                                 </a>
                             </li>
+                            <li>
+                                <a href="{{ url('a/highlights') }}">
+                                    <i class="metismenu-icon pe-7s-rocket"></i> Highlights
+                                </a>
+                            </li>
                             <li class="app-sidebar__heading">Manajemen</li>
                             <li>
                                 <a href="{{ url('a/berita') }}">
@@ -218,7 +223,7 @@
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="{{ url('a/'.$_[1].'/mars') }}">
+                                            <a href="{{ url('a/'.$_[1].'/prestasi') }}">
                                                 <i class="metismenu-icon"></i>Prestasi  
                                             </a>
                                         </li>
@@ -279,6 +284,7 @@
             <script src="http://maps.google.com/maps/api/js?sensor=true"></script>
         </div>
     </div>
+    @yield('extra')
     <script type="text/javascript" src="{{ asset('js/admin.js') }}"></script>
     <script type="text/javascript" src="{{ asset('js/main.js') }}"></script>
     @yield('js')

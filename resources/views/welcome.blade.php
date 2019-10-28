@@ -3,6 +3,7 @@
 @section('title', 'Sunodia ~ Beranda')
 
 @section('css')
+    <link rel="stylesheet" href="{{ asset('css/swiper.css') }}">
     <style>
         .berita-single img {
             margin: 10px;
@@ -20,11 +21,130 @@
             
         }
 
-        @media only screen and (max-width: 800px) {
-            #highlight {
-                top: 56px;
-            }
+        #highlight {
+            position: absolute;  
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            top: 10px;
+            z-index: 999;
         }
+
+        html, body {
+        position: relative;
+        height: 100%;
+        }
+
+        .heading {
+            height: 320px;
+        }
+
+    body {
+      background: white;
+      font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+      font-size: 14px;
+      color:#000;
+      margin: 0;
+      padding: 0;
+    }
+
+    .swiper-container {
+      max-width: 900px;
+      height: 300px;
+    }
+
+    .swiper-slide {
+      text-align: center;
+      font-size: 18px;
+      background: #fff;
+      overflow: hidden;
+      width: 100%;
+      /* Center slide text vertically */
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: -webkit-flex;
+      display: flex;
+      position: relative;
+      -webkit-box-pack: center;
+      -ms-flex-pack: center;
+      -webkit-justify-content: center;
+      justify-content: center;
+      -webkit-box-align: center;
+      -ms-flex-align: center;
+      -webkit-align-items: center;
+      align-items: center;
+    }
+
+    .swiper-slide .caption {
+        position: absolute;
+        bottom: 50px;
+        background: #e3f2fd;
+        color: #0d47a1;
+        border-radius: 50px;
+        padding: 0px 20px;
+        font-size: 14px;
+    }
+    
+
+    @media only screen and (max-width: 837px) {
+        .swiper-container {
+            max-width: none;
+            height: 300px;
+        }
+
+        .navbar.navbar-border-bottom {
+            border-bottom: none;
+        }
+
+        .swiper-container img{
+            height: 100%;   
+        }
+
+        .container {
+            width: 100%;
+        }
+
+        #path1 {
+            display: none;
+        }
+
+        .heading {
+            max-height: 300px;
+        }
+        .navbar {
+            background: #1e88e5 !important;
+        }
+
+        #highlight {
+            position: static;
+        }
+
+        .swiper-slide {
+            background: transparent;
+        }
+
+        #highlight {
+            top: 5px;
+        }
+
+     
+    }
+
+    .swiper-button-next, .swiper-button-prev  {
+        background: white;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .swiper-button-next::after, .swiper-button-prev::after {
+        font-size: 20px;
+    }
+
+    
 
     </style>
     <link rel="stylesheet" type="text/css" href="slick/slick.css"/>
@@ -34,50 +154,24 @@
 @section('content')
     <div class="heading">
         <div id="highlight">
-            <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
-                <ol class="carousel-indicators">
-                    <li data-target="#carouselExampleCaptions" data-slide-to="0" class="active"></li>
-                    <li data-target="#carouselExampleCaptions" data-slide-to="1"></li>
-                    <li data-target="#carouselExampleCaptions" data-slide-to="2"></li>
-                </ol>
-                <div class="carousel-inner">
-                    <div class="carousel-item active">
-                    <img src="{{ asset('img/slide-1.jpg') }}" class="d-block" alt="...">
-                    <div class="carousel-caption d-none d-md-block">
-                        <h5>First slide label</h5>
-                        <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-                    </div>
-                    </div>
-                    <div class="carousel-item">
-                    <img src="{{ asset('img/slide-2.jpg') }}" class="d-block" alt="...">
-                    <div class="carousel-caption d-none d-md-block">
-                        <h5>Second slide label</h5>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                    </div>
-                    </div>
-                    <div class="carousel-item">
-                    <img src="{{ asset('img/slide-3.jpg') }}" class="d-block" alt="...">
-                    <div class="carousel-caption d-none d-md-block">
-                        <h5>Third slide label</h5>
-                        <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
-                    </div>
-                    </div>
+            <div class="swiper-container">
+                <div class="swiper-wrapper">
+                     @foreach($highlights as $h)
+                        <div class="swiper-slide">
+                            <img src="{{ $h->url }}" alt="">
+                            <a href="#" class="caption">{{ $h->keterangan }}</a>
+                        </div>
+                    @endforeach
                 </div>
-                <a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="sr-only">Previous</span>
-                </a>
-                <a class="carousel-control-next" href="#carouselExampleCaptions" role="button" data-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="sr-only">Next</span>
-                </a>
-            </div>
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+              </div>
         </div>
         <div id="path1">
             <img src="{{ asset('img/path-1.svg') }}" style="width: 100%;" alt="">
         </div>
     </div>
-    <div class="container mt-5">
+    <div class="container mt-3 mt-md-5">
         <h3 class="text-warning">Berita</h3>
         <div class="row mt-3">
             @foreach(array_slice($berita->toArray(), 0, 2) as $b)
@@ -137,3 +231,18 @@
     </div>
 @endsection
 
+@section('js')
+    <script src="{{ asset('js/swiper.js') }}"></script>
+    <script>
+        var swiper = new Swiper('.swiper-container', {
+          pagination: {
+            el: '.swiper-pagination',
+            type: 'fraction',
+          },
+          navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+          },
+        });
+      </script>
+@endsection

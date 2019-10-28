@@ -35,7 +35,6 @@
 @endsection
 
 @section('content')
-    <div style='height: 60px; background: #0067c2'></div>
     <div class="container mt-3 p-0 bg-white register-box">
         <h5 class="m-0"><img height='40' src="https://img.icons8.com/dotty/80/000000/note.png"> Registrasi (1/7)</h5>
         <form action="{{ url('registrasi/1') }}" class="mt-3 px-3 pb-3" method="POST">

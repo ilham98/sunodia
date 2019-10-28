@@ -39,7 +39,7 @@
             </div>
         </div>
     </div>
-    <form action="{{ url('a/'.$tingkat.'/berita') }}" id="form" method="POST" hidden>
+    <form action="{{ isset($tingkat) ? url('a/'.$tingkat.'/berita') : url('a/berita') }}" id="form" method="POST" hidden>
         <textarea name="body" id="body" id="" cols="30" rows="10"></textarea>
         <input type="text" id="title" name="title">
         @csrf

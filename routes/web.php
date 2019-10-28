@@ -18,6 +18,7 @@ Route::get('pdf/registrasi-form/{id}', 'PDF\RegistrasiForm@index');
 
 Route::get('/', function () {
     $berita = \App\Berita::orderBy('created_at', 'desc')->get();
+    $highlights = \App\Highlight::orderBy('id', 'asc')->get();
     foreach($berita as $b) {
         $first_img = '';
         $output = preg_match_all('/<img.+?src=[\'"]([^\'"]+)[\'"].*?>/i', $b->isi, $matches);
@@ -29,7 +30,7 @@ Route::get('/', function () {
         $b->isi = substr($isi, 0, 100);
         $b->first_img = $first_img;
     }
-    return view('welcome', compact('berita'));
+    return view('welcome', compact('berita', 'highlights'));
 });
 
 Route::get('berita', 'BeritaController@index');
@@ -40,11 +41,20 @@ Route::get('visi-misi', 'TentangKamiController@visi_misi');
 Route::get('mars', 'TentangKamiController@mars');
 Route::get('galeri', 'GaleriController@index');
 
+Route::get('{tingkat}/berita', 'Persekolah\BeritaController@index');
+Route::get('{tingkat}/profil', 'Persekolah\ProfilController@index');
+Route::get('{tingkat}/struktur-organisasi', 'Persekolah\StrukturOrganisasiController@index');
+Route::get('{tingkat}/fasilitas', 'Persekolah\FasilitasController@index');
+Route::get('{tingkat}/agenda-sekolah', 'Persekolah\AgendaSekolahController@index'); 
+Route::get('{tingkat}/galeri', 'Persekolah\GaleriController@index'); 
+Route::get('{tingkat}/prestasi', 'Persekolah\PrestasiController@index'); 
+
 Route::get('/a', function() {
     return view('admin.dashboard');
 });
 
-Route::get('a/example', function() {
+Route::get('a/example/{id}', function($id) {
+    return redirect('registrasi')->withCookie(cookie()->forever('registrasi_token', $id));
 
 });
 
@@ -142,10 +152,22 @@ Route::delete('a/{tingkat}/galeri/{id}', 'ManajemenPersekolah\GaleriController@d
 Route::get('a/{tingkat}/galeri/{id}', 'ManajemenPersekolah\GaleriController@single');
 Route::put('a/{tingkat}/galeri/{id}', 'ManajemenPersekolah\GaleriController@update');
 Route::post('a/{tingkat}/galeri/{id}/photos', 'ManajemenPersekolah\GaleriController@photo_store');
-Route::delete('a/{tingkat}/galeri/{id}/photos/{photo_id}', 'ManajemenPersekolah\GaleriController@photo_destroy');
+Route::delete('a/{tingkat}/galeri/{id}/pshotos/{photo_id}', 'ManajemenPersekolah\GaleriController@photo_destroy');
+
+Route::get('a/{tingkat}/prestasi', 'ManajemenPersekolah\PrestasiController@index');
+Route::get('a/{tingkat}/prestasi/tambah', 'ManajemenPersekolah\PrestasiController@create');
+Route::get('a/{tingkat}/prestasi/{id}/edit', 'ManajemenPersekolah\PrestasiController@edit');
+Route::post('a/{tingkat}/prestasi', 'ManajemenPersekolah\PrestasiController@store');
+Route::put('a/{tingkat}/prestasi/{id}', 'ManajemenPersekolah\PrestasiController@update');
+Route::delete('a/{tingkat}/prestasi/{id}', 'ManajemenPersekolah\PrestasiController@destroy');
 
 Route::get('a/konfigurasi', 'Admin\KonfigurasiController@index');
 Route::put('a/konfigurasi', 'Admin\KonfigurasiController@update');
+
+Route::get('a/highlights', 'Admin\HighlightController@index');
+Route::post('a/highlights', 'Admin\HighlightController@store');
+Route::delete('a/highlights/{id}', 'Admin\HighlightController@destroy');
+
 
 Route::get('{tingkat}', function($tingkat) {
     $berita = \App\Berita::orderBy('id', 'desc')->where('tingkat', $tingkat)->get();

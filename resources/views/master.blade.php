@@ -25,10 +25,10 @@
                 background: #ff6f00;
             }
 
-            @media(max-width: 768px) {
-                #navbarSupportedContent {
-                    background: #0067c2;
-                }
+            @media(max-width: 837px) {
+                #navbarCotainter {
+                    position: static; 
+                }                
             }
         </style>
     </head>
@@ -47,8 +47,8 @@
                 <h4 class="text-white">Sekolah Kristen  Sunodia</h4>
             </div>
         </div>
-        <div style="position: absolute; z-index: 99; width: 100%; display: flex; justify-content: center">
-            <nav id="navbar" style='background: none;' class="navbar {{ url()->current() == url('/') ? 'navbar-border-bottom' : '' }} navbar-expand-md navbar-dark container">
+        <div id="navbarContainer" style="z-index: 99; width: 100%;">
+            <nav id="navbar" style='{{ url()->current() != url('/') ? "background: #0067c2;" : "background: #1e88e5;" }}' class="navbar {{ url()->current() == url('/') ? 'navbar-border-bottom' : '' }} navbar-expand-md navbar-dark">
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>

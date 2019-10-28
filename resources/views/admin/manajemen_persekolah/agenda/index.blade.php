@@ -1,6 +1,6 @@
 @extends('admin.master')
 
-@section('title', 'Sunodia ~ Fasilitas '.strtoupper($tingkat))
+@section('title', 'Sunodia ~ Agenda '.strtoupper($tingkat))
 
 @section('css')
     <link href="{{ asset('css/quill.css') }}" rel="stylesheet">
@@ -91,6 +91,7 @@
     </div>
 @endsection
 
+@section('extra')
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
           <div class="modal-content">
@@ -145,6 +146,7 @@
           </div>
         </div>
       </div>
+@endsection
 
 @section('js')
     <script src="{{ asset('js/swal.js') }}"></script>

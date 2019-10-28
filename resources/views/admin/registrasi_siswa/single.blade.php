@@ -1,6 +1,6 @@
 @extends('admin.master')
 
-@section('title', 'Sunodia ~ Konfigurasi')
+@section('title', 'Sunodia ~ Registrasi Siswa')
 
 @section('content')
     <div class="mb-3 card">
@@ -16,6 +16,7 @@
                             <a target='_blank' href="{{ url('pdf/registrasi-form/'.$reg->id) }}" class="btn btn-success"><i class='fa fa-pdf'></i> Unduh PDF</a>
                         </div>
                     @endif
+                    <h1 class="text-center">{{ $reg->nomor_registrasi }}</h1>
                     {{-- ----------------------------------------- STEP 1 ----------------------------------------- --}}
                     <form action="{{ url('registrasi/1') }}" class="p-3" method="POST">
                         <div class="my-1" style="font-weight: 20px">

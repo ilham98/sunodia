@@ -20,7 +20,6 @@
 @endsection
 
 @section('content')
-    <div style='height: 60px; background: #0067c2'></div>
     <div class="container p-0 bg-white register-box mt-3">
         <h5 class="m-0"><img height='40' src="https://img.icons8.com/dotty/80/000000/note.png"> Registrasi - Keterangan Kegemaran Hobby & Prestasi (5/7)</h5>
         <form action="{{ url('registrasi/5/kegemaran') }}" method="POST" class="px-3 pt-3">

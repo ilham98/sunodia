@@ -14,7 +14,7 @@ class BeritaController extends Controller
     }
 
     public function create() {
-        return view('admin.manajemen.berita.create', compact('tingkat'));
+        return view('admin.manajemen.berita.create');
     }
 
     public function edit($id) {

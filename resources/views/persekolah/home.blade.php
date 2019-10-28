@@ -18,23 +18,39 @@
       margin: 0;
       padding: 0;
     }
+
     .swiper-container {
       width: 100%;
       height: 400px;
     }
-    .swiper-slide {
+
+    .swiper-container > .swiper-wrapper > .swiper-slide {
       text-align: center;
       background: #ffff8d;
+      width: calc(40% - 25px);
+    }
+
+    .swiper-container > .swiper-wrapper > .swiper-slide.large {
+      width: calc(60% - 25px);
+    }
+    
+    .swiper-container-2 {
+        width: 100%;
+        overflow: hidden;
+    }
+
+    .swiper-container-2 > .swiper-wrapper > .swiper-slide {
+        width: 100%;
     }
 
     .swiper-slide .nama {
         font-size: 20px;
         margin-top: -70px;
         padding: 10px 20px;
-        background: red;
+        width: 100%;
         font-weight: bold;
         background: #ffea00;
-        font-family: 'Libre Baskerville', serif;
+        font-family: arial;
     }
 
     .swiper-slide .juara-ke {
@@ -66,6 +82,14 @@
         border: none;
     }
 
+    .berita {
+        padding: 5px 10px;
+        background: #90caf9;
+        color: #0d47a1;
+        border-radius: 50px;
+        display: inline-block;
+    }
+
     .date {
         padding: 5px 10px;
         background: #ffff8d;
@@ -80,17 +104,17 @@
     <div class="container mt-3">
         <div class="card w-100" style="border-radius: 0px">
             <div class="card-body">
-                <h5 class="card-title" style="color: #1e88e5">Berita</h5>
+                <h5 class="card-title" style="background: #e3f2fd; display: inline-block; padding: 10px 20px; border-radius:30px; color: #2196f3"> <img style="margin-right: 10px" src="{{ asset('img/newspaper.png') }}" height='30' alt=""> Berita</h5>
                 @foreach($berita as $b)
                 <div class="mb-3">
                     <div class="d-flex justify-content-between my-3 align-items-start">
-                        <div>{{ $b->judul }}</div>
+                        <div style="font-size: 18px">{{ $b->judul }}</div>
                         <div class="date">{{ date('m-d-Y', strtotime($b->created_at)) }}</div>
                     </div>
                     
                     <div style="color: #555">{{ substr(\Soundasleep\Html2Text::convert($b->isi), 0, 200) }}...</div>
                     <div class="d-flex justify-content-end">
-                        <a href="" class="btn btn-primary btn-sm">Baca Selengkapnya</a>
+                        <a href="{{ url($tingkat.'/berita/'.$b->id) }}" class=" btn-sm">Baca Selengkapnya</a>
                     </div>
                 </div>  
                 <hr>
@@ -106,12 +130,17 @@
                     <div class="swiper-container">
                         <div class="swiper-wrapper">
                             @for($x=0; $x<10;$x++)
-                                <div class="swiper-slide">
+                                <div class="swiper-slide {{ $x%2 !== 0 ? 'large' : '' }}">
                                     <div class="image-container">
-                                        <img src="{{ asset('images/person.bmp') }}" alt="">
+                                        <img src="{{ $x%2 == 0 ? asset('images/person.bmp') : asset('img/large.jpg') }}" alt="">
                                     </div>
                                     <div style="margin-top: 5px 10px; padding: 10px; position: absolute; width: 100%;">
-                                        <div class="nama">Juan Reynaldi</div>
+                                        <div class="nama swiper-container-2">
+                                            <div class="swiper-wrapper">
+                                                <div class="swiper-slide">Ilham</div>
+                                                <div class="swiper-slide">Orang Kedua</div>
+                                            </div>
+                                        </div>
                                     </div>
                                     <div class="juara-ke">Juara I</div>
                                     <div class="nama-lomba" style="margin-top: 3px">Asah Terampil Matematika</div>
@@ -136,22 +165,31 @@
  <script>
    var swiper = new Swiper('.swiper-container', {
      slidesPerView: 1,
-     spaceBetween: 30,
+     autoplay: {
+        delay: 6000,
+    },
+     spaceBetween: 10,
      pagination: {
        el: '.swiper-pagination',
        clickable: true,
      },
      breakpoints: {
        640: {
-         slidesPerView: 2,
-         spaceBetween: 20,
+         slidesPerView: 'auto',
+         spaceBetween: 50,
        },
-       768: {
-         slidesPerView: 2,
-         spaceBetween: 40,
-       },
-       1024: {
-         slidesPerView: 3,
+     }
+   });
+
+   var swiper2 = new Swiper('.swiper-container-2', {
+     slidesPerView: 1,
+     autoplay: {
+        delay: 2000,
+    },
+     spaceBetween: 10,
+     breakpoints: {
+       640: {
+         slidesPerView: 1,
          spaceBetween: 50,
        },
      }

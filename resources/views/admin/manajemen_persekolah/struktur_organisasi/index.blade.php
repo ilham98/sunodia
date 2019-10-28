@@ -1,6 +1,6 @@
 @extends('admin.master')
 
-@section('title', 'Sunodia ~ Fasilitas '.strtoupper($tingkat))
+@section('title', 'Sunodia ~ Struktur Organisasi '.strtoupper($tingkat))
 
 @section('css')
     <link href="{{ asset('css/quill.css') }}" rel="stylesheet">
@@ -16,7 +16,7 @@
     <div class="mb-3 card">
         <div class="card-header-tab card-header-tab-animation card-header">
             <div class="card-header-title">
-                <i class="header-icon lnr-apartment icon-gradient bg-love-kiss"> </i> Agenda {{ strtoupper($tingkat) }}
+                <i class="header-icon lnr-apartment icon-gradient bg-love-kiss"> </i> Struktur Organisasi {{ strtoupper($tingkat) }}
             </div>
         </div>
         <div class="card-body">
@@ -36,7 +36,7 @@
             <!-- Button trigger modal -->
             
             <div class="d-flex mb-2 justify-content-between align-items-center">
-                <div>Daftar Kegiatan</div>
+                <div>Daftar Guru</div>
                 <div>
                     <a href="{{ url('a/'.$tingkat.'/guru/tambah') }}" class="btn btn-primary">
                         Tambah Guru

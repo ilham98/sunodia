@@ -1,6 +1,6 @@
 @extends('admin.master')
 
-@section('title', 'Sunodia ~ Konfigurasi')
+@section('title', 'Sunodia ~ Registrasi Siswa')
 
 @php
     function getNamaTingkat($tingkat) {
