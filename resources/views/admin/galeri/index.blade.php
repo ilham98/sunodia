@@ -4,8 +4,13 @@
 
 @section('content')
     @component('admin.components.content')
-        @slot('title', 'Dashboard')
-        <div>
+    <div class="mb-3 card">
+        <div class="card-header-tab card-header-tab-animation card-header">
+            <div class="card-header-title">
+                <i class="header-icon lnr-apartment icon-gradient bg-love-kiss"> </i> Galeri
+            </div>
+        </div>
+        <div class="card-body">
             <div class="my-3 d-flex justify-content-end">
                 <a href="{{ url('a/galeri/tambah') }}" class="btn btn-primary">Tambah Album</a>
             </div>
@@ -32,7 +37,7 @@
                 {{ $album->links() }}
             </div>
         </div>
-    @endcomponent
+    </div>
     <form method="POST" id="form">
         @csrf
         @method('DELETE')

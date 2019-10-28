@@ -10,7 +10,8 @@
             </div>
         </div>
         <div class="card-body">
-            <form action="{{ url('a/'.$tingkat.'/prestasi/'.$prestasi->id) }}" method="POST">
+            <img style="max-width: 500px" src="{{ $prestasi->url }}" alt="">
+            <form enctype="multipart/form-data" action="{{ url('a/'.$tingkat.'/prestasi/'.$prestasi->id) }}" enctype="multipart/form-data" method="POST">
                 <div class="form-group">
                     <label>Nama (Pisahkan dengan koma apabila lebih dari satu nama)</label>
                     <input type="text" class="form-control" name="nama" value="{{ old('nama') ? old('nama') : $prestasi->nama }}">
@@ -40,10 +41,17 @@
                     @endif
                 </div>
                 <div class="form-group">
+                    <label>Foto</label>
+                    <input type="file" class="form-control" name="foto" value="{{ old('foto') }}">
+                    @if($errors->has('foto'))
+                        <p class="text-danger">{{ $errors->first('foto') }}</p>
+                    @endif
+                </div>
+                <div class="form-group">
                     <input type="submit" class="btn btn-primary" value="Update">
                 </div>
                 @csrf
-                @method('PUT')
+                @method('POST')
 
             </form>
         </div>

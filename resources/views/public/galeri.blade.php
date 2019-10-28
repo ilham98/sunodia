@@ -42,13 +42,17 @@
             }
         }
 
+        .pswp__caption__center {
+            text-align: center;
+            font-size: 20px;
+        }
+
     </style>
     <link rel="stylesheet" type="text/css" href="slick/slick.css"/>
     <link rel="stylesheet" type="text/css" href="slick/slick-theme.css"/>
 @endsection
 
 @section('content')
-    <div style='height: 60px; background: #0067c2'></div>
     <div class="container">
         <div class="berita">
             <div class="my-3 p-3 berita-single" style="background: white; box-shadow: 0px 0px 16px -5px rgba(74,74,74,1);">
@@ -61,13 +65,17 @@
                             @foreach($a->photos as $p)
                                 <figure class="mx-3" itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
                                     <a href="{{ $p->url }}" itemprop="contentUrl" data-size="{{ $p->width }}x{{ $p->height }}">
-                                        <img src="{{ $p->url }}" itemprop="thumbnail" alt="Image description" />
-                                    </a>                                
+                                        <img src="{{ $p->url }}" style="max-width: 100%" itemprop="thumbnail" alt="Image description" />
+                                    </a>                               
+                                    <figcaption hidden itemprop="caption description">Image caption</figcaption> 
                                 </figure>
                             @endforeach
                             </div>
                         </div>
                     @endforeach
+                </div>
+                <div class="d-flex justify-content-center">
+                    {{ $album->links() }}
                 </div>
             </div>
         </div>

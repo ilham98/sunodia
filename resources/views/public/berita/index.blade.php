@@ -41,7 +41,6 @@
 @endsection
 
 @section('content')
-    <div style='height: 60px; background: #0067c2'></div>
     <div class="container">
         <div class="berita">
             @foreach($berita as $b)

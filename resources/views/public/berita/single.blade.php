@@ -40,7 +40,6 @@
 @endsection
 
 @section('content')
-    <div style='height: 60px; background: #0067c2'></div>
     <div class="container">
         <div class="berita">
             <div class="my-3 p-3 berita-single" style="background: white; box-shadow: 0px 0px 16px -5px rgba(74,74,74,1);">

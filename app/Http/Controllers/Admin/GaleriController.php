@@ -56,6 +56,7 @@ class GaleriController extends Controller
     public function photo_store($id, Request $request) {
         $request->validate([
             'photo' => 'required|mimes:jpg,png,jpeg',
+            'caption' => 'required'
         ]);
 
         $foto_size = getimagesize($request->photo);
@@ -66,7 +67,8 @@ class GaleriController extends Controller
             'album_id' => $id,
             'width' => $width,
             'height' => $height,
-            'url' => $this->fileHandler($request->file('photo'))['url']
+            'url' => $this->fileHandler($request->file('photo'))['url'],
+            'caption' => $request->caption
         ]);
 
         return redirect(url()->previous());

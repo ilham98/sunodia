@@ -1,23 +1,12 @@
 @extends('persekolah.master')
 
-@section('content')
-    matnap
-@endsection
+@section('title', 'Dashboard '.strtoupper($tingkat))
 
-
-{{-- <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <title>Swiper demo</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
-
-  <!-- Link Swiper's CSS -->
-  <link rel="stylesheet" href="{{ asset('css/swiper.css') }}">
-
-  <!-- Demo styles -->
-  <style>
-    html, body {
+@section('css')
+    <link rel="stylesheet" href="{{ asset('css/swiper.css') }}">
+    <link href="https://fonts.googleapis.com/css?family=Libre+Baskerville&display=swap" rel="stylesheet"> 
+    <style>
+        html, body {
       position: relative;
       height: 100%;
     }
@@ -29,76 +18,151 @@
       margin: 0;
       padding: 0;
     }
+
     .swiper-container {
       width: 100%;
-      height: 100%;
+      height: 400px;
     }
-    .swiper-slide {
-      text-align: center;
-      font-size: 18px;
-      background: #fff;
-      /* Center slide text vertically */
-      display: -webkit-box;
-      display: -ms-flexbox;
-      display: -webkit-flex;
-      display: flex;
-      -webkit-box-pack: center;
-      -ms-flex-pack: center;
-      -webkit-justify-content: center;
-      justify-content: center;
-      -webkit-box-align: center;
-      -ms-flex-align: center;
-      -webkit-align-items: center;
-      align-items: center;
+    
+    .swiper-container-2 {
+        width: 100%;
+        overflow: hidden;
     }
-  </style>
-</head>
-<body>
-  <!-- Swiper -->
-  <div class="swiper-container">
-    <div class="swiper-wrapper">
-      <div class="swiper-slide">Slide 1</div>
-      <div class="swiper-slide">Slide 2</div>
-      <div class="swiper-slide">Slide 3</div>
-      <div class="swiper-slide">Slide 4</div>
-      <div class="swiper-slide">Slide 5</div>
-      <div class="swiper-slide">Slide 6</div>
-      <div class="swiper-slide">Slide 7</div>
-      <div class="swiper-slide">Slide 8</div>
-      <div class="swiper-slide">Slide 9</div>
-      <div class="swiper-slide">Slide 10</div>
+
+    .swiper-container-2 > .swiper-wrapper > {
+        width: 100%;
+    }
+
+    .nama {
+        text-align: center;
+        font-size: 20px;
+        margin-top: -70px;
+        padding: 10px 20px;
+        width: 100%;
+        font-weight: bold;
+        background: #ffea00;
+        font-family: arial;
+    }
+
+    .juara-ke {
+       text-align: center;
+        font-size: 25px;
+        margin-top: 3px; 
+        font-weight: bold;
+        font-family: 'Libre Baskerville', serif;
+    }
+
+    .nama-lomba {
+        text-align: center;
+        font-size: 15px;
+        width: 100%;
+    }
+
+    .tingkat {
+        text-align: center;
+        font-size: 12px;
+    }
+
+    .image-container {
+        max-height: 70%;
+        overflow: hidden;
+    }
+
+    .card {
+        border: none;
+    }
+
+    .berita {
+        padding: 5px 10px;
+        background: #90caf9;
+        color: #0d47a1;
+        border-radius: 50px;
+        display: inline-block;
+    }
+
+    .date {
+        padding: 5px 10px;
+        background: #ffff8d;
+        color: #f9a825;
+        border-radius: 50px;
+        font-weight: bold;
+    }
+
+    .juara-container {
+      background: white;
+      position: relative;
+      
+    }
+    </style>
+@endsection
+
+@section('content')
+    <div class="container mt-3">
+        <div class="card w-100 b-0" style="border-radius: 0px; background: #ffea00">
+            <div class="card-body">
+                <h5 class="card-title" style="background: white; display: inline-block; padding: 10px 20px; border-radius:30px"> <img style="margin-right: 10px; height: 30px; width: 30px" src="{{ asset('images/trophy.png') }}" alt=""> Prestasi</h5>
+                <div class="d-flex flex-wrap justify-content-center">
+                    @foreach($prestasi as $p)
+                      <div class="juara-container m-2" style="width: {{ count(explode(',', $p->nama)) == 1 ? '400' : '600' }}px">
+                          <div class="image-container">
+                              <img style="width: 100%" src="{{ $p->url }}" alt="">
+                          </div>
+                          <div style="margin-top: 5px 10px; padding: 10px; position: absolute; width: 100%;">
+                              <div class="nama swiper-container-2">
+                                  <div class="swiper-wrapper">
+                                      @foreach(explode(',', $p->nama) as $n)
+                                        <div class="swiper-slide">{{ $n }}</div>
+                                      @endforeach
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="juara-ke">Juara {{ $p->juara }}</div>
+                          <div class="nama-lomba" style="margin-top: 3px">Asah Terampil Matematika</div>
+                          <div class="tingkat" style="margin-top: 3px">Tingkat Samarinda</div>
+                      </div>
+                    @endforeach
+                </div>
+            </div>
+        </div>
     </div>
-    <!-- Add Pagination -->
-    <div class="swiper-pagination"></div>
-  </div>
+@endsection
 
-  <!-- Swiper JS -->
-  <script src="{{ asset('js/swiper.js') }}"></script>
+@section('js')
+ <!-- Swiper JS -->
+ <script src="{{ asset('js/swiper.js') }}"></script>
 
-  <!-- Initialize Swiper -->
-  <script>
-    var swiper = new Swiper('.swiper-container', {
-      slidesPerView: 1,
-      spaceBetween: 30,
-      pagination: {
-        el: '.swiper-pagination',
-        clickable: true,
-      },
-      breakpoints: {
-        640: {
-          slidesPerView: 2,
-          spaceBetween: 20,
-        },
-        768: {
-          slidesPerView: 4,
-          spaceBetween: 40,
-        },
-        1024: {
-          slidesPerView: 5,
-          spaceBetween: 50,
-        },
-      }
-    });
-  </script>
-</body>
-</html> --}}
+ <!-- Initialize Swiper -->
+ <script>
+   var swiper = new Swiper('.swiper-container', {
+     slidesPerView: 1,
+     autoplay: {
+        delay: 6000,
+    },
+     spaceBetween: 10,
+     pagination: {
+       el: '.swiper-pagination',
+       clickable: true,
+     },
+     breakpoints: {
+       640: {
+         slidesPerView: 'auto',
+         spaceBetween: 50,
+       },
+     }
+   });
+
+   var swiper2 = new Swiper('.swiper-container-2', {
+     slidesPerView: 1,
+     autoplay: {
+        delay: 2000,
+    },
+     spaceBetween: 10,
+     breakpoints: {
+       640: {
+         slidesPerView: 1,
+         spaceBetween: 50,
+       },
+     }
+   });
+ </script>
+@endsection

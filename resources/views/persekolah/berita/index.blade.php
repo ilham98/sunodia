@@ -118,82 +118,11 @@
                     </div>
                 </div>  
                 <hr>
-                @endforeach 
+                @endforeach
+                <div class="my-3">
+                    {{ $berita->links() }}    
+                </div> 
             </div>
         </div>
     </div>
-    <div class="container mt-3">
-        <div class="card w-100 b-0" style="border-radius: 0px; background: #ffea00">
-            <div class="card-body">
-                <h5 class="card-title" style="background: white; display: inline-block; padding: 10px 20px; border-radius:30px"> <img style="margin-right: 10px" src="{{ asset('images/trophy.png') }}" height='30' alt=""> Prestasi</h5>
-                <div>
-                    <div class="swiper-container">
-                        <div class="swiper-wrapper">
-                            @foreach($prestasi as $p)
-                                <div class="swiper-slide {{ count(explode(',', $p->nama)) > 1 ? 'large' : '' }}">
-                                    <div class="image-container">
-                                        <img src="{{ $p->url }}" alt="">
-                                    </div>
-                                    <div style="margin-top: 5px 10px; padding: 10px; position: absolute; width: 100%;">
-                                        <div class="nama swiper-container-2">
-                                            <div class="swiper-wrapper">
-                                                @foreach(explode(',', $p->nama) as $n)
-                                                    <div class="swiper-slide">{{ $n }}</div>
-                                                @endforeach
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="juara-ke">Juara I</div>
-                                    <div class="nama-lomba" style="margin-top: 3px">Asah Terampil Matematika</div>
-                                    <div class="tingkat" style="margin-top: 3px">Tingkat Samarinda</div>
-                                </div>
-                            @endforeach
-                        </div>
-                        <!-- Add Pagination -->
-                        <div class="swiper-pagination"></div>
-                        </div>
-                </div>
-            </div>
-        </div>
-    </div>
-@endsection
-
-@section('js')
- <!-- Swiper JS -->
- <script src="{{ asset('js/swiper.js') }}"></script>
-
- <!-- Initialize Swiper -->
- <script>
-   var swiper = new Swiper('.swiper-container', {
-     slidesPerView: 1,
-     autoplay: {
-        delay: 6000,
-    },
-     spaceBetween: 10,
-     pagination: {
-       el: '.swiper-pagination',
-       clickable: true,
-     },
-     breakpoints: {
-       640: {
-         slidesPerView: 'auto',
-         spaceBetween: 50,
-       },
-     }
-   });
-
-   var swiper2 = new Swiper('.swiper-container-2', {
-     slidesPerView: 1,
-     autoplay: {
-        delay: 2000,
-    },
-     spaceBetween: 10,
-     breakpoints: {
-       640: {
-         slidesPerView: 1,
-         spaceBetween: 50,
-       },
-     }
-   });
- </script>
 @endsection

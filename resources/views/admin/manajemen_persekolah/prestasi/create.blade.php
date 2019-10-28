@@ -10,7 +10,7 @@
             </div>
         </div>
         <div class="card-body">
-            <form action="{{ url('a/'.$tingkat.'/prestasi') }}" method="POST">
+            <form action="{{ url('a/'.$tingkat.'/prestasi') }}" method="POST" enctype="multipart/form-data">
                 <div class="form-group">
                     <label>Nama (Pisahkan dengan koma apabila lebih dari satu nama)</label>
                     <input type="text" class="form-control" name="nama" value="{{ old('nama') }}">
@@ -37,6 +37,13 @@
                     <input type="text" class="form-control" name="tingkat_lomba" value="{{ old('tingkat_lomba') }}">
                     @if($errors->has('tingkat_lomba'))
                         <p class="text-danger">{{ $errors->first('tingkat_lomba') }}</p>
+                    @endif
+                </div>
+                <div class="form-group">
+                    <label>Foto</label>
+                    <input type="file" class="form-control" name="foto" value="{{ old('foto') }}">
+                    @if($errors->has('foto'))
+                        <p class="text-danger">{{ $errors->first('foto') }}</p>
                     @endif
                 </div>
                 <div class="form-group">

@@ -1,6 +1,6 @@
 @extends('admin.master')
 
-@section('title', 'Sunodia ~ Sejarah')
+@section('title', 'Sunodia ~ Highlight')
 
 @section('css')
     <link href="{{ asset('css/quill.css') }}" rel="stylesheet">

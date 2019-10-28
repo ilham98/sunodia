@@ -67,11 +67,11 @@ background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/s
                 <li class="nav-item mt-3 mt-sm-0">
                     <a  href="{{ url('/') }}" class="btn btn-warning">Website Utama Sunodia</span></a>
                 </li>
-                <li class="nav-item active">
-                    <a class="nav-link" href="#">Home</span></a>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url($tingkat) }}">Home</span></a>
                 </li>
-                <li class="nav-item active">
-                        <a class="nav-link" href="#">Berita</span></a>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url($tingkat.'/berita') }}">Berita</span></a>
                     </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{{ url($tingkat.'/profil') }}">Profil</a>
@@ -86,10 +86,10 @@ background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/s
                     <a class="nav-link" href="{{ url($tingkat.'/agenda-sekolah') }}">Agenda Sekolah</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Galeri</a>
+                    <a class="nav-link" href="{{ url($tingkat.'/galeri') }}">Galeri</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Prestasi</a>
+                    <a class="nav-link" href="{{ url($tingkat.'/prestasi') }}">Prestasi</a>
                 </li>
             </ul>
         </div>

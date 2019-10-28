@@ -13,13 +13,19 @@
     <link href="{{ asset('css/main.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('css/swal.css') }}">
     @yield('css')
+    <style>
+        .app-header__logo .logo-src {
+            background: url('{{ asset("img/logo.png") }}') !important;
+            height: 30px;
+        }
+    </style>
 </head>
 
 <body>
     <div class="app-container app-theme-white body-tabs-shadow fixed-sidebar fixed-header">
         <div class="app-header header-shadow">
             <div class="app-header__logo">
-                <div class="logo-src"></div>
+                <div class="logo-src" style="font-size: 20px">Sunodia</div>
                 <div class="header__pane ml-auto">
                     <div>
                         <button type="button" class="hamburger close-sidebar-btn hamburger--elastic" data-class="closed-sidebar">
@@ -94,7 +100,6 @@
         <div class="app-main">
             <div class="app-sidebar sidebar-shadow">
                 <div class="app-header__logo">
-                    <div class="logo-src"></div>
                     <div class="header__pane ml-auto">
                         <div>
                             <button type="button" class="hamburger close-sidebar-btn hamburger--elastic" data-class="closed-sidebar">
@@ -128,17 +133,17 @@
                         <ul class="vertical-nav-menu">
                             <li class="app-sidebar__heading">Main</li>
                             <li>
-                                <a href="{{ url('a') }}" class="mm-active">
+                                <a href="{{ url('a') }}" class="{{ url()->current() == url('/a/dashboard') ? 'mm-active' : '' }}">
                                     <i class="metismenu-icon pe-7s-rocket"></i> Dashboard
                                 </a>
                             </li>
                             <li>
-                                <a href="{{ url('a/registrasi-siswa') }}">
+                                <a href="{{ url('a/registrasi-siswa') }}" class="{{ url()->current() == url('/a/registrasi-siswa') ? 'mm-active' : '' }}">
                                     <i class="metismenu-icon pe-7s-rocket"></i> Registrasi
                                 </a>
                             </li>
                             <li>
-                                <a href="{{ url('a/highlights') }}">
+                                <a href="{{ url('a/highlights') }}" class="{{ url()->current() == url('/a/highlights') ? 'mm-active' : '' }}">
                                     <i class="metismenu-icon pe-7s-rocket"></i> Highlights
                                 </a>
                             </li>
@@ -178,6 +183,11 @@
                                         </a>
                                     </li>
                                 </ul>
+                            </li>
+                            <li>
+                                <a href="{{ url('a/galeri') }}">
+                                    <i class="metismenu-icon pe-7s-rocket"></i> Galeri
+                                </a>
                             </li>
                             <li>
                                 <a href="{{ url('a/konfigurasi') }}">

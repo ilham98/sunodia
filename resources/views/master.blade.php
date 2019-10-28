@@ -88,9 +88,6 @@
                         <li class="nav-item active">
                             <a class="nav-link" href="{{ url('login') }}">Login</span></a>
                         </li>
-                        <li class="nav-item active">
-                            <a class="nav-link" href="#" id="btn-close-navbar">Exit</span></a>
-                        </li>
                     </ul>
                 </div>
             </nav>

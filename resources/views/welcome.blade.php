@@ -176,7 +176,7 @@
         <div class="row mt-3">
             @foreach(array_slice($berita->toArray(), 0, 2) as $b)
                 <div class="col-md-6 berita-single" style="border-right: 1px solid rgba(0, 0, 0, 0.1)">
-                    <h5>{{ $b['judul'] }}</h5>
+                    <a class="h5" href="{{ url('berita/'.$b['id']) }}">{{ $b['judul'] }}</a>
                     {!! $b['first_img']  !!}
                     <p style="color: #555">{!! $b['isi'] !!}</p>
                 </div>
