@@ -13,7 +13,7 @@ class PhotosTableSeeder extends Seeder
 
     public function generateUrl($url) {
         return config('app.env') !== 'production' ?
-                    url($url) : 'https://sunodia.herokuapp.com/'.$url; 
+                    'http://127.0.0.1:8000/'.$url : 'https://sunodia.herokuapp.com/'.$url; 
     }
 
     public function run()

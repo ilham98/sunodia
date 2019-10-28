@@ -48,7 +48,8 @@ class RegistrasiSiswa extends Model
         'tinggal_bersama',
 // ------------------------------ OTHER ------------------------------
         'last_step',
-        'saved'
+        'saved',
+        'tahun_pembelajaran'
     ];
 
     public function dokumen() {

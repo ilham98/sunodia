@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Konfigurasi;
 use App\Wali;
 use App\Saudara;
 use App\Dokumen;
@@ -25,9 +26,11 @@ class RegistrasiController extends Controller
 
     public function init(Request $request) {
         $reg_token = $request->cookie('registrasi_token');
+        $konfigurasi = Konfigurasi::first();
         if(!$reg_token) {
             $reg = RegistrasiSiswa::create([
-                'last_step' => '1'
+                'last_step' => '1',
+                'tahun_pembelajaran' => $konfigurasi->tahun_pembelajaran
             ]);
             return redirect('registrasi/1')->withCookie(cookie()->forever('registrasi_token', $reg->id));
         }
@@ -399,7 +402,7 @@ class RegistrasiController extends Controller
             $jenis_dokumen = $jenis_dokumen->whereIn('id', [1, 2, 3, 4, 5]);
         } else {
             $jenis_dokumen = $jenis_dokumen->whereIn('id', [1, 2, 3, 4, 7, 8]);
-            if(in_array($tingkat, [7, 8, 9])) {
+            if($tingkat == 4) {
                 $jenis_dokumen = $jenis_dokumen->orWhereIn('id', [9, 10]);
             } else {
                 $jenis_dokumen = $jenis_dokumen->orWhereIn('id', [11, 12, 13]);
@@ -460,7 +463,9 @@ class RegistrasiController extends Controller
 
     public function step7_submit(Request $request) {
         $reg = RegistrasiSiswa::find($this->reg_id);
-        $dokumen_tak_lengkap = $reg->dokumen()->where('url', null)->exists();
+        $dokumen_tak_lengkap = $reg->dokumen()->where(function($query) {
+            $query->where('url', null)->whereNotIn('jenis_dokumen_id', [7, 8]);
+        })->exists();
         if($dokumen_tak_lengkap) 
             return redirect(url()->previous())->with('error', 'Upload semua dokumen untuk melanjutkan.');
         return redirect(url('registrasi?goto=next'));
@@ -494,8 +499,17 @@ class RegistrasiController extends Controller
 
         }
     }
-
+    
     public function step8() {
+        $reg = RegistrasiSiswa::find($this->reg_id);
+        return view('registrasi.step-8', compact('reg'));
+    }
+
+    public function step8_submit() {
+        $reg = RegistrasiSiswa::find($this->reg_id);
+    }
+
+    public function step9() {
         $reg = RegistrasiSiswa::find($this->reg_id);
         $tingkat = $this->getNamaTingkat($reg->tingkat);
         $saudara = $reg->saudara;
@@ -508,7 +522,7 @@ class RegistrasiController extends Controller
         $penghasilan_ibu = $ibu ? $this->getPenghasilanPerbulan($ibu->penghasilan_perbulan) : null;
         $penghasilan_wali = $wali ? $this->getPenghasilanPerbulan($wali->penghasilan_perbulan) : null;
         $dokumen = $reg->dokumen;
-        return view('registrasi.step-8', 
+        return view('registrasi.step-9', 
             compact(
                 'reg', 
                 'tingkat', 
@@ -526,11 +540,11 @@ class RegistrasiController extends Controller
         );
     }
 
-    public function step8_submit() {
+    public function step9_submit() {
         $reg = RegistrasiSiswa::find($this->reg_id);
-        $nomor_registrasi = RegistrasiSiswa::latest('saved')->first()->nomor_registrasi;
+        $nomor_registrasi = RegistrasiSiswa::first()->nomor_registrasi;
         if(!$nomor_registrasi) {
-            $reg->nomor_registrasi == 'OL-001';
+            $reg->nomor_registrasi = 'OL-001';
         } else {
             $new_no = explode('-', $nomor_registrasi);
             $int_no = (int)$new_no[1]+1;

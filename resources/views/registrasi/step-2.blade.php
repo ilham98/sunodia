@@ -68,6 +68,9 @@
                         <option value="Kristen" {{ (old('agama') ? old('agama') : $reg->agama) == 'Kristen' ? 'selected' : '' }}>Kristen</option>
                         <option value="Katolik" {{ (old('agama') ? old('agama') : $reg->agama) == 'Katolik' ? 'selected' : '' }}>Katolik</option>
                         <option value="Islam" {{ (old('agama') ? old('agama') : $reg->agama) == 'Islam' ? 'selected' : '' }}>Islam</option>
+                        <option value="Hindu" {{ (old('agama') ? old('agama') : $reg->agama) == 'Hindu' ? 'selected' : '' }}>Hindu</option>
+                        <option value="Buddha" {{ (old('agama') ? old('agama') : $reg->agama) == 'Buddha' ? 'selected' : '' }}>Buddha</option>
+                        <option value="Konghucu" {{ (old('agama') ? old('agama') : $reg->agama) == 'Konghucu' ? 'selected' : '' }}>Konghucu</option>
                     </select>
                     @if($errors->has('agama'))
                         <p class="text-danger">{{ $errors->first('agama') }}</p>

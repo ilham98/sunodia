@@ -24,13 +24,19 @@
                 color: white;
                 background: #ff6f00;
             }
+
+            @media(max-width: 768px) {
+                #navbarSupportedContent {
+                    background: #0067c2;
+                }
+            }
         </style>
     </head>
     <body>
-        @if(!(Request::is('registrasi/*') || url()->current() == url('registrasi')))
+        @if(!(Request::is('registrasi/*') || url()->current() == url('registrasi')) && \App\Konfigurasi::first()->registrasi_open)
             <div style="height: 100px; display: flex; justify-content: center; align-items: center; background:  #f6ff78">
                 <div class="text-center">
-                    <div>Pendaftaran Tahun Ajaran 2018/2019 Telah Dibuka</div>
+                    <div>Pendaftaran Tahun Pembelajaran  {{ \App\Konfigurasi::first()->tahun_pembelajaran }}/{{ \App\Konfigurasi::first()->tahun_pembelajaran + 1 }} Telah Dibuka</div>
                     <a href="/registrasi" class="btn btn-daftar mt-2"> Registrasi</a>
                 </div>
             </div>
@@ -42,7 +48,7 @@
             </div>
         </div>
         <div style="position: absolute; z-index: 99; width: 100%; display: flex; justify-content: center">
-            <nav id="navbar" style='background: none;' class="navbar {{ url()->current() == url('/') ? 'navbar-border-bottom' : '' }} navbar-expand-lg navbar-dark container">
+            <nav id="navbar" style='background: none;' class="navbar {{ url()->current() == url('/') ? 'navbar-border-bottom' : '' }} navbar-expand-md navbar-dark container">
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -59,10 +65,10 @@
                             Sekolah
                             </a>
                             <div class="dropdown-menu bg-white" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="#">SMA Sunodia</a>
-                                <a class="dropdown-item" href="#">SMP Sunodia</a>
-                                <a class="dropdown-item" href="#">SD Sunodia</a>
-                                <a class="dropdown-item" href="#">TK & KB Sunodia</a>
+                                <a class="dropdown-item" href="{{ url('sma') }}">SMA Sunodia</a>
+                                <a class="dropdown-item" href="{{ url('smp') }}">SMP Sunodia</a>
+                                <a class="dropdown-item" href="{{ url('sd') }}">SD Sunodia</a>
+                                <a class="dropdown-item" href="{{ url('tk-kb') }}">TK & KB Sunodia</a>
                             </div>
                         </li>
                         <li class="nav-item dropdown">
@@ -81,6 +87,9 @@
                         </li>
                         <li class="nav-item active">
                             <a class="nav-link" href="{{ url('login') }}">Login</span></a>
+                        </li>
+                        <li class="nav-item active">
+                            <a class="nav-link" href="#" id="btn-close-navbar">Exit</span></a>
                         </li>
                     </ul>
                 </div>
@@ -113,6 +122,10 @@
                     $('#sma').css({ 'border-top-right-radius': '100px', 'border-bottom-right-radius': '100px' });
                 }
             )
+
+            $('#btn-close-navbar').click(function() {
+                $('.navbar-collapse').collapse('hide');
+            })
         </script>
         @yield('js')
     </body>

@@ -132,6 +132,11 @@
                                     <i class="metismenu-icon pe-7s-rocket"></i> Dashboard
                                 </a>
                             </li>
+                            <li>
+                                <a href="{{ url('a/registrasi-siswa') }}">
+                                    <i class="metismenu-icon pe-7s-rocket"></i> Registrasi
+                                </a>
+                            </li>
                             <li class="app-sidebar__heading">Manajemen</li>
                             <li>
                                 <a href="{{ url('a/berita') }}">
@@ -169,6 +174,11 @@
                                     </li>
                                 </ul>
                             </li>
+                            <li>
+                                <a href="{{ url('a/konfigurasi') }}">
+                                    <i class="metismenu-icon pe-7s-rocket"></i> Konfigurasi
+                                </a>
+                            </li>
                             <li class="app-sidebar__heading">Manajemen Persekolah</li>
                             @foreach([
                                 ['TK/KB', 'tk-kb'],
@@ -188,12 +198,12 @@
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="{{ url('a/'.$_[1].'/mars') }}">
+                                            <a href="{{ url('a/'.$_[1].'/struktur-organisasi') }}">
                                                 <i class="metismenu-icon"></i>Struktur Organisasi
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="{{ url('a/'.$_[1].'/mars') }}">
+                                            <a href="{{ url('a/'.$_[1].'/fasilitas') }}">
                                                 <i class="metismenu-icon"></i>Fasilitas
                                             </a>
                                         </li>
@@ -213,8 +223,8 @@
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="{{ url('a/'.$_[1].'/mars') }}">
-                                                <i class="metismenu-icon"></i>Kegiatan  
+                                            <a href="{{ url('a/'.$_[1].'/galeri') }}">
+                                                <i class="metismenu-icon"></i>Galeri  
                                             </a>
                                         </li>
                                     </ul>

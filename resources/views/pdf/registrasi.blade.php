@@ -46,6 +46,10 @@
            vertical-align: top
         }
 
+        .table-form {
+            width: 100%;
+        }
+
         .table-form tr td:nth-child(1) {
             width: 3%;
         }
@@ -147,7 +151,7 @@
             <td>{{ chr($index) }}.</td>
             <td>Tanggal Lahir</td>
             <td>:</td>
-            <td>{{ $reg->tanggal_lahir }}</td>
+            <td>{{ date('d-m-Y', strtotime($reg->tanggal_lahir)) }}</td>
         </tr>
         @php
             $index++;
@@ -239,7 +243,7 @@
             <td>{{ chr($index) }}.</td>
             <td>Alamat E-mail Calon Siswa</td>
             <td>:</td>
-            <td>{{ $reg->email_calon_siswa ? $reg->email_calon_siswa : '' }}</td>
+            <td>{{ $reg->email_calon_siswa ? $reg->email_calon_siswa : '-' }}</td>
             @php
                 $index++;
             @endphp
@@ -425,7 +429,7 @@
                 <td>b.</td>
                 <td>Tempat Lahir</td>
                 <td>:</td>
-                <td>{{ $ayah->tempat_lahir }}</td>
+                <td>{{ date('d-m-Y', strtotime($ayah->tanggal_lahir)) }}</td>
             </tr>
             <tr>
                 <td>c.</td>
@@ -500,7 +504,7 @@
                 <td>c.</td>
                 <td>Tanggal Lahir</td>
                 <td>:</td>
-                <td>{{ $ibu->tanggal_lahir }}</td>
+                <td>{{ date('d-m-Y', strtotime($ibu->tanggal_lahir)) }}</td>
             </tr>
             <tr>
                 <td>d.</td>
@@ -570,7 +574,7 @@
             <td>c.</td>
             <td>Tanggal Lahir</td>
             <td>:</td>
-            <td>{{ $wali->tanggal_lahir }}</td>
+            <td>{{ date('d-m-Y', strtotime($wali->tanggal_lahir)) }}</td>
         </tr>
         <tr>
             <td>d.</td>
