@@ -33,7 +33,7 @@ class HighlightController extends Controller
         
 
         Highlight::updateOrCreate(
-        ['id' => $id],   
+        ['id' => $request->id],   
         [
             'id' => $request->id,
             'url' => $this->fileHandler($request->file('img'))['url'],
