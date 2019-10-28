@@ -543,7 +543,7 @@ class RegistrasiController extends Controller
     public function step9_submit() {
         $reg = RegistrasiSiswa::find($this->reg_id);
         $konfigurasi = \App\Konfigurasi::first();
-        $nomor_registrasi = RegistrasiSiswa::where(['tahun_pembelajaran' => $konfigurasi->tahun_pembelajaran, 'saved' => 1])->latest('saved_date')->first()->nomor_registrasi;
+        $nomor_registrasi = RegistrasiSiswa::where(['tahun_pembelajaran' => $konfigurasi->tahun_pembelajaran, 'saved' => 1])->latest('saved_date')->first() ? RegistrasiSiswa::where(['tahun_pembelajaran' => $konfigurasi->tahun_pembelajaran, 'saved' => 1])->latest('saved_date')->first()->nomor_registrasi : null;
         if(!$nomor_registrasi) {
             $reg->nomor_registrasi = 'OL-001';
         } else {
