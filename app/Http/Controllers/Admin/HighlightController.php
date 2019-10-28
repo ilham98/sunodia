@@ -32,7 +32,9 @@ class HighlightController extends Controller
         }
         
 
-        Highlight::create([
+        Highlight::updateOrCreate(
+        ['id' => $id],   
+        [
             'id' => $request->id,
             'url' => $this->fileHandler($request->file('img'))['url'],
             'keterangan' => $request->keterangan
