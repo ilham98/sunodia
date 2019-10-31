@@ -38,13 +38,20 @@
 @section('content')
     <div class="container p-0 bg-white register-box mt-3">
         <h5 class="m-0"><img height='40' src="https://img.icons8.com/dotty/80/000000/note.png"> Registrasi</h5>
+        @include('registrasi.sesi-button')
         @if($reg->saved == 1)
             <div class="text-right m-3">
                 <a target='_blank' href="{{ url('pdf/registrasi-form/'.$reg->id) }}" class="btn btn-success"><i class='fa fa-pdf'></i> Unduh PDF</a>
             </div>
         @endif
         @if($reg->saved == 1)
-            <div class="m-2 alert alert-warning">Data telah disimpan dan tak dapat diubah.</div>
+            <div class="m-2 alert alert-success h3 text-center">Selamat anda telah berhasil melakukan pendaftaran.</div>
+        @endif
+
+        @if($reg->saved == 1 && !$sesi_belum_selesai)
+            <div class="text-center">
+                <a href="{{ url('registrasi/new-session') }}" class="btn btn-primary btn-lg">Mulai Sesi Pendaftaran Baru</a>
+            </div>
         @endif
         {{-- ----------------------------------------- STEP 1 ----------------------------------------- --}}
         <form action="{{ url('registrasi/1') }}" class="p-3" method="POST">
@@ -483,6 +490,7 @@
             @method('POST')
         </form>
     </div>
+    @include('registrasi.sesi')
 @endsection
 
 @section('js')

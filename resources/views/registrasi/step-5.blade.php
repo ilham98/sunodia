@@ -22,6 +22,7 @@
 @section('content')
     <div class="container p-0 bg-white register-box mt-3">
         <h5 class="m-0"><img height='40' src="https://img.icons8.com/dotty/80/000000/note.png"> Registrasi - Keterangan Kegemaran Hobby & Prestasi (5/7)</h5>
+        @include('registrasi.sesi-button')
         <form action="{{ url('registrasi/5/kegemaran') }}" method="POST" class="px-3 pt-3">
             <div class="form-group">
                 Kegemaran / Hobby
@@ -116,6 +117,7 @@
         @method('DELETE')
         @csrf
     </form>
+    @include('registrasi.sesi')
 @endsection
 
 @section('js')

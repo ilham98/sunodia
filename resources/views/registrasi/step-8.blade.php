@@ -51,6 +51,7 @@
 @section('content')
     <div class="container p-0 bg-white register-box mt-3">
         <h5 class="m-0"><img height='40' src="https://img.icons8.com/dotty/80/000000/note.png"> Registrasi - Surat Pernyataan</h5>
+        @include('registrasi.sesi-button')
             <form class="p-3">
                 <div>Dengan ini menyatakan bahwa diterimanya anak kami di Sekolah Kristen Sunodia sebagai yang berciri khas Kristiani, maka:</div>
                 <ol>
@@ -65,7 +66,7 @@
                     <li>Jika di kemudian hari didapatkan bahwa dokumen-dokumen dan atau informasi yang saya berikan tidak benar, maka saya menyetujui pembatalan penerimaan anak kami tersebut atau dikeluarkan jika telah bersekolah di Sekolah Kristen Sundodia oleh Yayasan Pendidikan Kristen Sunodia secara sepihak.</li>
                 </ol>
             </form>
-            <form action="{{ url('registrasi/7') }}" class="p-3" method="POST" enctype="multipart/form-data">
+            <form action="{{ url('registrasi/8') }}" class="p-3" method="POST" enctype="multipart/form-data">
                 <div class="mt-5 d-flex justify-content-end">
                     <a href="{{ url('registrasi?goto=prev') }}" class="btn btn-info">Kembali</a>
                     <input type="submit" class="ml-2 btn btn-warning" value="Terima Syarat & Ketentuan">
@@ -74,6 +75,7 @@
                 @method('POST')
             </form>
     </div>
+    @include('registrasi.sesi')
 @endsection
 
 @section('js')

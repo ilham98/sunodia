@@ -150,6 +150,7 @@ Route::get('{tingkat}/prestasi', 'Persekolah\PrestasiController@index');
 
 Route::middleware(['registrasi_open'])->group(function () {
     Route::get('registrasi', 'RegistrasiController@init');
+    Route::get('registrasi/new-session', 'RegistrasiController@new_session');
     Route::get('registrasi/1', 'RegistrasiController@step1')->middleware('registrasi');
     Route::post('registrasi/1', 'RegistrasiController@step1_submit');
     Route::get('registrasi/2', 'RegistrasiController@step2')->middleware('registrasi');

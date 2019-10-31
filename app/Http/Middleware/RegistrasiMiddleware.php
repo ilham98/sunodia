@@ -22,8 +22,10 @@ class RegistrasiMiddleware
         if($request->cookie('registrasi_token')) {
             $id = $request->cookie('registrasi_token');
             $reg = RegistrasiSiswa::find($id);
+
             if(!$reg) {
-                return redirect('registrasi')->withCookie(\Cookie::forget('registrasi_token'));
+                return redirect('registrasi')->withCookie(\Cookie::forget('registrasi_token'))
+                        ->withCookie(\Cookie::forget('sesi_registrasi'));;
             } else if($step == $reg->last_step)
                 return $next($request);
         }

@@ -22,6 +22,7 @@
 @section('content')
     <div class="container p-0 bg-white register-box mt-3">
         <h5 class="m-0"><img height='40' src="https://img.icons8.com/dotty/80/000000/note.png"> Registrasi - Keterangan Kesehatan (4/7)</h5>
+        @include('registrasi.sesi-button')
         <form action="{{ url('registrasi/4') }}" class="p-3" method="POST" enctype="multipart/form-data">
             <div class="row">
                 <div class="form-group col-sm-4">
@@ -116,4 +117,5 @@
             </div>
         </form>
     </div>
+    @include('registrasi.sesi')
 @endsection

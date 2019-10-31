@@ -22,6 +22,7 @@
 @section('content')
     <div class="container p-0 bg-white register-box mt-3">
         <h5 class="m-0"><img height='40' src="https://img.icons8.com/dotty/80/000000/note.png"> Registrasi - Data Calon Siswa (2/7)</h5>
+        @include('registrasi.sesi-button')
         <form action="{{ url('registrasi/2') }}" class="p-3" id="biodata-form" method="POST" enctype="multipart/form-data">
             <div class="row">
                 <div class="form-group col-sm-8">
@@ -286,10 +287,23 @@
             @csrf
         </form>
     </div>
+    @include('registrasi.sesi')
 @endsection
 
 @section('js')
     <script>
+        $("select[name='jenis_kelamin']").change(function() {
+           var value = $(this).val();
+           $("select[name='jenis_kelamin'] option").removeAttr('selected');
+           $("select[name='jenis_kelamin'] option[value='"+value+"']").attr('selected','selected'); 
+        });
+
+        $("select[name='agama']").change(function() {
+           var value = $(this).val();
+           $("select[name='agama'] option").removeAttr('selected');
+           $("select[name='agama'] option[value='"+value+"']").attr('selected','selected'); 
+        });
+
         $('#saudara-tambah-btn').click(function(e) {
             e.preventDefault();
             $( "#biodata-form" ).children().clone().appendTo("#saudara_form");
