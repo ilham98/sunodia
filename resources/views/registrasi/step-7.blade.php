@@ -88,6 +88,9 @@
         </script>
     @endif
     <script>
+        $(function () {
+            $('[data-toggle="popover"]').popover()
+        })
         $('.btn-submit').click(function(e) {
             e.preventDefault();
             var id = $(this).data('id');

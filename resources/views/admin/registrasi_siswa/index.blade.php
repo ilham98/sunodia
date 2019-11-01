@@ -6,14 +6,18 @@
     function getNamaTingkat($tingkat) {
         switch($tingkat) {
             case 1:
-                return 'KB';
+                return 'KB Kecil';
             case 2:
-                return 'TK';
+                return 'KB Besar';
             case 3:
-                return 'SD';
+                return 'TK A';
             case 4:
-                return 'SMP';
+                return 'TK B';
             case 5:
+                return 'SD';
+            case 6:
+                return 'SMP';
+            case 7:
                 return 'SMA';
         }
     }    
@@ -26,7 +30,7 @@
                 <i class="header-icon lnr-apartment icon-gradient bg-love-kiss"> </i> Registrasi Siswa
             </div>
         </div>
-        <form class="p-3">
+        <form class="p-3" id="form">
             <div style="font-weight: bold" class="mb-2">Filter</div>
             <div class="row">
                 <div class="form-group col-sm-4">
@@ -42,11 +46,13 @@
                     <label for="">Jenjang</label>
                     <select name="jenjang" class="form-control" id="">
                         <option value="">Semua</option>
-                        <option value="1" {{ $request->jenjang == '1' ? 'selected' : '' }}>KB</option>
-                        <option value="2" {{ $request->jenjang == '2' ? 'selected' : '' }}>TK</option>
-                        <option value="3" {{ $request->jenjang == '3' ? 'selected' : '' }}>SD</option>
-                        <option value="4" {{ $request->jenjang == '4' ? 'selected' : '' }}>SMP</option>
-                        <option value="5" {{ $request->jenjang == '5' ? 'selected' : '' }}>SMA</option>
+                        <option value="1" {{ $request->jenjang == '1' ? 'selected' : '' }}>KB Kecil</option>
+                        <option value="2" {{ $request->jenjang == '2' ? 'selected' : '' }}>KB Besar</option>
+                        <option value="3" {{ $request->jenjang == '3' ? 'selected' : '' }}>TK A</option>
+                        <option value="4" {{ $request->jenjang == '4' ? 'selected' : '' }}>TK B</option>
+                        <option value="5" {{ $request->jenjang == '5' ? 'selected' : '' }}>SD</option>
+                        <option value="6" {{ $request->jenjang == '6' ? 'selected' : '' }}>SMP</option>
+                        <option value="7" {{ $request->jenjang == '7' ? 'selected' : '' }}>SMA</option>
                     </select>
                 </div>
             </div>
@@ -60,7 +66,8 @@
                     <input type="date" class="form-control" value="{{ $request->hingga_tanggal }}"  name="hingga_tanggal">
                 </div>
             </div>
-            <input type="submit" value="Filter" class="btn btn-primary">
+            <input type="submit" name="input" value="Filter" class="btn btn-primary">
+            <input type="submit" name="input" data-type='pdf' value="Download PDF" class="btn btn-primary">
         </form>
         <div class="card-body p-0">
             <table class="table">
@@ -88,7 +95,7 @@
                 </tbody>
             </table>
             <div class="d-flex justify-content-center my-2">
-                {{ $reg->links() }}
+                {{ $reg->appends(request()->input())->links() }}
             </div>
         </div>
     </div>

@@ -20,7 +20,7 @@
                     {{-- ----------------------------------------- STEP 1 ----------------------------------------- --}}
                     <form action="{{ url('registrasi/1') }}" class="p-3" method="POST">
                         <div class="my-1" style="font-weight: 20px">
-                            Kelas Tujuan Yang Dipilih : <span style="font-weight: bold">{{ $tingkat }}</span>
+                            Unit/Jenjang Siswa Yang Dipilih : <span style="font-weight: bold">{{ $tingkat }}</span>
                         </div>
                         @csrf
                         @method('POST')

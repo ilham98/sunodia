@@ -30,21 +30,62 @@
                     position: static; 
                 }                
             }
+
+            .registrasi-siswa-header {
+                margin: 0;
+                width: 100%;
+                font-family: 'Neuton', serif;
+                color: #fff;
+                background: linear-gradient(-45deg, #01579b, #0d47a1, #e65100, #ffb74d);
+                background-size: 400% 400%;
+                animation: gradientBG 60s ease infinite;
+                border-bottom: 2px solid white;
+            }
+
+            @keyframes gradientBG {
+                0% {
+                    background-position: 0% 50%;
+                }
+                50% {
+                    background-position: 100% 50%;
+                }
+                100% {
+                    background-position: 0% 50%;
+                }
+            }
+
+            .footer p{
+                font-size: 15px;
+            }
+
+            .footer h4 {
+                font-weight: bold;
+            }
+
+            .footer .telepon {
+                margin: 0px;
+            }
+
+            .footer .email {
+                position: relative;
+                background: #f5ac0f;
+                padding: 5px 10px;
+                font-weight: bold;
+                display: inline-block;
+                color: white;
+                z-index: 89;
+            }
         </style>
+        @yield('footer-css')
     </head>
     <body>
         @if(!(Request::is('registrasi/*') || url()->current() == url('registrasi')) && \App\Konfigurasi::first()->registrasi_open)
-            <div style="height: 100px; display: flex; justify-content: center; align-items: center; background:  #f6ff78">
-                <div class="text-center">
-                    <div>Pendaftaran Tahun Pembelajaran  {{ \App\Konfigurasi::first()->tahun_pembelajaran }}/{{ \App\Konfigurasi::first()->tahun_pembelajaran + 1 }} Telah Dibuka</div>
-                    <a href="/registrasi" class="btn btn-daftar mt-2"> Registrasi</a>
-                </div>
-            </div>
+            @include('components/registrasi-header')
         @endif
         <div class="d-flex justify-content-center sunodia-main-title" style="background: #1e88e5">
             <div class="text-center">
                 <img src="{{ asset('img/logo.png') }}" width="150" height="150" alt="">
-                <h4 class="text-white">Sekolah Kristen  Sunodia</h4>
+                <h4 class="text-white">Sekolah Kristen  Sunodia Samarinda</h4>
             </div>
         </div>
         <div id="navbarContainer" style="z-index: 99; width: 100%;">
@@ -93,9 +134,8 @@
             </nav>
         </div>
         @yield('content')
-        <footer class="footer">
-           
-        </footer>
+        @include('components.footer')
+        
         <script src="{{ asset('js/app.js') }}"></script>
         <script>
             $('.jenjang').hover(

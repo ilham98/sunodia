@@ -71,3 +71,11 @@
         @include('registrasi.sesi')
     </div>
 @endsection
+
+@section('js')
+    <script>
+        $(function () {
+            $('[data-toggle="popover"]').popover()
+        })
+    </script>
+@endsection

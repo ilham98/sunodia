@@ -154,4 +154,10 @@
             $('.modal-title').html({!! session('modal-title') !!});
         </script>
     @endif
+
+    <script>
+        $(function () {
+            $('[data-toggle="popover"]').popover()
+        })
+    </script>
 @endsection

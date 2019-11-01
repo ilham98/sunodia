@@ -383,5 +383,9 @@
             // console.log(tinggal_bersama);
             $('#update_bersama_dengan_form').submit();
         });
+
+        $(function () {
+            $('[data-toggle="popover"]').popover()
+        })
     </script>
 @endsection

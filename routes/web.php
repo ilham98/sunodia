@@ -51,6 +51,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('a/mars', 'Profil\MarsController@index');
     Route::put('a/mars', 'Profil\MarsController@update');
     Route::get('a/registrasi-siswa', 'Admin\RegistrasiSiswaController@index');
+    Route::get('a/registrasi-siswa/pdf', 'Admin\RegistrasiSiswaController@pdf');
     Route::get('a/registrasi-siswa/{id}', 'Admin\RegistrasiSiswaController@single');
     Route::get('a/galeri/tambah', 'Admin\GaleriController@create');
     Route::get('a/galeri', 'Admin\GaleriController@index');

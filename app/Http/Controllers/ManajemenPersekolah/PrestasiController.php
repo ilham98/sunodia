@@ -68,6 +68,12 @@ class PrestasiController extends Controller
 
     public function destroy($tingkat, $id) {
         $prestasi = Prestasi::find($id);
+        if($prestasi->url) {
+            $url_exploded = explode('/', $prestasi->url);
+            $path = implode('/', [ $url_exploded[4], $url_exploded[5] ]);
+            Storage::disk('public_uploads')->delete($path);
+        }
+
         $prestasi->delete();
 
         return redirect(url('a/'.$tingkat.'/prestasi'))->with('success', 'Prestasi berhasil dihapus.');

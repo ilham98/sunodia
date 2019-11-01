@@ -11,13 +11,7 @@
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 
-
--- Dumping database structure for p002-sunodia
-CREATE DATABASE IF NOT EXISTS `p002-sunodia` /*!40100 DEFAULT CHARACTER SET latin1 */;
-USE `p002-sunodia`;
-
 -- Dumping structure for table p002-sunodia.agenda_kegiatan
-DROP TABLE IF EXISTS `agenda_kegiatan`;
 CREATE TABLE IF NOT EXISTS `agenda_kegiatan` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `tingkat` varchar(50) DEFAULT NULL,
@@ -37,7 +31,6 @@ INSERT INTO `agenda_kegiatan` (`id`, `tingkat`, `nama`, `tanggal_mulai_pelaksana
 /*!40000 ALTER TABLE `agenda_kegiatan` ENABLE KEYS */;
 
 -- Dumping structure for table p002-sunodia.agenda_sekolah
-DROP TABLE IF EXISTS `agenda_sekolah`;
 CREATE TABLE IF NOT EXISTS `agenda_sekolah` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `url_poster_penerimaan_siswa_baru` varchar(255) DEFAULT NULL,
@@ -49,14 +42,13 @@ CREATE TABLE IF NOT EXISTS `agenda_sekolah` (
 -- Dumping data for table p002-sunodia.agenda_sekolah: ~4 rows (approximately)
 /*!40000 ALTER TABLE `agenda_sekolah` DISABLE KEYS */;
 INSERT INTO `agenda_sekolah` (`id`, `url_poster_penerimaan_siswa_baru`, `url_kalender_pendidikan`, `tingkat`) VALUES
-	(1, NULL, NULL, 'tk-kb'),
+	(1, 'http://127.0.0.1:8000/uploads/agenda/5dbb3203232fa.png', 'http://127.0.0.1:8000/uploads/kalender-pendidikan/5dbb327a32435.png', 'tk-kb'),
 	(2, 'http://127.0.0.1:8000/uploads/agenda/5db5e935c1737.png', 'http://127.0.0.1:8000/uploads/agenda/5db5e894daa79.png', 'sd'),
 	(3, NULL, NULL, 'smp'),
 	(4, NULL, NULL, 'sma');
 /*!40000 ALTER TABLE `agenda_sekolah` ENABLE KEYS */;
 
 -- Dumping structure for table p002-sunodia.album
-DROP TABLE IF EXISTS `album`;
 CREATE TABLE IF NOT EXISTS `album` (
   `id` int(10) unsigned NOT NULL DEFAULT 0,
   `nama` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -74,7 +66,6 @@ INSERT INTO `album` (`id`, `nama`, `tingkat`, `created_at`, `updated_at`) VALUES
 /*!40000 ALTER TABLE `album` ENABLE KEYS */;
 
 -- Dumping structure for table p002-sunodia.berita
-DROP TABLE IF EXISTS `berita`;
 CREATE TABLE IF NOT EXISTS `berita` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `judul` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -97,16 +88,15 @@ INSERT INTO `berita` (`id`, `judul`, `isi`, `tingkat`, `created_at`, `updated_at
 /*!40000 ALTER TABLE `berita` ENABLE KEYS */;
 
 -- Dumping structure for table p002-sunodia.dokumen
-DROP TABLE IF EXISTS `dokumen`;
 CREATE TABLE IF NOT EXISTS `dokumen` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `registrasi_siswa_id` int(10) unsigned NOT NULL DEFAULT 0,
   `jenis_dokumen_id` bigint(20) unsigned NOT NULL,
   `url` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=32 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=71 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Dumping data for table p002-sunodia.dokumen: ~9 rows (approximately)
+-- Dumping data for table p002-sunodia.dokumen: ~32 rows (approximately)
 /*!40000 ALTER TABLE `dokumen` DISABLE KEYS */;
 INSERT INTO `dokumen` (`id`, `registrasi_siswa_id`, `jenis_dokumen_id`, `url`) VALUES
 	(19, 3, 1, 'http://127.0.0.1:8000/uploads/dokumen/5db61d2aa621b.png'),
@@ -117,11 +107,33 @@ INSERT INTO `dokumen` (`id`, `registrasi_siswa_id`, `jenis_dokumen_id`, `url`) V
 	(25, 3, 7, NULL),
 	(26, 3, 8, NULL),
 	(30, 3, 9, 'http://127.0.0.1:8000/uploads/dokumen/5db61d4bc13fb.png'),
-	(31, 3, 10, 'http://127.0.0.1:8000/uploads/dokumen/5db61d529d63c.png');
+	(31, 3, 10, 'http://127.0.0.1:8000/uploads/dokumen/5db61d529d63c.png'),
+	(32, 5, 1, 'http://127.0.0.1:8000/uploads/dokumen-tersimpan/OL-001/fotocopy-akte-kelahiran-calon-siswa-5db9ff58b43d7.png'),
+	(33, 5, 2, 'http://127.0.0.1:8000/dokumen-tersimpan/OL-001/kartu-keluarga-5db9ff5c1ce9e.png'),
+	(34, 5, 3, 'http://127.0.0.1:8000/dokumen-tersimpan/OL-001/ktp-5db9fe50efc13.png'),
+	(35, 5, 4, 'http://127.0.0.1:8000/dokumen-tersimpan/OL-001/foto-calon-siswa-5db9fe5585bbb.png'),
+	(36, 5, 7, 'http://127.0.0.1:8000/dokumen-tersimpan/OL-001/fotocopy-ijazah-yang-sudah-dilegalisir-5db9fe5967c44.png'),
+	(37, 5, 8, 'http://127.0.0.1:8000/dokumen-tersimpan/OL-001/fotocopy-skhu-yang-sudah-dilegalisir-5db9fe5de70b0.png'),
+	(38, 5, 11, 'http://127.0.0.1:8000/dokumen-tersimpan/OL-001/fotocopy-rapor-kelas-7-5db9fe61b0d35.png'),
+	(39, 5, 12, 'http://127.0.0.1:8000/dokumen-tersimpan/OL-001/fotocopy-rapor-kelas-8-5db9fe6501ec5.png'),
+	(40, 5, 13, 'http://127.0.0.1:8000/dokumen-tersimpan/OL-001/fotocopy-rapor-kelas-9-5db9fe67b6027.png'),
+	(55, 9, 1, 'http://127.0.0.1:8000/uploads/dokumen-tersimpan/2019/OL-001/fotocopy-akte-kelahiran-calon-siswa-5dba401394e6a.png'),
+	(56, 9, 2, 'http://127.0.0.1:8000/uploads/dokumen-tersimpan/2019/OL-001/kartu-keluarga-5dba4017cb6bd.png'),
+	(57, 9, 3, 'http://127.0.0.1:8000/uploads/dokumen-tersimpan/2019/OL-001/ktp-5dba401cdc53f.png'),
+	(58, 9, 4, 'http://127.0.0.1:8000/uploads/dokumen-tersimpan/2019/OL-001/foto-calon-siswa-5dba40218d27e.png'),
+	(59, 9, 5, 'http://127.0.0.1:8000/uploads/dokumen-tersimpan/2019/OL-001/akta-kawin-orangtua-wali-siswa-5dba40288a4dc.png'),
+	(61, 13, 1, 'http://127.0.0.1:8000/uploads/dokumen-tersimpan/2019/OL-002/fotocopy-akte-kelahiran-calon-siswa-5dba495e3f0ea.png'),
+	(62, 13, 2, 'http://127.0.0.1:8000/uploads/dokumen-tersimpan/2019/OL-002/kartu-keluarga-5dba496144165.png'),
+	(63, 13, 3, 'http://127.0.0.1:8000/uploads/dokumen-tersimpan/2019/OL-002/ktp-5dba4963e41e4.png'),
+	(64, 13, 4, 'http://127.0.0.1:8000/uploads/dokumen-tersimpan/2019/OL-002/foto-calon-siswa-5dba496a4c5cf.png'),
+	(66, 13, 6, 'http://127.0.0.1:8000/uploads/dokumen-tersimpan/2019/OL-002/surat-baptis-5dba496ccfa64.png'),
+	(67, 13, 7, 'http://127.0.0.1:8000/uploads/dokumen-tersimpan/2019/OL-002/fotocopy-ijazah-yang-sudah-dilegalisir-5dba496fde71d.png'),
+	(68, 13, 8, 'http://127.0.0.1:8000/uploads/dokumen-tersimpan/2019/OL-002/fotocopy-skhu-yang-sudah-dilegalisir-5dba497366a89.png'),
+	(69, 13, 9, 'http://127.0.0.1:8000/uploads/dokumen-tersimpan/2019/OL-002/fotocopy-rapor-kelas-5-5dba49766f39e.png'),
+	(70, 13, 10, 'http://127.0.0.1:8000/uploads/dokumen-tersimpan/2019/OL-002/fotocopy-rapor-kelas-6-5dba497955e3d.png');
 /*!40000 ALTER TABLE `dokumen` ENABLE KEYS */;
 
 -- Dumping structure for table p002-sunodia.fasilitas
-DROP TABLE IF EXISTS `fasilitas`;
 CREATE TABLE IF NOT EXISTS `fasilitas` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `text` text DEFAULT NULL,
@@ -139,14 +151,13 @@ INSERT INTO `fasilitas` (`id`, `text`, `tingkat`) VALUES
 /*!40000 ALTER TABLE `fasilitas` ENABLE KEYS */;
 
 -- Dumping structure for table p002-sunodia.files
-DROP TABLE IF EXISTS `files`;
 CREATE TABLE IF NOT EXISTS `files` (
-  `id` int(11) NOT NULL DEFAULT 0,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `url` varchar(255) DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
 -- Dumping data for table p002-sunodia.files: ~2 rows (approximately)
 /*!40000 ALTER TABLE `files` DISABLE KEYS */;
@@ -156,7 +167,6 @@ INSERT INTO `files` (`id`, `url`, `created_at`, `updated_at`) VALUES
 /*!40000 ALTER TABLE `files` ENABLE KEYS */;
 
 -- Dumping structure for table p002-sunodia.guru
-DROP TABLE IF EXISTS `guru`;
 CREATE TABLE IF NOT EXISTS `guru` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `nama` varchar(50) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
@@ -175,7 +185,6 @@ INSERT INTO `guru` (`id`, `nama`, `tingkat`, `jabatan`, `pengampu_mata_pelajaran
 /*!40000 ALTER TABLE `guru` ENABLE KEYS */;
 
 -- Dumping structure for table p002-sunodia.highlights
-DROP TABLE IF EXISTS `highlights`;
 CREATE TABLE IF NOT EXISTS `highlights` (
   `id` int(10) unsigned NOT NULL,
   `url` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
@@ -185,7 +194,7 @@ CREATE TABLE IF NOT EXISTS `highlights` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Dumping data for table p002-sunodia.highlights: ~2 rows (approximately)
+-- Dumping data for table p002-sunodia.highlights: ~1 rows (approximately)
 /*!40000 ALTER TABLE `highlights` DISABLE KEYS */;
 INSERT INTO `highlights` (`id`, `url`, `keterangan`, `created_at`, `updated_at`) VALUES
 	(1, 'http://127.0.0.1:8000/uploads/highlights/5db714743bddb.png', 'sfsdfsdsdf', '2019-10-28 16:16:52', '2019-10-28 16:16:52'),
@@ -193,7 +202,6 @@ INSERT INTO `highlights` (`id`, `url`, `keterangan`, `created_at`, `updated_at`)
 /*!40000 ALTER TABLE `highlights` ENABLE KEYS */;
 
 -- Dumping structure for table p002-sunodia.jenis_dokumen
-DROP TABLE IF EXISTS `jenis_dokumen`;
 CREATE TABLE IF NOT EXISTS `jenis_dokumen` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `nama` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -221,7 +229,6 @@ INSERT INTO `jenis_dokumen` (`id`, `nama`) VALUES
 /*!40000 ALTER TABLE `jenis_dokumen` ENABLE KEYS */;
 
 -- Dumping structure for table p002-sunodia.kegemaran_prestasi
-DROP TABLE IF EXISTS `kegemaran_prestasi`;
 CREATE TABLE IF NOT EXISTS `kegemaran_prestasi` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `registrasi_siswa_id` int(10) unsigned NOT NULL DEFAULT 0,
@@ -240,7 +247,6 @@ INSERT INTO `kegemaran_prestasi` (`id`, `registrasi_siswa_id`, `nama`, `jenis`, 
 /*!40000 ALTER TABLE `kegemaran_prestasi` ENABLE KEYS */;
 
 -- Dumping structure for table p002-sunodia.konfigurasi
-DROP TABLE IF EXISTS `konfigurasi`;
 CREATE TABLE IF NOT EXISTS `konfigurasi` (
   `id` int(11) NOT NULL,
   `tahun_pembelajaran` varchar(50) DEFAULT NULL,
@@ -255,7 +261,6 @@ INSERT INTO `konfigurasi` (`id`, `tahun_pembelajaran`, `registrasi_open`) VALUES
 /*!40000 ALTER TABLE `konfigurasi` ENABLE KEYS */;
 
 -- Dumping structure for table p002-sunodia.migrations
-DROP TABLE IF EXISTS `migrations`;
 CREATE TABLE IF NOT EXISTS `migrations` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `migration` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -287,7 +292,6 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 /*!40000 ALTER TABLE `migrations` ENABLE KEYS */;
 
 -- Dumping structure for table p002-sunodia.orang_tua
-DROP TABLE IF EXISTS `orang_tua`;
 CREATE TABLE IF NOT EXISTS `orang_tua` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `registrasi_siswa_id` int(10) unsigned NOT NULL DEFAULT 0,
@@ -304,30 +308,18 @@ CREATE TABLE IF NOT EXISTS `orang_tua` (
   `keterangan` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `penghasilan_perbulan` tinyint(4) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Dumping data for table p002-sunodia.orang_tua: ~2 rows (approximately)
+-- Dumping data for table p002-sunodia.orang_tua: ~4 rows (approximately)
 /*!40000 ALTER TABLE `orang_tua` DISABLE KEYS */;
 INSERT INTO `orang_tua` (`id`, `registrasi_siswa_id`, `jenis`, `nama`, `tempat_lahir`, `tanggal_lahir`, `agama`, `kewarganegaraan`, `pendidikan_terakhir`, `pekerjaan_jabatan`, `alamat_lengkap`, `no_telepon`, `keterangan`, `penghasilan_perbulan`) VALUES
 	(1, 3, 'ayah', 'dfsdf', 'keren', '2019-10-28', 'Hindu', 'Indonesia', 'SD', 'Mantap', 'sdfsdf', '12121223', 'Masih Hidup', 1),
-	(2, 3, 'ibu', 'Ibu', 'sdfsdf', '2019-10-28', 'Konghucu', 'Indonsia', 'S1/D4', 'Manta', 'sfsdf', 'sfsdf', 'Masih Hidup', 2);
+	(2, 3, 'ibu', 'Ibu', 'sdfsdf', '2019-10-28', 'Konghucu', 'Indonsia', 'S1/D4', 'Manta', 'sfsdf', 'sfsdf', 'Masih Hidup', 2),
+	(3, 13, 'ayah', 'sdfsdf', 'sdfsdf', '2019-10-23', 'Kristen', 'sdfsdfsd', 'D1', 'sdfsf', 'sfsdfs', 'sdfsdf', 'Masih Hidup', 1),
+	(4, 13, 'ibu', 'sdfsdf', 'sfsdf', '2019-10-24', 'Kristen', 'sfsdf', 'S2', 'sfsdf', 'sdfsdfs', 'sdfsdf', 'Masih Hidup', 1);
 /*!40000 ALTER TABLE `orang_tua` ENABLE KEYS */;
 
--- Dumping structure for table p002-sunodia.password_resets
-DROP TABLE IF EXISTS `password_resets`;
-CREATE TABLE IF NOT EXISTS `password_resets` (
-  `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `token` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  KEY `password_resets_email_index` (`email`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
--- Dumping data for table p002-sunodia.password_resets: ~0 rows (approximately)
-/*!40000 ALTER TABLE `password_resets` DISABLE KEYS */;
-/*!40000 ALTER TABLE `password_resets` ENABLE KEYS */;
-
 -- Dumping structure for table p002-sunodia.photos
-DROP TABLE IF EXISTS `photos`;
 CREATE TABLE IF NOT EXISTS `photos` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `caption` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -344,7 +336,6 @@ CREATE TABLE IF NOT EXISTS `photos` (
 /*!40000 ALTER TABLE `photos` ENABLE KEYS */;
 
 -- Dumping structure for table p002-sunodia.prestasi
-DROP TABLE IF EXISTS `prestasi`;
 CREATE TABLE IF NOT EXISTS `prestasi` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `nama` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -365,7 +356,6 @@ INSERT INTO `prestasi` (`id`, `nama`, `juara`, `nama_lomba`, `tingkat_lomba`, `t
 /*!40000 ALTER TABLE `prestasi` ENABLE KEYS */;
 
 -- Dumping structure for table p002-sunodia.profil
-DROP TABLE IF EXISTS `profil`;
 CREATE TABLE IF NOT EXISTS `profil` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `visi` text COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -383,11 +373,10 @@ INSERT INTO `profil` (`id`, `visi`, `misi`, `mars`, `sejarah`, `logo`) VALUES
 /*!40000 ALTER TABLE `profil` ENABLE KEYS */;
 
 -- Dumping structure for table p002-sunodia.profil_sekolah
-DROP TABLE IF EXISTS `profil_sekolah`;
 CREATE TABLE IF NOT EXISTS `profil_sekolah` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `text` text COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '0',
-  `tingkat` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '0',
+  `text` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `tingkat` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -401,7 +390,6 @@ INSERT INTO `profil_sekolah` (`id`, `text`, `tingkat`) VALUES
 /*!40000 ALTER TABLE `profil_sekolah` ENABLE KEYS */;
 
 -- Dumping structure for table p002-sunodia.registrasi_siswa
-DROP TABLE IF EXISTS `registrasi_siswa`;
 CREATE TABLE IF NOT EXISTS `registrasi_siswa` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `nama` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
@@ -447,14 +435,21 @@ CREATE TABLE IF NOT EXISTS `registrasi_siswa` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Dumping data for table p002-sunodia.registrasi_siswa: ~0 rows (approximately)
+-- Dumping data for table p002-sunodia.registrasi_siswa: ~7 rows (approximately)
 /*!40000 ALTER TABLE `registrasi_siswa` DISABLE KEYS */;
+INSERT INTO `registrasi_siswa` (`id`, `nama`, `jenis_kelamin`, `tempat_lahir`, `tanggal_lahir`, `agama`, `kewarganegaraan`, `bergereja_di`, `aktif_pelayan`, `alamat_rumah`, `kode_pos`, `telepon`, `tinggal_dengan`, `no_hp_calon_siswa`, `email_calon_siswa`, `anak_ke`, `jumlah_saudara`, `jarak_tempuh_sekolah`, `waktu_tempuh_sekolah`, `alat_tempuh_sekolah`, `tingkat`, `golongan_darah`, `rhesus`, `asal_sekolah`, `alamat_sekolah`, `nomor_ijazah`, `lama_belajar`, `jumlah_nilai_ijazah`, `pernah_melakukan_donor`, `tinggi_badan`, `berat_badan`, `penyakit_yang_pernah_diderita`, `berkebutuhan_khusus`, `ciri_khusus_lainnya`, `tinggal_bersama`, `last_step`, `saved`, `nomor_registrasi`, `tahun_pembelajaran`, `tahun_registrasi`, `saved_date`, `created_at`, `updated_at`) VALUES
+	(6, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1', 0, NULL, '2019', NULL, NULL, '2019-10-31 08:46:21', '2019-10-31 08:46:21'),
+	(7, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1', 0, NULL, '2019', NULL, NULL, '2019-10-31 08:47:39', '2019-10-31 08:47:39'),
+	(8, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1', 0, NULL, '2019', NULL, NULL, '2019-10-31 08:47:43', '2019-10-31 08:47:43'),
+	(9, 'sdfsdfs', 'Laki-laki', 'sdfsfdsf', '2019-09-29', 'Hindu', 'sdfsdfs', NULL, NULL, 'dsfsdfsd', '12345', '12121123213', 'Orang Tua', '12121212', 'sdfsdf', 1, 1, 3, 3, 'Sepeda Motor', 3, 'A', NULL, 'sfdfs', 'fsdfsdf', NULL, 3, NULL, 0, 121.00, 212.00, 'sdfsdf', 'tidak', 'sdfsdfds', 'wali', '9', 1, 'OL-001', '2019', NULL, '2019-10-31 10:03:30', '2019-10-31 08:48:02', '2019-10-31 10:03:30'),
+	(13, 'sdfsdfsd', 'Laki-laki', 'sdfsdfsd', '2019-10-31', 'Kristen', 'sdfsdf', 'sdfsdf', 'sdfsdf', 'sdfsdfs1', '12112', '1212121', 'Orang Tua', '12123123', 'ilhamshinoahara@gmail.com', 3, 3, 3, 3, 'Sepeda', 4, 'A', NULL, 'sdfsdf', 'sdfsdf', NULL, 12, NULL, 0, 231.00, 21.00, 'sfsdf', 'tidak', 'sdfs', 'orang_tua', '9', 1, 'OL-002', '2019', NULL, '2019-10-31 10:40:07', '2019-10-31 09:25:35', '2019-10-31 10:40:07'),
+	(15, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1', 0, NULL, '2019', NULL, NULL, '2019-10-31 10:36:59', '2019-10-31 10:36:59'),
+	(16, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1', 0, NULL, '2019', NULL, NULL, '2019-10-31 10:40:20', '2019-10-31 10:40:20');
 /*!40000 ALTER TABLE `registrasi_siswa` ENABLE KEYS */;
 
 -- Dumping structure for table p002-sunodia.saudara
-DROP TABLE IF EXISTS `saudara`;
 CREATE TABLE IF NOT EXISTS `saudara` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `registrasi_siswa_id` int(10) unsigned NOT NULL DEFAULT 0,
@@ -463,16 +458,18 @@ CREATE TABLE IF NOT EXISTS `saudara` (
   `saudara_pendidikan` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `saudara_status` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Dumping data for table p002-sunodia.saudara: ~0 rows (approximately)
+-- Dumping data for table p002-sunodia.saudara: ~3 rows (approximately)
 /*!40000 ALTER TABLE `saudara` DISABLE KEYS */;
 INSERT INTO `saudara` (`id`, `registrasi_siswa_id`, `saudara_nama`, `saudara_umur`, `saudara_pendidikan`, `saudara_status`) VALUES
-	(1, 3, 'sdf', 12, 'SMA', 'Kakak');
+	(1, 3, 'sdf', 12, 'SMA', 'Kakak'),
+	(3, 9, 'sfsdfs', 1, 'sdfsdf', 'Kakak'),
+	(4, 9, 'sdfsdf', 3, 'sdfsdf', 'Adik'),
+	(5, 13, 'sdfsdf', 12, 'sdfsdf', 'Kakak');
 /*!40000 ALTER TABLE `saudara` ENABLE KEYS */;
 
 -- Dumping structure for table p002-sunodia.struktur_organisasi
-DROP TABLE IF EXISTS `struktur_organisasi`;
 CREATE TABLE IF NOT EXISTS `struktur_organisasi` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `url` varchar(255) DEFAULT NULL,
@@ -483,16 +480,15 @@ CREATE TABLE IF NOT EXISTS `struktur_organisasi` (
 -- Dumping data for table p002-sunodia.struktur_organisasi: ~4 rows (approximately)
 /*!40000 ALTER TABLE `struktur_organisasi` DISABLE KEYS */;
 INSERT INTO `struktur_organisasi` (`id`, `url`, `tingkat`) VALUES
-	(1, 'http://127.0.0.1:8000/uploads/struktur_organisasi/5db5f14b8ff42.png', 'tk-kb'),
+	(1, 'http://127.0.0.1:8000/uploads/struktur_organisasi/5dbb313b54f4b.png', 'tk-kb'),
 	(2, NULL, 'sd'),
 	(3, NULL, 'smp'),
 	(4, NULL, 'sma');
 /*!40000 ALTER TABLE `struktur_organisasi` ENABLE KEYS */;
 
 -- Dumping structure for table p002-sunodia.users
-DROP TABLE IF EXISTS `users`;
 CREATE TABLE IF NOT EXISTS `users` (
-  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `remember_token` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
@@ -500,16 +496,15 @@ CREATE TABLE IF NOT EXISTS `users` (
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `users_email_unique` (`email`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC;
 
--- Dumping data for table p002-sunodia.users: ~0 rows (approximately)
+-- Dumping data for table p002-sunodia.users: ~1 rows (approximately)
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
 INSERT INTO `users` (`id`, `email`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
 	(1, 'admin@admin.com', '$2y$10$ZP6e6Tx0VVnXcCHupuyZX.2sYM3cdqFOQ3KCxlY8UbUNAPSRiOoZa', NULL, NULL, NULL);
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 
 -- Dumping structure for table p002-sunodia.wali
-DROP TABLE IF EXISTS `wali`;
 CREATE TABLE IF NOT EXISTS `wali` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `registrasi_siswa_id` int(10) unsigned NOT NULL,
@@ -526,10 +521,13 @@ CREATE TABLE IF NOT EXISTS `wali` (
   `penghasilan_perbulan` tinyint(4) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `wali_registrasi_siswa_id_foreign` (`registrasi_siswa_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Dumping data for table p002-sunodia.wali: ~0 rows (approximately)
 /*!40000 ALTER TABLE `wali` DISABLE KEYS */;
+INSERT INTO `wali` (`id`, `registrasi_siswa_id`, `nama`, `tempat_lahir`, `tanggal_lahir`, `agama`, `kewarganegaraan`, `pendidikan_terakhir`, `pekerjaan_jabatan`, `alamat_lengkap`, `no_telepon`, `keterangan`, `penghasilan_perbulan`) VALUES
+	(1, 5, 'sfsdfds', 'sdfsdfsdf', '2019-10-30', 'Kristen', 'sfsdfsdf', 'Tidak Bersekolah', 'fsdfdsf', 'sfdsdf', 'sdfsdfs', 'Masih Hidup', 1),
+	(2, 9, 'sdfsdf', 'sfsdfds', '2019-10-31', 'Kristen', 'sfsdfsdf', 'Tidak Bersekolah', 'sfsdf', 'sfdsdf', 'fsdfsd', 'Masih Hidup', 2);
 /*!40000 ALTER TABLE `wali` ENABLE KEYS */;
 
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;

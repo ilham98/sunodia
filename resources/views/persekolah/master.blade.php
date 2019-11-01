@@ -36,25 +36,70 @@
                 background: #fff59d;
             }
 
+            .footer p{
+                font-size: 15px;
+            }
+
+            .footer h4 {
+                font-weight: bold;
+            }
+
+            .footer .telepon {
+                margin: 0px;
+            }
+
+            .footer .email {
+                position: relative;
+                background: #f5ac0f;
+                padding: 5px 10px;
+                font-weight: bold;
+                display: inline-block;
+                color: white;
+                z-index: 89;
+            }
+
             body {
             background-color: #ffff8d;
 background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='88' height='24' viewBox='0 0 88 24'%3E%3Cg fill-rule='evenodd'%3E%3Cg id='autumn' fill='%23ffff00' fill-opacity='0.4'%3E%3Cpath d='M10 0l30 15 2 1V2.18A10 10 0 0 0 41.76 0H39.7a8 8 0 0 1 .3 2.18v10.58L14.47 0H10zm31.76 24a10 10 0 0 0-5.29-6.76L4 1 2 0v13.82a10 10 0 0 0 5.53 8.94L10 24h4.47l-6.05-3.02A8 8 0 0 1 4 13.82V3.24l31.58 15.78A8 8 0 0 1 39.7 24h2.06zM78 24l2.47-1.24A10 10 0 0 0 86 13.82V0l-2 1-32.47 16.24A10 10 0 0 0 46.24 24h2.06a8 8 0 0 1 4.12-4.98L84 3.24v10.58a8 8 0 0 1-4.42 7.16L73.53 24H78zm0-24L48 15l-2 1V2.18A10 10 0 0 1 46.24 0h2.06a8 8 0 0 0-.3 2.18v10.58L73.53 0H78z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
         }
+
+        .registrasi-siswa-header {
+                margin: 0;
+                width: 100%;
+                font-family: 'Neuton', serif;
+                color: #fff;
+                background: linear-gradient(-45deg, #01579b, #0d47a1, #e65100, #ffb74d);
+                background-size: 400% 400%;
+                animation: gradientBG 60s ease infinite;
+                border-bottom: 2px solid white;
+            }
+
+            /* .registrasi-siswa-header-text {
+                color: linear-gradient(-45deg, #ff9800, #ffe0b2, #64b5f6, #0d47a1);
+                animation: gradientBG 15s ease infinite;
+            } */
+
+            @keyframes gradientBG {
+                0% {
+                    background-position: 0% 50%;
+                }
+                50% {
+                    background-position: 100% 50%;
+                }
+                100% {
+                    background-position: 0% 50%;
+                }
+            }
         </style>
     </head>
     <body>
         @if(!(Request::is('registrasi/*') || url()->current() == url('registrasi')) && \App\Konfigurasi::first()->registrasi_open)
-            <div style="height: 100px; display: flex; justify-content: center; align-items: center; background:  #f6ff78">
-                <div class="text-center">
-                    <div>Pendaftaran Tahun Pembelajaran {{ \App\Konfigurasi::first()->tahun_pembelajaran }}/{{ \App\Konfigurasi::first()->tahun_pembelajaran + 1 }} Telah Dibuka</div>
-                    <a href="/registrasi" class="btn btn-daftar mt-2"> Registrasi</a>
-                </div>
-            </div>
+            @include('components/registrasi-header')
         @endif
         <div class="d-flex justify-content-center sunodia-main-title" style="background: #1e88e5">
             <div class="text-center">
                 <img src="{{ asset('img/logo.png') }}" width="150" height="150" alt="">
-                <h4 class="text-white">{{ strtoupper($tingkat) }} Kristen  Sunodia</h4>
+                <h4 class="text-white">{{ strtoupper($tingkat) }} Kristen  Sunodia Samarinda</h4>
             </div>
         </div>
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -95,9 +140,9 @@ background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/s
         </div>
         </nav>
         @yield('content')
-        <footer class="footer">
-           
-        </footer>
+        @include('components.footer')
+
+        
         <script src="{{ asset('js/app.js') }}"></script>
         <script>
             $('.jenjang').hover(

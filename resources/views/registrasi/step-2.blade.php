@@ -335,5 +335,9 @@
         @if(old('agama') == 'Kristen' || old('agama') == 'Katolik')
             $('#tambahan-kristen').show();
         @endif
+
+        $(function () {
+            $('[data-toggle="popover"]').popover()
+        })
     </script>
 @endsection

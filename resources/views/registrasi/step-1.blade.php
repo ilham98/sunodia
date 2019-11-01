@@ -41,7 +41,7 @@
         @include('registrasi.sesi-button')
         <form action="{{ url('registrasi/1') }}" class="mt-3 px-3 pb-3" method="POST">
             <div class="m-3" style="color: #707070">
-                Pilih Kelas Tujuan
+                Pilih Unit/Jenjang Siswa Yang Diinginkan
             </div>
             <input type="radio" {{ (old('tingkat') ? old('tingkat') : $reg->tingkat) == '1' ? 'checked' : '' }} class="ml-3" value="1" name="tingkat">
             <div class='ml-3 tingkat'>KB Kecil</div>
@@ -79,19 +79,19 @@
         $("input[name='tingkat']").click(function() {
             var tingkat = $("input[name='tingkat']:checked").val();
             if(tingkat == 1) {
-                alertBatasUsia('Batas Usia untuk KB Kecil adalah ...');
+                alertBatasUsia('Batas usia siswa untuk mendaftar <br> pada jenjang <b>KB Kecil</b> adalah <b>1.8 - 2.7 Tahun</b>');
             } else if(tingkat == 2) {
-                alertBatasUsia('mantap');
+                alertBatasUsia('Batas usia siswa untuk mendaftar <br> pada jenjang <b>KB Besar</b> adalah <b>2.8 - 3.7 Tahun</b>');
             } else if(tingkat == 3) {
-                alertBatasUsia('mantap');
+                alertBatasUsia('Batas usia siswa untuk mendaftar <br> pada jenjang <b>TK A</b> adalah <b>3.8 - 4.7 Tahun</b>');
             } else if(tingkat == 4) { 
-                alertBatasUsia('mantap');
+                alertBatasUsia('Batas usia siswa untuk mendaftar <br> pada jenjang <b>TK B</b> adalah <b>4.8 - 5.7 Tahun</b>');
             }
         })
 
         function alertBatasUsia(message) {
             Swal.fire(
-                'Warning',
+                'Peringatan Batas Usia',
                 message,
                 'warning'
             );

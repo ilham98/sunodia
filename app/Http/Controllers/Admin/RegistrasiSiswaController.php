@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\RegistrasiSiswa;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 
 class RegistrasiSiswaController extends Controller
@@ -17,13 +18,25 @@ class RegistrasiSiswaController extends Controller
             $reg = $reg->where('tingkat', $request->jenjang);
         }
         if($request->dari_tanggal) {
-            $reg = $reg->where('saved_date', '>=', $request->dari_tanggal);
+            $reg = $reg->where(DB::raw('DATE(saved_date)'), '>=', $request->dari_tanggal);
         }
 
         if($request->hingga_tanggal) {
-            $reg = $reg->where('saved_date', '<=', $request->hingga_tanggal);
+            $reg = $reg->where(DB::raw('DATE(saved_date)'), '<=', $request->hingga_tanggal);
         }
-        $reg = $reg->paginate(10);  
+        
+        if($request->input == 'Download PDF') {
+            $reg = $reg->orderBy('saved_date', 'asc');
+            $reg = $reg->get();
+            $dari_tanggal = $request->dari_tanggal ? date('d-m-Y', strtotime($request->dari_tanggal)) : null;
+            $hingga_tanggal = $request->hingga_tanggal ? date('d-m-Y', strtotime($request->hingga_tanggal)) : null;
+            $jenjang = $request->jenjang ? $this->getNamaTingkat($request->jenjang) : null;
+            $tahun_pembelajaran = $request->tahun_pembelajaran;
+            $pdf = \PDF::loadView('admin.registrasi_siswa.pdf', compact('reg', 'dari_tanggal', 'hingga_tanggal', 'jenjang', 'tahun_pembelajaran'))->setPaper('a4', 'landscape');;
+            return $pdf->stream();
+        }
+
+        $reg = $reg->paginate(30);  
         $tahun_pembelajaran = RegistrasiSiswa::where('saved', 1)->orderBy('tahun_pembelajaran', 'desc')->get()->map(function($tp) {
             return $tp->tahun_pembelajaran;
         })->unique();
@@ -33,14 +46,18 @@ class RegistrasiSiswaController extends Controller
     public function getNamaTingkat($tingkat) {
         switch($tingkat) {
             case 1:
-                return 'KB';
+                return 'KB Kecil';
             case 2:
-                return 'TK';
+                return 'KB Besar';
             case 3:
-                return 'SD';
+                return 'TK A';
             case 4:
-                return 'SMP';
+                return 'TK B';
             case 5:
+                return 'SD';
+            case 6:
+                return 'SMP';
+            case 7:
                 return 'SMA';
         }
     }
@@ -88,5 +105,22 @@ class RegistrasiSiswaController extends Controller
                 'dokumen'
             )
         );
+    }
+
+    public function pdf(Request $request) {
+        $reg = RegistrasiSiswa::where('saved', 1);
+        if($request->tahun_pembelajaran) {
+            $reg = $reg->where('tahun_pembelajaran', $request->tahun_pembelajaran);
+        }
+        if($request->jenjang) {
+            $reg = $reg->where('tingkat', $request->jenjang);
+        }
+        if($request->dari_tanggal) {
+            $reg = $reg->where(DB::raw('DATE(saved_date)'), '>=', $request->dari_tanggal);
+        }
+
+        if($request->hingga_tanggal) {
+            $reg = $reg->where(DB::raw('DATE(saved_date)'), '<=', $request->hingga_tanggal);
+        }
     }
 }

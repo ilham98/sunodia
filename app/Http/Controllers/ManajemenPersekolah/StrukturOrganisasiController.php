@@ -21,6 +21,13 @@ class StrukturOrganisasiController extends Controller
             'struktur_organisasi' => 'required'
         ]);
         $struktur_organisasi = StrukturOrganisasi::where('tingkat', $tingkat)->first();
+
+        if($struktur_organisasi->url) {
+            $url_exploded = explode('/', $struktur_organisasi->url);
+            $path = implode('/', [ $url_exploded[4], $url_exploded[5] ]);
+            Storage::disk('public_uploads')->delete($path);
+        }
+
         $struktur_organisasi->url = $this->fileHandler($request->file('struktur_organisasi'))['url'];
         $struktur_organisasi->save();
         return redirect(url()->previous())->with('success', 'Gambar struktur organisasi berhasil diupdate.');

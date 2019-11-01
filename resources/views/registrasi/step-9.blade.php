@@ -45,7 +45,7 @@
             </div>
         @endif
         @if($reg->saved == 1)
-            <div class="m-2 alert alert-success h3 text-center">Selamat anda telah berhasil melakukan pendaftaran.</div>
+            <div class="m-2 alert alert-success h3 text-center">Selamat anda telah berhasil melakukan pendaftaran. <br> Nomor Registrasi : {{ $reg->nomor_registrasi }}</div>
         @endif
 
         @if($reg->saved == 1 && !$sesi_belum_selesai)
@@ -56,7 +56,7 @@
         {{-- ----------------------------------------- STEP 1 ----------------------------------------- --}}
         <form action="{{ url('registrasi/1') }}" class="p-3" method="POST">
             <div class="my-1" style="color: #707070">
-                Kelas Tujuan Yang Dipilih
+                Unit/Jenjang Siswa Yang Dipilih
             </div>
             <div class='my-1 tingkat'>{{ $tingkat }}</div>
             @csrf
@@ -514,5 +514,10 @@
             });
             
         });
+    </script>
+    <script>
+        $(function () {
+            $('[data-toggle="popover"]').popover()
+        })
     </script>
 @endsection

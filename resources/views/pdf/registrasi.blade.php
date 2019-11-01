@@ -91,7 +91,7 @@
         </div>
         <div style="width: 250px; margin-left: auto">
             <div class="cover-nama-sekolah">SD - SMP - SMA</div>
-            <div class="cover-detail">Jl. Karini No. 112A</div>
+            <div class="cover-detail">Jl. Kartini No. 112A</div>
             <div class="cover-detail">Samarinda 75117</div>
             <div class="cover-detail">Telp. (0541) 7777680</div>
             <div class="cover-detail">Telp. (0541) 7777681</div>
@@ -271,28 +271,30 @@
     @php
         $index++;
     @endphp
-    <table border='1' style="border-collapse: collapse; width: 100%">
-        <thead>
-            <tr>
-                <th>No</th>
-                <th>Nama</th>
-                <th>Umur</th>
-                <th>Pendidikan</th>
-                <th>Kakak / Adik</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach($reg->saudara as $i => $s)
+    @if(count($reg->saudara) > 0)
+        <table border='1' style="border-collapse: collapse; width: 100%">
+            <thead>
                 <tr>
-                    <td>{{ $i+1 }}</td>
-                    <td>{{ $s->saudara_nama }}</td>
-                    <td>{{ $s->saudara_umur }}</td>
-                    <td>{{ $s->saudara_pendidikan }}</td>
-                    <td>{{ $s->saudara_status }}</td>
+                    <th>No</th>
+                    <th>Nama</th>
+                    <th>Umur</th>
+                    <th>Pendidikan</th>
+                    <th>Kakak / Adik</th>
                 </tr>
-            @endforeach
-        </tbody>
-    </table>
+            </thead>
+            <tbody>
+                @foreach($reg->saudara as $i => $s)
+                    <tr>
+                        <td>{{ $i+1 }}</td>
+                        <td>{{ $s->saudara_nama }}</td>
+                        <td>{{ $s->saudara_umur }}</td>
+                        <td>{{ $s->saudara_pendidikan }}</td>
+                        <td>{{ $s->saudara_status }}</td>
+                    </tr>
+                @endforeach
+            </tbody>
+        </table>
+    @endif
     <table class="table-form">
         <tr>
             <td>{{ chr($index) }}.</td>

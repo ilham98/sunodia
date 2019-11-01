@@ -518,14 +518,18 @@ class RegistrasiController extends Controller
     public function getNamaTingkat($tingkat) {
         switch($tingkat) {
             case 1:
-                return 'KB';
+                return 'KB Kecil';
             case 2:
-                return 'TK';
+                return 'KB Besar';
             case 3:
-                return 'SD';
+                return 'TK A';
             case 4:
-                return 'SMP';
+                return 'TK B';
             case 5:
+                return 'SD';
+            case 6:
+                return 'SMP';
+            case 7:
                 return 'SMA';
         }
     }

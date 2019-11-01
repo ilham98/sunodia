@@ -216,7 +216,7 @@
                 <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil, hic.</li>
             </ul>
         </div>
-        <div class="title-2 mt-3">Jenjang Pendidikan</div>
+        {{-- <div class="title-2 mt-3">Jenjang Pendidikan</div>
         <div class="row mt-3 py-2" style="background: rgba(247, 179, 7, 0.5); border-radius: 100px;">
             <div class="col-sm-12 d-flex align-self-start">
                 <div class='jenjang text-white w-100' id="sd" data-id='1'><span>SD</span></div>
@@ -224,7 +224,7 @@
                 <div class='jenjang text-white w-100' id="sma" data-id='3'><span>SMA</span></div>
             </div>
             
-        </div>
+        </div> --}}
         <div class="mt-3" id="deskripsi-jenjang">
             <p></p>
         </div>
@@ -239,6 +239,9 @@
             el: '.swiper-pagination',
             type: 'fraction',
           },
+          autoplay: {
+                delay: 3000,
+            },
           navigation: {
             nextEl: '.swiper-button-next',
             prevEl: '.swiper-button-prev',
