@@ -23,17 +23,18 @@
     <div class="container p-0 bg-white register-box mt-3">
         <h5 class="m-0"><img height='40' src="https://img.icons8.com/dotty/80/000000/note.png"> Registrasi - Data Calon Siswa (2/7)</h5>
         @include('registrasi.sesi-button')
+        <div class="m-1 alert alert-warning font-italic">Ket: Semua field yang bertanda bintang wajib diisi</div>
         <form action="{{ url('registrasi/2') }}" class="p-3" id="biodata-form" method="POST" enctype="multipart/form-data">
             <div class="row">
                 <div class="form-group col-sm-8">
-                    <label>Nama</label>
+                    <label>Nama *</label>
                     <input name="nama" type="text" class="form-control" value="{{ old('nama') ? old('nama') : $reg->nama }}">
                     @if($errors->has('nama'))
                         <p class="text-danger">{{ $errors->first('nama') }}</p>
                     @endif
                 </div>
                 <div class="form-group col-sm-4">
-                        <label>Jenis Kelamin</label>
+                        <label>Jenis Kelamin *</label>
                         <select name="jenis_kelamin" class="form-control">
                             <option value="">Pilih Jenis Kelamin</option>
                             <option value="Laki-laki" {{ (old('jenis_kelamin') ? old('jenis_kelamin') : $reg->jenis_kelamin ) == 'Laki-laki' ? 'selected' : ''  }}>Laki-laki</option>
@@ -46,14 +47,14 @@
             </div>
             <div class="row">
                 <div class="form-group col-sm-6">
-                    <label>Tempat Lahir</label>
+                    <label>Tempat Lahir *</label>
                     <input name="tempat_lahir" type="text" class="form-control" value="{{ old('tempat_lahir') ? old('tempat_lahir') : $reg->tempat_lahir }}">
                     @if($errors->has('tempat_lahir'))
                         <p class="text-danger">{{ $errors->first('tempat_lahir') }}</p>
                     @endif
                 </div>
                 <div class="form-group col-sm-6">
-                    <label>Tanggal Lahir</label>
+                    <label>Tanggal Lahir *</label>
                     <input name="tanggal_lahir" type="date" class="form-control" value="{{ old('tanggal_lahir') ? old('tanggal_lahir') : $reg->tanggal_lahir }}">
                     @if($errors->has('tanggal_lahir'))
                         <p class="text-danger">{{ $errors->first('tanggal_lahir') }}</p>
@@ -62,7 +63,7 @@
             </div>
             <div class="row">
                 <div class="form-group col-sm-6">
-                    <label>Agama</label>
+                    <label>Agama *</label>
                     <select name="agama" id="agama" class="form-control">
                         <option value="">Pilih Agama</option>
                         <option value="Kristen" {{ (old('agama') ? old('agama') : $reg->agama) == 'Kristen' ? 'selected' : '' }}>Kristen</option>
@@ -77,7 +78,7 @@
                     @endif
                 </div>
                 <div class="form-group col-sm-6">
-                    <label>Kewarganegaraan</label>
+                    <label>Kewarganegaraan *</label>
                     <input type="text" value="{{ old('kewarganegaraan') ? old('kewarganegaraan') : $reg->kewarganegaraan }}" name="kewarganegaraan" class="form-control">
                     @if($errors->has('kewarganegaraan'))
                         <p class="text-danger">{{ $errors->first('kewarganegaraan') }}</p>
@@ -86,14 +87,14 @@
             </div>
             <div class="row" id="tambahan-kristen" style="display: none">
                 <div class="form-group col-sm-6">
-                    <label>Jika Kristen / Katolik Bergereja di</label>
+                    <label>Jika Kristen / Katolik Bergereja di *</label>
                     <input type="text" class='form-control' name='bergereja_di' value="{{ old('bergereja_di') ? old('bergereja_di') : $reg->bergereja_di }}">
                     @if($errors->has('bergereja_di'))
                         <p class="text-danger">{{ $errors->first('bergereja_di') }}</p>
                     @endif
                 </div>
                 <div class="form-group col-sm-6">
-                    <label>Aktif / Pelajayan sebagai</label>
+                    <label>Aktif / Pelajayan sebagai *</label>
                     <input type="text" class='form-control' name='aktif_pelayan' value="{{ old('aktif_pelayan') ? old('aktif_pelayan') : $reg->aktif_pelayan }}">
                     @if($errors->has('aktif_pelayan'))
                         <p class="text-danger">{{ $errors->first('aktif_pelayan') }}</p>
@@ -102,7 +103,7 @@
             </div>
             <div class="row">
                 <div class="form-group col-sm-12">
-                    <label>Alamat Rumah</label>
+                    <label>Alamat Rumah *</label>
                     <textarea name="alamat_rumah" type="text" class="form-control">{{ old('alamat_rumah') ? old('alamat_rumah') : $reg->alamat_rumah }}</textarea>
                     @if($errors->has('alamat_rumah'))
                         <p class="text-danger">{{ $errors->first('alamat_rumah') }}</p>
@@ -111,7 +112,7 @@
             </div>
             <div class="row">
                 <div class="form-group col-sm-6">
-                    <label>Kode Pos</label>
+                    <label>Kode Pos *</label>
                     <input name="kode_pos" type="text" class="form-control" value="{{ old('kode_pos') ? old('kode_pos') : $reg->kode_pos }}">
                     @if($errors->has('kode_pos'))
                         <p class="text-danger">{{ $errors->first('kode_pos') }}</p>
@@ -127,7 +128,7 @@
             </div>
             <div class="row">
                 <div class="form-group col-sm-12">
-                    <label>Tinggal Dengan</label>
+                    <label>Tinggal Dengan *</label>
                     <br>
                     <input type="radio" value="Orang Tua" {{ (old('tinggal_dengan') ? old('tinggal_dengan') : $reg->tinggal_dengan)  == 'Orang Tua' ? 'checked' : '' }} name="tinggal_dengan" class="ml-2"> Orang Tua
                     <input type="radio" value="Wali"{{ (old('tinggal_dengan') ? old('tinggal_dengan') : $reg->tinggal_dengan) == 'Wali' ? 'checked' : '' }} name="tinggal_dengan" class="ml-2"> Wali
@@ -140,7 +141,7 @@
             </div>
             <div class="row">
                 <div class="form-group col-sm-6">
-                    <label>No Hp Calon Siswa</label>
+                    <label>No Hp Calon Siswa *</label>
                     <input type="text" name="no_hp_calon_siswa" class="form-control" value="{{ old('no_hp_calon_siswa') ? old('no_hp_calon_siswa') : $reg->no_hp_calon_siswa }}">
                     @if($errors->has('no_hp_calon_siswa'))
                         <p class="text-danger">{{ $errors->first('no_hp_calon_siswa') }}</p>
@@ -156,14 +157,14 @@
             </div>
             <div class="row">
                 <div class="form-group col-sm-6">
-                    <label>Anak Keberapa dalam keluarga</label>
+                    <label>Anak Keberapa dalam keluarga *</label>
                     <input name="anak_ke" type="text" class="form-control" value="{{ old('anak_ke') ? old('anak_ke') : $reg->anak_ke }}">
                     @if($errors->has('anak_ke'))
                         <p class="text-danger">{{ $errors->first('anak_ke') }}</p>
                     @endif
                 </div>
                 <div class="form-group col-sm-6">
-                    <label>Jumlah Saudara Kandung / Angkat</label>
+                    <label>Jumlah Saudara Kandung / Angkat *</label>
                     <input name="jumlah_saudara" type="text" class="form-control" value="{{ old('jumlah_saudara') ? old('jumlah_saudara') : $reg->jumlah_saudara }}">
                     @if($errors->has('jumlah_saudara'))
                         <p class="text-danger">{{ $errors->first('jumlah_saudara') }}</p>
@@ -172,7 +173,7 @@
             </div>
             <div class="row">
                 <div class="form-group col-sm-12" id="saudara-section">
-                    <label>Saudara Kandung / angkat yang masih sekolah</label>
+                    <label>Saudara Kandung / angkat yang masih sekolah *</label>
                     <table class="table table-responsive w-100">
                         <thead>
                             <tr>
@@ -216,7 +217,7 @@
             </div>
             <div class="row col-sm-6">
                 <div class="form-group">
-                    <label>Jarak Tempuh Ke sekolah</label>
+                    <label>Jarak Tempuh Ke sekolah *</label>
                     <div class="input-group mb-3">
                         <input name="jarak_tempuh_sekolah" type="text" value="{{ old('jarak_tempuh_sekolah') ? old('jarak_tempuh_sekolah') : $reg->jarak_tempuh_sekolah }}" class="form-control" placeholder="" aria-label="Recipient's username" aria-describedby="basic-addon2">
                         <div class="input-group-append">
@@ -230,7 +231,7 @@
             </div>
             <div class="row col-sm-6">
                 <div class="form-group">
-                    <label>Waktu tempuh ke Sekolah</label>
+                    <label>Waktu tempuh ke Sekolah *</label>
                     <div class="input-group mb-3">
                         <input name="waktu_tempuh_sekolah" value="{{ old('waktu_tempuh_sekolah') ? old('waktu_tempuh_sekolah') : $reg->waktu_tempuh_sekolah }}" type="text" class="form-control" placeholder="" aria-label="Recipient's username" aria-describedby="basic-addon2">
                         <div class="input-group-append">

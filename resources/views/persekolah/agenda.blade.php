@@ -1,6 +1,6 @@
 @extends('persekolah.master')
 
-@section('title', 'Dashboard '.strtoupper($tingkat))
+@section('title', strtoupper($tingkat).' Sunodia ~ Agenda Sekolah')
 
 @section('css')
     <link rel="stylesheet" href="{{ asset('css/swiper.css') }}">

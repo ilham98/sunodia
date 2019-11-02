@@ -42,10 +42,11 @@
 @section('content')
     <div class="container p-0 bg-white register-box mt-3">
         <h5 class="m-0"><img height='40' src="https://img.icons8.com/dotty/80/000000/note.png"> Registrasi - Upload Berkas (7/7)</h5>
+        <div class="m-1 alert alert-warning font-italic">Ket: Semua field File yang bertanda bintang wajib diupload</div>
         @include('registrasi.sesi-button')
             @foreach($dokumen ?? '' as $d)
                 <form id="form-{{ $d->id }}" action="{{ url('registrasi/7/dokumen/'.$d->id) }}" class="p-3" method="POST" enctype="multipart/form-data">
-                    <label for="dokumen[{{ $d->id }}]">{{ $d->jenis_dokumen->nama }}</label>
+                    <label for="dokumen[{{ $d->id }}]">{{ $d->jenis_dokumen->nama }} {{ !in_array($d->jenis_dokumen_id, [7, 8]) ? '*' : '' }}</label>
                     <br>
                     <input class="inputfile" name="dokumen" id='dokumen-{{ $d->id }}' id="dokumen" type="file">
                     @if($errors->has('dokumen') && session('error-id') == $d->id)

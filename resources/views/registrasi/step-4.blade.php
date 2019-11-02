@@ -23,10 +23,11 @@
     <div class="container p-0 bg-white register-box mt-3">
         <h5 class="m-0"><img height='40' src="https://img.icons8.com/dotty/80/000000/note.png"> Registrasi - Keterangan Kesehatan (4/7)</h5>
         @include('registrasi.sesi-button')
+        <div class="m-1 alert alert-warning font-italic">Ket: Semua field yang bertanda bintang wajib diisi</div>
         <form action="{{ url('registrasi/4') }}" class="p-3" method="POST" enctype="multipart/form-data">
             <div class="row">
                 <div class="form-group col-sm-4">
-                    <label>Golongan Darah</label>
+                    <label>Golongan Darah *</label>
                     <br>
                     <input type="radio" name="golongan_darah" value='A' {{ (old('golongan_darah') ? old('golongan_darah') : $reg->golongan_darah) == 'A' ? 'checked' : '' }} class="ml-1"> A
                     <input type="radio" name="golongan_darah" value='B' {{ (old('golongan_darah') ? old('golongan_darah') : $reg->golongan_darah) == 'B' ? 'checked' : '' }} class="ml-1"> B
@@ -37,7 +38,7 @@
                     @endif
                 </div>
                 <div class="form-group col-sm-4">
-                        <label>Rhesus</label>
+                        <label>Rhesus *</label>
                         <br>
                         <select name="rhesus" id="" class="form-control">
                             <option value="positif" {{ (old('rhesus') ? old('rhesus') : $reg->rhesus) == 'positif' ? 'selected' : '' }}>Positif</option>
@@ -48,7 +49,7 @@
                         @endif
                     </div>
                 <div class="form-group col-sm-4">
-                    <label>Pernah Melakukan Donor</label>
+                    <label>Pernah Melakukan Donor *</label>
                     <br>
                     <input type="radio" name="pernah_melakukan_donor" value="0" {{ (old('pernah_melakukan_donor') ? old('pernah_melakukan_donor') : $reg->pernah_melakukan_donor) == 0 ? 'checked' : '' }} class="ml-1"> Ya
                     <input type="radio" name="pernah_melakukan_donor" value="1" {{ (old('pernah_melakukan_donor') ? old('pernah_melakukan_donor') : $reg->pernah_melakukan_donor) == 1 ? 'checked' : '' }} class="ml-1"> Tidak
@@ -78,7 +79,7 @@
             </div>
             <div class="row">
                 <div class="form-group col-sm-6">
-                    <label>Tinggi Badan</label>
+                    <label>Tinggi Badan *</label>
                     <div class="input-group mb-3">
                         <input type="text" class="form-control" name="tinggi_badan" value="{{ old('tinggi_badan') ? old('tinggi_badan') : $reg->tinggi_badan }}" placeholder="" aria-label="Recipient's username" aria-describedby="basic-addon2">
                         <div class="input-group-append">
@@ -90,7 +91,7 @@
                     @endif
                 </div>
                 <div class="form-group col-sm-6">
-                    <label>Berat Badan</label>
+                    <label>Berat Badan *</label>
                     <div class="input-group mb-3">
                         <input type="text" name="berat_badan" value="{{ old('berat_badan') ? old('berat_badan') : $reg->berat_badan }}" class="form-control" placeholder="" aria-label="Recipient's username" aria-describedby="basic-addon2">
                         <div class="input-group-append">

@@ -112,28 +112,28 @@ background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/s
                 <li class="nav-item mt-3 mt-sm-0">
                     <a  href="{{ url('/') }}" class="btn btn-warning">Website Utama Sunodia</span></a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item {{ url($tingkat) == url()->current() ? 'active' : '' }}">
                     <a class="nav-link" href="{{ url($tingkat) }}">Home</span></a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item {{ url($tingkat.'/berita') == url()->current() ? 'active' : '' }}">
                     <a class="nav-link" href="{{ url($tingkat.'/berita') }}">Berita</span></a>
                     </li>
-                <li class="nav-item">
+                <li class="nav-item {{ url($tingkat.'/profil') == url()->current() ? 'active' : '' }}">
                     <a class="nav-link" href="{{ url($tingkat.'/profil') }}">Profil</a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item {{ url($tingkat.'/struktur-organisasi') == url()->current() ? 'active' : '' }}">
                     <a class="nav-link" href="{{ url($tingkat.'/struktur-organisasi') }}">Struktur Organisasi</a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item {{ url($tingkat.'/fasilitas') == url()->current() ? 'active' : '' }}">
                     <a class="nav-link" href="{{ url($tingkat.'/fasilitas') }}">Fasilitas</a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item {{ url($tingkat.'/agenda-sekolah') == url()->current() ? 'active' : '' }}">
                     <a class="nav-link" href="{{ url($tingkat.'/agenda-sekolah') }}">Agenda Sekolah</a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item {{ url($tingkat.'/galeri') == url()->current() ? 'active' : '' }}">
                     <a class="nav-link" href="{{ url($tingkat.'/galeri') }}">Galeri</a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item {{ url($tingkat.'/prestasi') == url()->current() ? 'active' : '' }}">
                     <a class="nav-link" href="{{ url($tingkat.'/prestasi') }}">Prestasi</a>
                 </li>
             </ul>

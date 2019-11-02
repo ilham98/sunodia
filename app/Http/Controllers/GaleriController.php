@@ -10,7 +10,7 @@ class GaleriController extends Controller
     public function index() {
         $album = Album::orderBy('created_at', 'desc')->where(function($query) {
             $query->where('tingkat', '')->orWhere('tingkat', null);
-        })->paginate(4);
+        })->whereHas('photos')->paginate(4);
         return view('public.galeri', compact('album'));
     }
 }

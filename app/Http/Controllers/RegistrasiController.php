@@ -27,7 +27,7 @@ class RegistrasiController extends Controller
             $this->sesi_registrasi_url = array_map(function($r) {
                 return Crypt::encryptString($r);
             }, $this->sesi_registrasi);
-        }  
+        } 
     }
 
     public function new_session(Request $request) {
@@ -63,7 +63,7 @@ class RegistrasiController extends Controller
                 ->withCookie(cookie()->forever('registrasi_token', $session));
         }
 
-        $reg_token = $request->cookie('registrasi_token');
+        $reg_token = $request->cookie('registrasi_token');     
         $konfigurasi = Konfigurasi::first();
         if(!$reg_token) {
             $reg = RegistrasiSiswa::create([
@@ -154,7 +154,7 @@ class RegistrasiController extends Controller
             'kewarganegaraan' => 'required',
             'alamat_rumah' => 'required',
             'kode_pos' => 'required|numeric|digits:5',
-            'telepon' => 'required|numeric',
+            'telepon' => 'nullable|numeric',
             'tinggal_dengan' => 'required',
             'no_hp_calon_siswa' => 'required|numeric',
             'anak_ke' => 'required|integer',
@@ -214,9 +214,7 @@ class RegistrasiController extends Controller
         $reg = RegistrasiSiswa::find($this->reg_id);
         $validate = [];
 
-        if($reg->tingkat == 1 || $reg->tingkat == 2) {
-
-        } else {
+        if(!in_array($reg->tingkat, [1,2,3,4,5])) {
             $validate = array_merge($validate, [
                 'asal_sekolah' => 'required',
                 'alamat_sekolah' => 'required',
@@ -511,7 +509,7 @@ class RegistrasiController extends Controller
             $query->where('url', null)->whereNotIn('jenis_dokumen_id', [7, 8]);
         })->exists();
         if($dokumen_tak_lengkap) 
-            return redirect(url()->previous())->with('error', 'Upload semua dokumen untuk melanjutkan.');
+            return redirect(url()->previous())->with('error', 'Upload semua dokumen yang memiliki label bintang untuk melanjutkan.');
         return redirect(url('registrasi?goto=next&from=7'));
     }
 

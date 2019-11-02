@@ -50,7 +50,7 @@
 
         @if($reg->saved == 1 && !$sesi_belum_selesai)
             <div class="text-center">
-                <a href="{{ url('registrasi/new-session') }}" class="btn btn-primary btn-lg">Mulai Sesi Pendaftaran Baru</a>
+                <a href="{{ url('registrasi/new-session') }}" class="btn btn-primary btn-lg">Pendaftaran Baru</a>
             </div>
         @endif
         {{-- ----------------------------------------- STEP 1 ----------------------------------------- --}}

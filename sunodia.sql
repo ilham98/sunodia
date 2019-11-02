@@ -22,7 +22,7 @@ CREATE TABLE IF NOT EXISTS `agenda_kegiatan` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
 
--- Dumping data for table p002-sunodia.agenda_kegiatan: ~2 rows (approximately)
+-- Dumping data for table p002-sunodia.agenda_kegiatan: ~3 rows (approximately)
 /*!40000 ALTER TABLE `agenda_kegiatan` DISABLE KEYS */;
 INSERT INTO `agenda_kegiatan` (`id`, `tingkat`, `nama`, `tanggal_mulai_pelaksanaan`, `tanggal_selesai_pelaksanaan`, `pelaksana`) VALUES
 	(5, 'tk-kb', 'sfd', '2019-10-09', '2019-10-02', 'sdfsdf'),
@@ -61,8 +61,8 @@ CREATE TABLE IF NOT EXISTS `album` (
 -- Dumping data for table p002-sunodia.album: ~2 rows (approximately)
 /*!40000 ALTER TABLE `album` DISABLE KEYS */;
 INSERT INTO `album` (`id`, `nama`, `tingkat`, `created_at`, `updated_at`) VALUES
-	(2, 'kren', '', '2019-10-27 20:24:12', '2019-10-27 20:24:12'),
-	(3, 'keren', '', '2019-10-27 20:27:32', '2019-10-27 20:27:32');
+	(2, 'kren', '', '2019-10-27 13:24:12', '2019-10-27 13:24:12'),
+	(3, 'keren', '', '2019-10-27 13:27:32', '2019-10-27 13:27:32');
 /*!40000 ALTER TABLE `album` ENABLE KEYS */;
 
 -- Dumping structure for table p002-sunodia.berita
@@ -76,15 +76,14 @@ CREATE TABLE IF NOT EXISTS `berita` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Dumping data for table p002-sunodia.berita: ~6 rows (approximately)
+-- Dumping data for table p002-sunodia.berita: ~5 rows (approximately)
 /*!40000 ALTER TABLE `berita` DISABLE KEYS */;
 INSERT INTO `berita` (`id`, `judul`, `isi`, `tingkat`, `created_at`, `updated_at`) VALUES
 	(1, 'Berita 1', '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p><p><img src="http://127.0.0.1:8000/uploads/_test-files/5db0a4b0b16fb.jpg" style="" width="606"></p><p><br></p>', NULL, NULL, NULL),
 	(2, 'Berita 2', '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p><p><img src="http://127.0.0.1:8000/uploads/_test-files/5db0a4e153674.jpeg"></p>', NULL, NULL, NULL),
 	(3, 'Berita 3', '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p><p><br></p><p><img src="http://127.0.0.1:8000/uploads/_test-files/5db0a43c93295.jpg" style="" width="711"></p>', NULL, NULL, NULL),
-	(4, 'keren keren', '<p>haha mantap</p><p><br></p><p><img src="https://picsum.photos/200/300"></p><p><br></p>', 'tk-kb', '2019-10-27 20:07:06', '2019-10-28 00:02:36'),
-	(5, 'kerenjljljl', '<p>Hello World!</p><p>Some initial <strong>bold</strong> text</p><p>Hello World!</p><p>Some initial <strong>bold</strong> text</p><p>Hello World!</p><p>Some initial <strong>bold</strong> text</p><p>Hello World!</p><p>Some initial <strong>bold</strong> text</p><p>Hello World!</p><p>Some initial <strong>bold</strong> text</p><p>Hello World!</p><p>Some initial <strong>bold</strong> text</p><p>Hello World!</p><p>Some initial <strong>bold</strong> text</p><p>Hello World!</p><p>Some initial <strong>bold</strong> text</p><p>Hello World!</p><p>Some initial <strong>bold</strong> text</p><p>Hello World!</p><p>Some initial <strong>bold</strong> text</p><p>Hello World!</p><p>Some initial <strong>bold</strong> text</p><p>Hello World!</p><p>Some initial <strong>bold</strong> text</p><p>Hello World!</p><p>Some initial <strong>bold</strong> text</p><p>Hello World!</p><p>Some initial <strong>bold</strong> text</p><p>Hello World!</p><p>Some initial <strong>bold</strong> text</p><p>Hello World!</p><p>Some initial <strong>bold</strong> text</p><p>Hello World!</p><p>Some initial <strong>bold</strong> text</p><p>Hello World!</p><p>Some initial <strong>bold</strong> text</p><p>Hello World!</p><p>Some initial <strong>bold</strong> text</p><p>Hello World!</p><p>Some initial <strong>bold</strong> text</p><p>Hello World!</p><p>Some initial <strong>bold</strong> text</p><p>Hello World!</p><p>Some initial <strong>bold</strong> text</p><p>Hello World!</p><p>Some initial <strong>bold</strong> text</p><p>Hello World!</p><p>Some initial <strong>bold</strong> text</p><p>Hello World!</p><p>Some initial <strong>bold</strong> text</p><p>Hello World!</p><p>Some initial <strong>bold</strong> text</p><p>Hello World!</p><p>Some initial <strong>bold</strong> text</p><p>Hello World!</p><p>Some initial <strong>bold</strong> text</p><p>Hello World!</p><p>Some initial <strong>bold</strong> text</p><p>Hello World!</p><p>Some initial <strong>bold</strong> text</p><p>Hello World!</p><p>Some initial <strong>bold</strong> text</p><p>Hello World!</p><p>Some initial <strong>bold</strong> text</p><p>Hello World!</p><p>Some initial <strong>bold</strong> text</p><p>Hello World!</p><p>Some initial <strong>bold</strong> text</p><p>Hello World!</p><p>Some initial <strong>bold</strong> text</p><p>Hello World!</p><p>Some initial <strong>bold</strong> text</p><p>Hello World!</p><p>Some initial <strong>bold</strong> text</p><p>Hello World!</p><p>Some initial <strong>bold</strong> text</p><p>Hello World!</p><p>Some initial <strong>bold</strong> text</p><p>Hello World!</p><p>Some initial <strong>bold</strong> text</p><p>Hello World!</p><p>Some initial <strong>bold</strong> text</p><p>Hello World!</p><p>Some initial <strong>bold</strong> text</p><p>Hello World!</p><p>Some initial <strong>bold</strong> text</p><p>Hello World!</p><p>Some initial <strong>bold</strong> text</p><p>Hello World!</p><p>Some initial <strong>bold</strong> text</p><p>Hello World!</p><p>Some initial <strong>bold</strong> text</p><p>Hello World!</p><p>Some initial <strong>bold</strong> text</p><p>Hello World!</p><p>Some initial <strong>bold</strong> text</p><p><br></p>', 'tk-kb', '2019-10-28 00:03:24', '2019-10-28 00:03:24'),
-	(6, 'kerenkeren keren', '<p class="ql-align-center">mantap gan</p>', NULL, '2019-10-28 15:21:09', '2019-10-28 15:21:09');
+	(4, 'keren keren', '<p>haha mantap</p><p><br></p><p><img src="https://picsum.photos/200/300"></p><p><br></p>', 'tk-kb', '2019-10-27 13:07:06', '2019-10-27 17:02:36'),
+	(5, 'test berita tk 1', '<p>Hello World!</p><p>Some initial <strong>bold</strong> text</p><p>Hello World!</p><p>Some initial <strong>bold</strong> text</p><p>Hello World!</p><p>Some initial <strong>bold</strong> text</p><p>Hello World!</p><p>Some initial <strong>bold</strong> text</p><p>Hello World!</p><p>Some initial <strong>bold</strong> text</p><p>Hello World!</p><p>Some initial <strong>bold</strong> text</p><p>Hello World!</p><p>Some initial <strong>bold</strong> text</p><p>Hello World!</p><p>Some initial <strong>bold</strong> text</p><p>Hello World!</p><p>Some initial <strong>bold</strong> text</p><p>Hello World!</p><p>Some initial <strong>bold</strong> text</p><p>Hello World!</p><p>Some initial <strong>bold</strong> text</p><p>Hello World!</p><p>Some initial <strong>bold</strong> text</p><p>Hello World!</p><p>Some initial <strong>bold</strong> text</p><p>Hello World!</p><p>Some initial <strong>bold</strong> text</p><p>Hello World!</p><p>Some initial <strong>bold</strong> text</p><p>Hello World!</p><p>Some initial <strong>bold</strong> text</p><p>Hello World!</p><p>Some initial <strong>bold</strong> text</p><p>Hello World!</p><p>Some initial <strong>bold</strong> text</p><p>Hello World!</p><p>Some initial <strong>bold</strong> text</p><p>Hello World!</p><p>Some initial <strong>bold</strong> text</p><p>Hello World!</p><p>Some initial <strong>bold</strong> text</p><p>Hello World!</p><p>Some initial <strong>bold</strong> text</p><p>Hello World!</p><p>Some initial <strong>bold</strong> text</p><p>Hello World!</p><p>Some initial <strong>bold</strong> text</p><p>Hello World!</p><p>Some initial <strong>bold</strong> text</p><p>Hello World!</p><p>Some initial <strong>bold</strong> text</p><p>Hello World!</p><p>Some initial <strong>bold</strong> text</p><p>Hello World!</p><p>Some initial <strong>bold</strong> text</p><p>Hello World!</p><p>Some initial <strong>bold</strong> text</p><p>Hello World!</p><p>Some initial <strong>bold</strong> text</p><p>Hello World!</p><p>Some initial <strong>bold</strong> text</p><p>Hello World!</p><p>Some initial <strong>bold</strong> text</p><p>Hello World!</p><p>Some initial <strong>bold</strong> text</p><p>Hello World!</p><p>Some initial <strong>bold</strong> text</p><p>Hello World!</p><p>Some initial <strong>bold</strong> text</p><p>Hello World!</p><p>Some initial <strong>bold</strong> text</p><p>Hello World!</p><p>Some initial <strong>bold</strong> text</p><p>Hello World!</p><p>Some initial <strong>bold</strong> text</p><p>Hello World!</p><p>Some initial <strong>bold</strong> text</p><p>Hello World!</p><p>Some initial <strong>bold</strong> text</p><p>Hello World!</p><p>Some initial <strong>bold</strong> text</p><p>Hello World!</p><p>Some initial <strong>bold</strong> text</p><p>Hello World!</p><p>Some initial <strong>bold</strong> text</p><p>Hello World!</p><p>Some initial <strong>bold</strong> text</p><p>Hello World!</p><p>Some initial <strong>bold</strong> text</p><p>Hello World!</p><p>Some initial <strong>bold</strong> text</p><p>Hello World!</p><p>Some initial <strong>bold</strong> text</p><p>Hello World!</p><p>Some initial <strong>bold</strong> text</p><p><br></p>', 'tk-kb', '2019-10-27 17:03:24', '2019-11-01 01:57:37');
 /*!40000 ALTER TABLE `berita` ENABLE KEYS */;
 
 -- Dumping structure for table p002-sunodia.dokumen
@@ -93,44 +92,13 @@ CREATE TABLE IF NOT EXISTS `dokumen` (
   `registrasi_siswa_id` int(10) unsigned NOT NULL DEFAULT 0,
   `jenis_dokumen_id` bigint(20) unsigned NOT NULL,
   `url` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=71 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+  PRIMARY KEY (`id`),
+  KEY `FK_dokumen_registrasi_siswa` (`registrasi_siswa_id`),
+  CONSTRAINT `FK_dokumen_registrasi_siswa` FOREIGN KEY (`registrasi_siswa_id`) REFERENCES `registrasi_siswa` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=101 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Dumping data for table p002-sunodia.dokumen: ~32 rows (approximately)
+-- Dumping data for table p002-sunodia.dokumen: ~0 rows (approximately)
 /*!40000 ALTER TABLE `dokumen` DISABLE KEYS */;
-INSERT INTO `dokumen` (`id`, `registrasi_siswa_id`, `jenis_dokumen_id`, `url`) VALUES
-	(19, 3, 1, 'http://127.0.0.1:8000/uploads/dokumen/5db61d2aa621b.png'),
-	(20, 3, 2, 'http://127.0.0.1:8000/uploads/dokumen/5db61d30a3778.png'),
-	(21, 3, 3, 'http://127.0.0.1:8000/uploads/dokumen/5db61d378024e.png'),
-	(22, 3, 4, 'http://127.0.0.1:8000/uploads/dokumen/5db61d3cde398.png'),
-	(24, 3, 6, 'http://127.0.0.1:8000/uploads/dokumen/5db61d4355b33.png'),
-	(25, 3, 7, NULL),
-	(26, 3, 8, NULL),
-	(30, 3, 9, 'http://127.0.0.1:8000/uploads/dokumen/5db61d4bc13fb.png'),
-	(31, 3, 10, 'http://127.0.0.1:8000/uploads/dokumen/5db61d529d63c.png'),
-	(32, 5, 1, 'http://127.0.0.1:8000/uploads/dokumen-tersimpan/OL-001/fotocopy-akte-kelahiran-calon-siswa-5db9ff58b43d7.png'),
-	(33, 5, 2, 'http://127.0.0.1:8000/dokumen-tersimpan/OL-001/kartu-keluarga-5db9ff5c1ce9e.png'),
-	(34, 5, 3, 'http://127.0.0.1:8000/dokumen-tersimpan/OL-001/ktp-5db9fe50efc13.png'),
-	(35, 5, 4, 'http://127.0.0.1:8000/dokumen-tersimpan/OL-001/foto-calon-siswa-5db9fe5585bbb.png'),
-	(36, 5, 7, 'http://127.0.0.1:8000/dokumen-tersimpan/OL-001/fotocopy-ijazah-yang-sudah-dilegalisir-5db9fe5967c44.png'),
-	(37, 5, 8, 'http://127.0.0.1:8000/dokumen-tersimpan/OL-001/fotocopy-skhu-yang-sudah-dilegalisir-5db9fe5de70b0.png'),
-	(38, 5, 11, 'http://127.0.0.1:8000/dokumen-tersimpan/OL-001/fotocopy-rapor-kelas-7-5db9fe61b0d35.png'),
-	(39, 5, 12, 'http://127.0.0.1:8000/dokumen-tersimpan/OL-001/fotocopy-rapor-kelas-8-5db9fe6501ec5.png'),
-	(40, 5, 13, 'http://127.0.0.1:8000/dokumen-tersimpan/OL-001/fotocopy-rapor-kelas-9-5db9fe67b6027.png'),
-	(55, 9, 1, 'http://127.0.0.1:8000/uploads/dokumen-tersimpan/2019/OL-001/fotocopy-akte-kelahiran-calon-siswa-5dba401394e6a.png'),
-	(56, 9, 2, 'http://127.0.0.1:8000/uploads/dokumen-tersimpan/2019/OL-001/kartu-keluarga-5dba4017cb6bd.png'),
-	(57, 9, 3, 'http://127.0.0.1:8000/uploads/dokumen-tersimpan/2019/OL-001/ktp-5dba401cdc53f.png'),
-	(58, 9, 4, 'http://127.0.0.1:8000/uploads/dokumen-tersimpan/2019/OL-001/foto-calon-siswa-5dba40218d27e.png'),
-	(59, 9, 5, 'http://127.0.0.1:8000/uploads/dokumen-tersimpan/2019/OL-001/akta-kawin-orangtua-wali-siswa-5dba40288a4dc.png'),
-	(61, 13, 1, 'http://127.0.0.1:8000/uploads/dokumen-tersimpan/2019/OL-002/fotocopy-akte-kelahiran-calon-siswa-5dba495e3f0ea.png'),
-	(62, 13, 2, 'http://127.0.0.1:8000/uploads/dokumen-tersimpan/2019/OL-002/kartu-keluarga-5dba496144165.png'),
-	(63, 13, 3, 'http://127.0.0.1:8000/uploads/dokumen-tersimpan/2019/OL-002/ktp-5dba4963e41e4.png'),
-	(64, 13, 4, 'http://127.0.0.1:8000/uploads/dokumen-tersimpan/2019/OL-002/foto-calon-siswa-5dba496a4c5cf.png'),
-	(66, 13, 6, 'http://127.0.0.1:8000/uploads/dokumen-tersimpan/2019/OL-002/surat-baptis-5dba496ccfa64.png'),
-	(67, 13, 7, 'http://127.0.0.1:8000/uploads/dokumen-tersimpan/2019/OL-002/fotocopy-ijazah-yang-sudah-dilegalisir-5dba496fde71d.png'),
-	(68, 13, 8, 'http://127.0.0.1:8000/uploads/dokumen-tersimpan/2019/OL-002/fotocopy-skhu-yang-sudah-dilegalisir-5dba497366a89.png'),
-	(69, 13, 9, 'http://127.0.0.1:8000/uploads/dokumen-tersimpan/2019/OL-002/fotocopy-rapor-kelas-5-5dba49766f39e.png'),
-	(70, 13, 10, 'http://127.0.0.1:8000/uploads/dokumen-tersimpan/2019/OL-002/fotocopy-rapor-kelas-6-5dba497955e3d.png');
 /*!40000 ALTER TABLE `dokumen` ENABLE KEYS */;
 
 -- Dumping structure for table p002-sunodia.fasilitas
@@ -157,13 +125,18 @@ CREATE TABLE IF NOT EXISTS `files` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
 
--- Dumping data for table p002-sunodia.files: ~2 rows (approximately)
+-- Dumping data for table p002-sunodia.files: ~7 rows (approximately)
 /*!40000 ALTER TABLE `files` DISABLE KEYS */;
 INSERT INTO `files` (`id`, `url`, `created_at`, `updated_at`) VALUES
-	(1, 'http://127.0.0.1:8000/uploads/files/5db5d30e6a633.png', '2019-10-27 17:25:34', '2019-10-27 17:25:34'),
-	(2, 'http://127.0.0.1:8000/uploads/files/5db5d316ac94d.png', '2019-10-27 17:25:42', '2019-10-27 17:25:42');
+	(1, 'http://127.0.0.1:8000/uploads/files/5db5d30e6a633.png', '2019-10-27 10:25:34', '2019-10-27 10:25:34'),
+	(2, 'http://127.0.0.1:8000/uploads/files/5db5d316ac94d.png', '2019-10-27 10:25:42', '2019-10-27 10:25:42'),
+	(3, 'https://www.sunodia.sch.id/uploads/files/5dbb49bf6b59b.png', '2019-10-31 21:53:19', '2019-10-31 21:53:19'),
+	(4, 'https://www.sunodia.sch.id/uploads/files/5dbb49c8c4d07.jpg', '2019-10-31 21:53:28', '2019-10-31 21:53:28'),
+	(5, 'https://www.sunodia.sch.id/uploads/files/5dbb4a0ae291d.jpg', '2019-10-31 21:54:34', '2019-10-31 21:54:34'),
+	(6, 'https://www.sunodia.sch.id/uploads/files/5dbb4a25df45b.jpg', '2019-10-31 21:55:01', '2019-10-31 21:55:01'),
+	(7, 'https://www.sunodia.sch.id/uploads/files/5dbb4a3ff0937.png', '2019-10-31 21:55:27', '2019-10-31 21:55:27');
 /*!40000 ALTER TABLE `files` ENABLE KEYS */;
 
 -- Dumping structure for table p002-sunodia.guru
@@ -194,11 +167,11 @@ CREATE TABLE IF NOT EXISTS `highlights` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Dumping data for table p002-sunodia.highlights: ~1 rows (approximately)
+-- Dumping data for table p002-sunodia.highlights: ~2 rows (approximately)
 /*!40000 ALTER TABLE `highlights` DISABLE KEYS */;
 INSERT INTO `highlights` (`id`, `url`, `keterangan`, `created_at`, `updated_at`) VALUES
-	(1, 'http://127.0.0.1:8000/uploads/highlights/5db714743bddb.png', 'sfsdfsdsdf', '2019-10-28 16:16:52', '2019-10-28 16:16:52'),
-	(2, 'http://127.0.0.1:8000/uploads/highlights/5db7192523deb.jpg', 'mantap', '2019-10-28 16:36:53', '2019-10-28 16:36:53');
+	(1, 'https://www.sunodia.sch.id/uploads/highlights/5dbb6d8d3403c.jpg', 'Mantap', '2019-11-01 00:26:05', '2019-11-01 00:26:05'),
+	(2, 'https://sunodia.sch.id/uploads/highlights/5dbb975689a90.jpg', 'Hightlight 2', '2019-11-01 03:24:22', '2019-11-01 03:24:22');
 /*!40000 ALTER TABLE `highlights` ENABLE KEYS */;
 
 -- Dumping structure for table p002-sunodia.jenis_dokumen
@@ -237,13 +210,13 @@ CREATE TABLE IF NOT EXISTS `kegemaran_prestasi` (
   `jenis_` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+  PRIMARY KEY (`id`),
+  KEY `FK_kegemaran_prestasi_registrasi_siswa` (`registrasi_siswa_id`),
+  CONSTRAINT `FK_kegemaran_prestasi_registrasi_siswa` FOREIGN KEY (`registrasi_siswa_id`) REFERENCES `registrasi_siswa` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Dumping data for table p002-sunodia.kegemaran_prestasi: ~0 rows (approximately)
 /*!40000 ALTER TABLE `kegemaran_prestasi` DISABLE KEYS */;
-INSERT INTO `kegemaran_prestasi` (`id`, `registrasi_siswa_id`, `nama`, `jenis`, `jenis_`, `created_at`, `updated_at`) VALUES
-	(1, 3, 'mantap', 'Seni', 'kegemaran', NULL, NULL);
 /*!40000 ALTER TABLE `kegemaran_prestasi` ENABLE KEYS */;
 
 -- Dumping structure for table p002-sunodia.konfigurasi
@@ -254,7 +227,7 @@ CREATE TABLE IF NOT EXISTS `konfigurasi` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
--- Dumping data for table p002-sunodia.konfigurasi: ~0 rows (approximately)
+-- Dumping data for table p002-sunodia.konfigurasi: ~1 rows (approximately)
 /*!40000 ALTER TABLE `konfigurasi` DISABLE KEYS */;
 INSERT INTO `konfigurasi` (`id`, `tahun_pembelajaran`, `registrasi_open`) VALUES
 	(1, '2019', 1);
@@ -307,16 +280,13 @@ CREATE TABLE IF NOT EXISTS `orang_tua` (
   `no_telepon` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `keterangan` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `penghasilan_perbulan` tinyint(4) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+  PRIMARY KEY (`id`),
+  KEY `FK_orang_tua_registrasi_siswa` (`registrasi_siswa_id`),
+  CONSTRAINT `FK_orang_tua_registrasi_siswa` FOREIGN KEY (`registrasi_siswa_id`) REFERENCES `registrasi_siswa` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Dumping data for table p002-sunodia.orang_tua: ~4 rows (approximately)
+-- Dumping data for table p002-sunodia.orang_tua: ~0 rows (approximately)
 /*!40000 ALTER TABLE `orang_tua` DISABLE KEYS */;
-INSERT INTO `orang_tua` (`id`, `registrasi_siswa_id`, `jenis`, `nama`, `tempat_lahir`, `tanggal_lahir`, `agama`, `kewarganegaraan`, `pendidikan_terakhir`, `pekerjaan_jabatan`, `alamat_lengkap`, `no_telepon`, `keterangan`, `penghasilan_perbulan`) VALUES
-	(1, 3, 'ayah', 'dfsdf', 'keren', '2019-10-28', 'Hindu', 'Indonesia', 'SD', 'Mantap', 'sdfsdf', '12121223', 'Masih Hidup', 1),
-	(2, 3, 'ibu', 'Ibu', 'sdfsdf', '2019-10-28', 'Konghucu', 'Indonsia', 'S1/D4', 'Manta', 'sfsdf', 'sfsdf', 'Masih Hidup', 2),
-	(3, 13, 'ayah', 'sdfsdf', 'sdfsdf', '2019-10-23', 'Kristen', 'sdfsdfsd', 'D1', 'sdfsf', 'sfsdfs', 'sdfsdf', 'Masih Hidup', 1),
-	(4, 13, 'ibu', 'sdfsdf', 'sfsdf', '2019-10-24', 'Kristen', 'sfsdf', 'S2', 'sfsdf', 'sdfsdfs', 'sdfsdf', 'Masih Hidup', 1);
 /*!40000 ALTER TABLE `orang_tua` ENABLE KEYS */;
 
 -- Dumping structure for table p002-sunodia.photos
@@ -347,12 +317,14 @@ CREATE TABLE IF NOT EXISTS `prestasi` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Dumping data for table p002-sunodia.prestasi: ~0 rows (approximately)
+-- Dumping data for table p002-sunodia.prestasi: ~3 rows (approximately)
 /*!40000 ALTER TABLE `prestasi` DISABLE KEYS */;
 INSERT INTO `prestasi` (`id`, `nama`, `juara`, `nama_lomba`, `tingkat_lomba`, `tingkat`, `url`, `created_at`, `updated_at`) VALUES
-	(3, 'sdfdsf, keren', '1', 'sdfsdfs', 'sdfsdfsdf', 'tk-kb', 'http://127.0.0.1:8000/uploads/prestasi/5db760bbbb2af.png', '2019-10-29 05:36:56', '2019-10-29 05:42:19');
+	(3, 'Riska', '1', 'Matematika', 'Kota Samarinda', 'tk-kb', 'https://www.sunodia.sch.id/uploads/prestasi/5dbb83f43b0e6.jpg', '2019-10-28 22:36:56', '2019-11-01 02:01:40'),
+	(4, 'Ilham, Gunawan', '2', 'Lomba Bahasa Indonesia', 'Indonesia', 'tk-kb', 'https://www.sunodia.sch.id/uploads/prestasi/5dbb8439dab6b.jpg', '2019-11-01 02:02:49', '2019-11-01 02:02:49'),
+	(5, 'Rilo', '1', 'Robot Pintar', 'Internasional', 'tk-kb', 'https://www.sunodia.sch.id/uploads/prestasi/5dbb847c10310.jpg', '2019-11-01 02:03:56', '2019-11-01 02:03:56');
 /*!40000 ALTER TABLE `prestasi` ENABLE KEYS */;
 
 -- Dumping structure for table p002-sunodia.profil
@@ -435,18 +407,12 @@ CREATE TABLE IF NOT EXISTS `registrasi_siswa` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Dumping data for table p002-sunodia.registrasi_siswa: ~7 rows (approximately)
+-- Dumping data for table p002-sunodia.registrasi_siswa: ~0 rows (approximately)
 /*!40000 ALTER TABLE `registrasi_siswa` DISABLE KEYS */;
 INSERT INTO `registrasi_siswa` (`id`, `nama`, `jenis_kelamin`, `tempat_lahir`, `tanggal_lahir`, `agama`, `kewarganegaraan`, `bergereja_di`, `aktif_pelayan`, `alamat_rumah`, `kode_pos`, `telepon`, `tinggal_dengan`, `no_hp_calon_siswa`, `email_calon_siswa`, `anak_ke`, `jumlah_saudara`, `jarak_tempuh_sekolah`, `waktu_tempuh_sekolah`, `alat_tempuh_sekolah`, `tingkat`, `golongan_darah`, `rhesus`, `asal_sekolah`, `alamat_sekolah`, `nomor_ijazah`, `lama_belajar`, `jumlah_nilai_ijazah`, `pernah_melakukan_donor`, `tinggi_badan`, `berat_badan`, `penyakit_yang_pernah_diderita`, `berkebutuhan_khusus`, `ciri_khusus_lainnya`, `tinggal_bersama`, `last_step`, `saved`, `nomor_registrasi`, `tahun_pembelajaran`, `tahun_registrasi`, `saved_date`, `created_at`, `updated_at`) VALUES
-	(6, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1', 0, NULL, '2019', NULL, NULL, '2019-10-31 08:46:21', '2019-10-31 08:46:21'),
-	(7, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1', 0, NULL, '2019', NULL, NULL, '2019-10-31 08:47:39', '2019-10-31 08:47:39'),
-	(8, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1', 0, NULL, '2019', NULL, NULL, '2019-10-31 08:47:43', '2019-10-31 08:47:43'),
-	(9, 'sdfsdfs', 'Laki-laki', 'sdfsfdsf', '2019-09-29', 'Hindu', 'sdfsdfs', NULL, NULL, 'dsfsdfsd', '12345', '12121123213', 'Orang Tua', '12121212', 'sdfsdf', 1, 1, 3, 3, 'Sepeda Motor', 3, 'A', NULL, 'sfdfs', 'fsdfsdf', NULL, 3, NULL, 0, 121.00, 212.00, 'sdfsdf', 'tidak', 'sdfsdfds', 'wali', '9', 1, 'OL-001', '2019', NULL, '2019-10-31 10:03:30', '2019-10-31 08:48:02', '2019-10-31 10:03:30'),
-	(13, 'sdfsdfsd', 'Laki-laki', 'sdfsdfsd', '2019-10-31', 'Kristen', 'sdfsdf', 'sdfsdf', 'sdfsdf', 'sdfsdfs1', '12112', '1212121', 'Orang Tua', '12123123', 'ilhamshinoahara@gmail.com', 3, 3, 3, 3, 'Sepeda', 4, 'A', NULL, 'sdfsdf', 'sdfsdf', NULL, 12, NULL, 0, 231.00, 21.00, 'sfsdf', 'tidak', 'sdfs', 'orang_tua', '9', 1, 'OL-002', '2019', NULL, '2019-10-31 10:40:07', '2019-10-31 09:25:35', '2019-10-31 10:40:07'),
-	(15, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1', 0, NULL, '2019', NULL, NULL, '2019-10-31 10:36:59', '2019-10-31 10:36:59'),
-	(16, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1', 0, NULL, '2019', NULL, NULL, '2019-10-31 10:40:20', '2019-10-31 10:40:20');
+	(25, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1', 0, NULL, '2019', NULL, NULL, '2019-11-02 18:23:21', '2019-11-02 18:23:21');
 /*!40000 ALTER TABLE `registrasi_siswa` ENABLE KEYS */;
 
 -- Dumping structure for table p002-sunodia.saudara
@@ -457,16 +423,13 @@ CREATE TABLE IF NOT EXISTS `saudara` (
   `saudara_umur` int(11) NOT NULL,
   `saudara_pendidikan` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `saudara_status` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+  PRIMARY KEY (`id`),
+  KEY `FK_saudara_registrasi_siswa` (`registrasi_siswa_id`),
+  CONSTRAINT `FK_saudara_registrasi_siswa` FOREIGN KEY (`registrasi_siswa_id`) REFERENCES `registrasi_siswa` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Dumping data for table p002-sunodia.saudara: ~3 rows (approximately)
+-- Dumping data for table p002-sunodia.saudara: ~0 rows (approximately)
 /*!40000 ALTER TABLE `saudara` DISABLE KEYS */;
-INSERT INTO `saudara` (`id`, `registrasi_siswa_id`, `saudara_nama`, `saudara_umur`, `saudara_pendidikan`, `saudara_status`) VALUES
-	(1, 3, 'sdf', 12, 'SMA', 'Kakak'),
-	(3, 9, 'sfsdfs', 1, 'sdfsdf', 'Kakak'),
-	(4, 9, 'sdfsdf', 3, 'sdfsdf', 'Adik'),
-	(5, 13, 'sdfsdf', 12, 'sdfsdf', 'Kakak');
 /*!40000 ALTER TABLE `saudara` ENABLE KEYS */;
 
 -- Dumping structure for table p002-sunodia.struktur_organisasi
@@ -498,7 +461,7 @@ CREATE TABLE IF NOT EXISTS `users` (
   UNIQUE KEY `users_email_unique` (`email`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC;
 
--- Dumping data for table p002-sunodia.users: ~1 rows (approximately)
+-- Dumping data for table p002-sunodia.users: ~0 rows (approximately)
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
 INSERT INTO `users` (`id`, `email`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
 	(1, 'admin@admin.com', '$2y$10$ZP6e6Tx0VVnXcCHupuyZX.2sYM3cdqFOQ3KCxlY8UbUNAPSRiOoZa', NULL, NULL, NULL);
@@ -520,14 +483,12 @@ CREATE TABLE IF NOT EXISTS `wali` (
   `keterangan` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `penghasilan_perbulan` tinyint(4) NOT NULL,
   PRIMARY KEY (`id`),
-  KEY `wali_registrasi_siswa_id_foreign` (`registrasi_siswa_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+  KEY `wali_registrasi_siswa_id_foreign` (`registrasi_siswa_id`),
+  CONSTRAINT `FK_wali_registrasi_siswa` FOREIGN KEY (`registrasi_siswa_id`) REFERENCES `registrasi_siswa` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Dumping data for table p002-sunodia.wali: ~0 rows (approximately)
 /*!40000 ALTER TABLE `wali` DISABLE KEYS */;
-INSERT INTO `wali` (`id`, `registrasi_siswa_id`, `nama`, `tempat_lahir`, `tanggal_lahir`, `agama`, `kewarganegaraan`, `pendidikan_terakhir`, `pekerjaan_jabatan`, `alamat_lengkap`, `no_telepon`, `keterangan`, `penghasilan_perbulan`) VALUES
-	(1, 5, 'sfsdfds', 'sdfsdfsdf', '2019-10-30', 'Kristen', 'sfsdfsdf', 'Tidak Bersekolah', 'fsdfdsf', 'sfdsdf', 'sdfsdfs', 'Masih Hidup', 1),
-	(2, 9, 'sdfsdf', 'sfsdfds', '2019-10-31', 'Kristen', 'sfsdfsdf', 'Tidak Bersekolah', 'sfsdf', 'sfdsdf', 'fsdfsd', 'Masih Hidup', 2);
 /*!40000 ALTER TABLE `wali` ENABLE KEYS */;
 
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;

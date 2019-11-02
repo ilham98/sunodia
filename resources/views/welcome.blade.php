@@ -206,15 +206,11 @@
     <div class="visi-misi mt-5 container">
         <div class="title">Visi</div>
         <div class="body">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus, ratione? At recusandae explicabo id corporis. Nobis autem atque nemo consequuntur accusantium perferendis excepturi ipsam maxime officiis ratione, distinctio numquam incidunt.
+          {!! $visi !!}
         </div>
         <div class="title mt-3">Misi</div>
         <div class="body">
-            <ul>
-                <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nesciunt, ut.</li>
-                <li>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Pariatur, nemo.</li>
-                <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil, hic.</li>
-            </ul>
+            {!! $misi !!}
         </div>
         {{-- <div class="title-2 mt-3">Jenjang Pendidikan</div>
         <div class="row mt-3 py-2" style="background: rgba(247, 179, 7, 0.5); border-radius: 100px;">

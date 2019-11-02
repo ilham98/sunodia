@@ -111,13 +111,21 @@ Route::middleware(['auth'])->group(function () {
     Route::get('a/highlights', 'Admin\HighlightController@index');
     Route::post('a/highlights', 'Admin\HighlightController@store');
     Route::delete('a/highlights/{id}', 'Admin\HighlightController@destroy');
+
+    Route::get('a/ganti-password', 'Admin\GantiPasswordController@index');
+    Route::put('a/ganti-password', 'Admin\GantiPasswordController@update');
 });
 
 Route::get('pdf/registrasi-form/{id}', 'PDF\RegistrasiForm@index');
 
 Route::get('/', function () {
-    $berita = \App\Berita::orderBy('created_at', 'desc')->get();
+    $berita = \App\Berita::where(function($query) {
+        $query->where('tingkat', null)->orWhere('tingkat', '');
+    })->orderBy('created_at', 'desc')->get();
     $highlights = \App\Highlight::orderBy('id', 'asc')->get();
+    $profil = \App\Profil::first();
+    $visi = $profil->visi;
+    $misi = $profil->misi;
     foreach($berita as $b) {
         $first_img = '';
         $output = preg_match_all('/<img.+?src=[\'"]([^\'"]+)[\'"].*?>/i', $b->isi, $matches);
@@ -129,7 +137,7 @@ Route::get('/', function () {
         $b->isi = substr($isi, 0, 100);
         $b->first_img = $first_img;
     }
-    return view('welcome', compact('berita', 'highlights'));
+    return view('welcome', compact('berita', 'highlights', 'visi', 'misi'));
 });
 
 Route::get('berita', 'BeritaController@index');
@@ -183,6 +191,10 @@ Route::middleware(['registrasi_open'])->group(function () {
 Route::get('{tingkat}/prestasi', 'Persekolah\PrestasiController@index');
 
 Auth::routes();
+
+Route::get('register', function() {
+    return redirect(url('/'));
+});
 
 Route::get('{tingkat}', function($tingkat) {
     $berita = \App\Berita::orderBy('id', 'desc')->where('tingkat', $tingkat)->limit(3)->get();

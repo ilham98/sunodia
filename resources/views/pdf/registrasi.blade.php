@@ -74,7 +74,7 @@
     <div>
         <div style="text-align: center">
             <h1 style="text-decoration: underline">FORMULIR PENDAFTARAN</h1>
-            <h2>Tahun Pembelajaran 2019-2020</h2>
+            <h2>Tahun Pembelajaran {{ $reg->tahun_pembelajaran }}-{{ $reg->tahun_pembelajaran+1 }}</h2>
             <h1 class="serif" style="font-size: 40px; margin-top: 30px">SEKOLAH KRISTEN SUNODIA</h1>
         </div>
         <div style="text-align: center">

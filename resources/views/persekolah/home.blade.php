@@ -1,6 +1,6 @@
 @extends('persekolah.master')
 
-@section('title', 'Dashboard '.strtoupper($tingkat))
+@section('title', strtoupper($tingkat).' Sunodia ~ Beranda')
 
 @section('css')
     <link rel="stylesheet" href="{{ asset('css/swiper.css') }}">
@@ -143,9 +143,9 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="juara-ke">Juara I</div>
-                                    <div class="nama-lomba" style="margin-top: 3px">Asah Terampil Matematika</div>
-                                    <div class="tingkat" style="margin-top: 3px">Tingkat Samarinda</div>
+                                    <div class="juara-ke">Juara {{ $p->juara }}</div>
+                                    <div class="nama-lomba" style="margin-top: 3px">{{ $p->nama_lomba }}</div>
+                                    <div class="tingkat" style="margin-top: 3px">{{ $p->tingkat_lomba }}</div>
                                 </div>
                             @endforeach
                         </div>

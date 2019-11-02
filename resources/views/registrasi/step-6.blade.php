@@ -34,6 +34,7 @@
     <div class="container p-0 bg-white register-box mt-3">
         <h5 class="m-0"><img height='40' src="https://img.icons8.com/dotty/80/000000/note.png"> Registrasi - Orang Tua / Wali Siswa (6/7)</h5>
         @include('registrasi.sesi-button')
+        <div class="m-1 alert alert-warning font-italic">Ket: Semua field yang bertanda bintang wajib diisi</div>
         <form action="{{ url('registrasi/6') }}" class="p-3" method="POST" enctype="multipart/form-data">
             <div class="form-group">
                 <label>Tinggal Bersama</label>
@@ -44,7 +45,7 @@
             @if($reg->tinggal_bersama == 'orang_tua')
                 <div class="title my-3">Ayah</div>
                 <div class="form-group">
-                    <label>Nama Lengkap</label>
+                    <label>Nama Lengkap *</label>
                     <input name="nama_ayah" value="{{ old('nama_ayah') ? old('nama_ayah') : ($ayah ? $ayah->nama : '') }}" type="text" class="form-control">
                     @if($errors->has('nama_ayah'))
                         <p class="text-danger">{{ $errors->first('nama_ayah') }}</p>
@@ -52,14 +53,14 @@
                 </div>
                 <div class="row">
                     <div class="form-group col-sm-6">
-                        <label>Tempat Lahir</label>
+                        <label>Tempat Lahir *</label>
                         <input name="tempat_lahir_ayah" value="{{ old('tempat_lahir_ayah') ? old('tempat_lahir_ayah') : ($ayah ? $ayah->tempat_lahir : '') }}" type="text" class="form-control">
                         @if($errors->has('tempat_lahir_ayah'))
                             <p class="text-danger">{{ $errors->first('tempat_lahir_ayah') }}</p>
                         @endif
                     </div>
                     <div class="form-group col-sm-6">
-                        <label>Tanggal Lahir</label>
+                        <label>Tanggal Lahir *</label>
                         <input name="tanggal_lahir_ayah" value="{{ old('tanggal_lahir_ayah') ? old('tanggal_lahir_ayah') : ($ayah ? $ayah->tanggal_lahir : '') }}" type="date" class="form-control">
                         @if($errors->has('tanggal_lahir_ayah'))
                             <p class="text-danger">{{ $errors->first('tanggal_lahir_ayah') }}</p>
@@ -67,7 +68,7 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label>Agama</label>
+                    <label>Agama *</label>
                     <select name="agama_ayah" class="form-control" id="">
                         <option value="Kristen" {{ (old('agama_ayah') ? old('agama_ayah') :  ($ayah ? $ayah->agama : null)) == 'Kristen' ? 'selected' : '' }}>Kristen</option>
                         <option value="Katolik" {{ (old('agama_ayah') ? old('agama_ayah') :  ($ayah ? $ayah->agama : null)) == 'Katolik' ? 'selected' : '' }}>Katolik</option>
@@ -81,14 +82,14 @@
                     @endif
                 </div>
                 <div class="form-group">
-                    <label>Kewarganegaraan</label>
+                    <label>Kewarganegaraan *</label>
                     <input name="kewarganegaraan_ayah" value="{{ old('kewarganegaraan_ayah') ? old('kewarganegaraan_ayah') : ($ayah ? $ayah->kewarganegaraan : '') }}" type="text" class="form-control">
                     @if($errors->has('kewarganegaraan_ayah'))
                         <p class="text-danger">{{ $errors->first('kewarganegaraan_ayah') }}</p>
                     @endif
                 </div>
                 <div class="form-group">
-                    <label>Pendidikan Terakhir</label>
+                    <label>Pendidikan Terakhir *</label>
                     <select name="pendidikan_terakhir_ayah" value="" type="text" class="form-control">
                             <option {{ (old('pendidikan_terakhir_ayah') ? old('pendidikan_terakhir_ayah') : ($ayah ? $ayah->pendidikan_terakhir : null) ) == '' ? 'selected' : '' }} value="">Pilih Pendidikan Terakhir</option>
                             <option {{ (old('pendidikan_terakhir_ayah') ? old('pendidikan_terakhir_ayah') : ($ayah ? $ayah->pendidikan_terakhir : null) ) == 'Tidak Bersekolah' ? 'selected' : '' }} value="Tidak Bersekolah">Tidak Bersekolah</option>
@@ -107,28 +108,28 @@
                     @endif
                 </div>
                 <div class="form-group">
-                    <label>Pekerjaaan / Jabatan</label>
+                    <label>Pekerjaaan / Jabatan *</label>
                     <input name="pekerjaan_jabatan_ayah" value="{{ old('pekerjaan_jabatan_ayah') ? old('pekerjaan_jabatan_ayah') : ($ayah ? $ayah->pekerjaan_jabatan : '') }}" type="text" class="form-control">
                     @if($errors->has('pekerjaan_jabatan_ayah'))
                         <p class="text-danger">{{ $errors->first('pekerjaan_jabatan_ayah') }}</p>
                     @endif
                 </div>
                 <div class="form-group">
-                    <label>Alamat Lengkap</label>
+                    <label>Alamat Lengkap *</label>
                     <textarea name="alamat_lengkap_ayah" class="form-control">{{ old('alamat_lengkap_ayah') ? old('alamat_lengkap_ayah') : ($ayah ? $ayah->alamat_lengkap : '') }}</textarea>
                     @if($errors->has('alamat_lengkap_ayah'))
                         <p class="text-danger">{{ $errors->first('alamat_lengkap_ayah') }}</p>
                     @endif
                 </div>
                 <div class="form-group">
-                    <label>No telepon / HP</label>
+                    <label>No telepon / HP *</label>
                     <input name="no_telepon_ayah" value="{{ old('no_telepon_ayah') ? old('no_telepon_ayah') : ($ayah ? $ayah->no_telepon : '') }}" type="text" class="form-control">
                     @if($errors->has('no_telepon_ayah'))
                         <p class="text-danger">{{ $errors->first('no_telepon_ayah') }}</p>
                     @endif
                 </div>
                 <div class="form-group">
-                    <label>Keterangan</label>
+                    <label>Keterangan *</label>
                     <br>
                     <input name="keterangan_ayah" value="Masih Hidup" {{ (old('keterangan_ayah') ? old('keterangan_ayah') : ($ayah ? $ayah->keterangan : '')) == 'Masih Hidup' ? 'checked' : '' }} type="radio"> Masih Hidup <input type="radio" {{ (old('keterangan_ayah') ? old('keterangan_ayah') : ($ayah ? $ayah->keterangan : '')) == 'Sudah Wafat' ? 'checked' : '' }} value='Sudah Wafat' name="keterangan_ayah" class="ml-2"> Sudah Wafat
                     @if($errors->has('keterangan_ayah'))
@@ -136,7 +137,7 @@
                     @endif
                 </div>
                 <div class="form-group">
-                    <label>Penghasilan perbulan</label>
+                    <label>Penghasilan perbulan *</label>
                     <br>
                     <input {{ (old('penghasilan_perbulan_ayah') ? old('penghasilan_perbulan_ayah') : ($ayah ? $ayah->penghasilan_perbulan : '')) == 1 ? 'checked' : '' }} type="radio" name="penghasilan_perbulan_ayah" value="1"> < 5.000.000 <br>
                     <input {{ (old('penghasilan_perbulan_ayah') ? old('penghasilan_perbulan_ayah') : ($ayah ? $ayah->penghasilan_perbulan : '')) == 2 ? 'checked' : '' }} type="radio" name="penghasilan_perbulan_ayah" value="2"> 5.000.000 - 10.000.0000 <br>
@@ -149,7 +150,7 @@
                 <hr>
                 <div class="title my-3">Ibu</div>
                 <div class="form-group">
-                    <label>Nama Lengkap</label>
+                    <label>Nama Lengkap *</label>
                     <input name="nama_ibu" value="{{ old('nama_ibu') ? old('nama_ibu') : ($ibu ? $ibu->nama : '') }}" type="text" class="form-control">
                     @if($errors->has('nama_ibu'))
                         <p class="text-danger">{{ $errors->first('nama_ibu') }}</p>
@@ -157,14 +158,14 @@
                 </div>
                 <div class="row">
                     <div class="form-group col-sm-6">
-                        <label>Tempat Lahir</label>
+                        <label>Tempat Lahir *</label>
                         <input name="tempat_lahir_ibu" value="{{ old('tempat_lahir_ibu') ? old('tempat_lahir_ibu') : ($ibu ? $ibu->tempat_lahir : '') }}" type="text" class="form-control">
                         @if($errors->has('tempat_lahir_ibu'))
                             <p class="text-danger">{{ $errors->first('tempat_lahir_ibu') }}</p>
                         @endif
                     </div>
                     <div class="form-group col-sm-6">
-                        <label>Tanggal Lahir</label>
+                        <label>Tanggal Lahir *</label>
                         <input name="tanggal_lahir_ibu" value="{{ old('tanggal_lahir_ibu') ? old('tanggal_lahir_ibu') : ($ibu ? $ibu->tanggal_lahir : '') }}" type="date" class="form-control">
                         @if($errors->has('tanggal_lahir_ibu'))
                             <p class="text-danger">{{ $errors->first('tanggal_lahir_ibu') }}</p>
@@ -172,7 +173,7 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label>Agama</label>
+                    <label>Agama *</label>
                     <select name="agama_ibu" class="form-control" id="">
                         <option value="Kristen" {{ (old('agama_ibu') ? old('agama_ibu') :  ($ibu ? $ibu->agama : null)) == 'Kristen' ? 'selected' : '' }}>Kristen</option>
                         <option value="Katolik" {{ (old('agama_ibu') ? old('agama_ibu') : ($ibu ? $ibu->agama : null)) == 'Katolik' ? 'selected' : '' }}>Katolik</option>
@@ -186,14 +187,14 @@
                     @endif
                 </div>
                 <div class="form-group">
-                    <label>Kewarganegaraan</label>
+                    <label>Kewarganegaraan *</label>
                     <input name="kewarganegaraan_ibu" value="{{ old('kewarganegaraan_ibu') ? old('kewarganegaraan_ibu') : ($ibu ? $ibu->kewarganegaraan : '') }}" type="text" class="form-control">
                     @if($errors->has('kewarganegaraan_ibu'))
                         <p class="text-danger">{{ $errors->first('kewarganegaraan_ibu') }}</p>
                     @endif
                 </div>
                 <div class="form-group">
-                    <label>Pendidikan Terakhir</label>
+                    <label>Pendidikan Terakhir *</label>
                     <select name="pendidikan_terakhir_ibu" value="" type="text" class="form-control">
                         <option {{ (old('pendidikan_terakhir_ibu') ? old('pendidikan_terakhir_ibu') : ($ibu ? $ibu->pendidikan_terakhir : '') ) == '' ? 'selected' : '' }} value="">Pilih Pendidikan Terakhir</option>
                         <option {{ (old('pendidikan_terakhir_ibu') ? old('pendidikan_terakhir_ibu') : ($ibu ? $ibu->pendidikan_terakhir : '') ) == 'Tidak Bersekolah' ? 'selected' : '' }} value="Tidak Bersekolah">Tidak Bersekolah</option>
@@ -212,28 +213,28 @@
                     @endif
                 </div>
                 <div class="form-group">
-                    <label>Pekerjaaan / Jabatan</label>
+                    <label>Pekerjaaan / Jabatan *</label>
                     <input name="pekerjaan_jabatan_ibu" value="{{ old('pekerjaan_jabatan_ibu') ? old('pekerjaan_jabatan_ibu') : ($ibu ? $ibu->pekerjaan_jabatan : '') }}" type="text" class="form-control">
                     @if($errors->has('pekerjaan_jabatan_ibu'))
                         <p class="text-danger">{{ $errors->first('pekerjaan_jabatan_ibu') }}</p>
                     @endif
                 </div>
                 <div class="form-group">
-                    <label>Alamat Lengkap</label>
+                    <label>Alamat Lengkap *</label>
                     <textarea name="alamat_lengkap_ibu" class="form-control">{{ old('alamat_lengkap_ibu') ? old('alamat_lengkap_ibu') : ($ibu ? $ibu->alamat_lengkap : '') }}</textarea>
                     @if($errors->has('alamat_lengkap_ibu'))
                         <p class="text-danger">{{ $errors->first('alamat_lengkap_ibu') }}</p>
                     @endif
                 </div>
                 <div class="form-group">
-                    <label>No telepon / HP</label>
+                    <label>No telepon / HP *</label>
                     <input name="no_telepon_ibu" value="{{ old('no_telepon_ibu') ? old('no_telepon_ibu') : ($ibu ? $ibu->no_telepon : '') }}" type="text" class="form-control">
                     @if($errors->has('no_telepon_ibu'))
                         <p class="text-danger">{{ $errors->first('no_telepon_ibu') }}</p>
                     @endif
                 </div>
                 <div class="form-group">
-                    <label>Keterangan</label>
+                    <label>Keterangan *</label>
                     <br>
                     <input name="keterangan_ibu" value="Masih Hidup" type="radio" {{ (old('keterangan_ibu') ? old('keterangan_ibu') : ($ibu ? $ibu->keterangan : '')) == 'Masih Hidup' ? 'checked' : '' }}> Masih Hidup <input type="radio" value="Sudah Wafat" class="ml-2" {{ (old('keterangan_ibu') ? old('keterangan_ibu') : ($ibu ? $ibu->keterangan : '')) == 'Sudah Wafat' ? 'checked' : '' }}> Sudah Wafat
                     @if($errors->has('keterangan_ibu'))
@@ -241,7 +242,7 @@
                     @endif
                 </div>
                 <div class="form-group">
-                    <label>Penghasilan perbulan</label>
+                    <label>Penghasilan perbulan *</label>
                     <br>
                     <input {{ (old('penghasilan_perbulan_ibu') ? old('penghasilan_perbulan_ibu') : ($ibu ? $ibu->penghasilan_perbulan : '')) == 1 ? 'checked' : '' }} name="penghasilan_perbulan_ibu" type="radio" value="1"> < 5.000.000 <br>
                     <input {{ (old('penghasilan_perbulan_ibu') ? old('penghasilan_perbulan_ibu') : ($ibu ? $ibu->penghasilan_perbulan : '')) == 2 ? 'checked' : '' }} name="penghasilan_perbulan_ibu" type="radio" value="2"> 5.000.000 - 10.000.0000 <br>
@@ -256,7 +257,7 @@
             @if($reg->tinggal_bersama == 'wali')
                 <div class="title my-3">Wali</div>
                 <div class="form-group">
-                    <label>Nama Lengkap</label>
+                    <label>Nama Lengkap *</label>
                     <input name="nama_wali" value="{{ old('nama_wali') ? old('nama_wali') : ($wali ? $wali->nama : '') }}" type="text" class="form-control">
                     @if($errors->has('nama_wali'))
                         <p class="text-danger">{{ $errors->first('nama_wali') }}</p>
@@ -264,14 +265,14 @@
                 </div>
                 <div class="row">
                     <div class="form-group col-sm-6">
-                        <label>Tempat Lahir</label>
+                        <label>Tempat Lahir *</label>
                         <input value="{{ old('tempat_lahir_wali') ? old('tempat_lahir_wali') : ($wali ? $wali->tempat_lahir : '') }}" name="tempat_lahir_wali" type="text" class="form-control">
                         @if($errors->has('tempat_lahir_wali'))
                             <p class="text-danger">{{ $errors->first('tempat_lahir_wali') }}</p>
                         @endif
                     </div>
                     <div class="form-group col-sm-6">
-                        <label>Tanggal Lahir</label>
+                        <label>Tanggal Lahir *</label>
                         <input value="{{ old('tanggal_lahir_wali') ? old('tanggal_lahir_wali') : ($wali ? $wali->tanggal_lahir : '') }}" name="tanggal_lahir_wali" type="date" class="form-control">
                         @if($errors->has('tanggal_lahir_wali'))
                             <p class="text-danger">{{ $errors->first('tanggal_lahir_wali') }}</p>
@@ -279,7 +280,7 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label>Agama</label>
+                    <label>Agama *</label>
                     <select name="agama_wali" class="form-control" id="">
                             <option value="Kristen" {{ (old('agaagama_walima') ? old('agama_wali') : ($wali ? $wali->agama : null)) == 'Kristen' ? 'selected' : '' }}>Kristen</option>
                             <option value="Katolik" {{ (old('agama_wali') ? old('agama_wali') : ($wali ? $wali->agama : null)) == 'Katolik' ? 'selected' : '' }}>Katolik</option>
@@ -293,14 +294,14 @@
                     @endif
                 </div>
                 <div class="form-group">
-                    <label>Kewarganegaraan</label>
+                    <label>Kewarganegaraan *</label>
                     <input name="kewarganegaraan_wali" value="{{ old('kewarganegaraan_wali') ? old('kewarganegaraan_wali') : ($wali ? $wali->kewarganegaraan : '') }}" type="text" class="form-control">
                     @if($errors->has('kewarganegaraan_wali'))
                         <p class="text-danger">{{ $errors->first('kewarganegaraan_wali') }}</p>
                     @endif
                 </div>
                 <div class="form-group">
-                    <label>Pendidikan Terakhir</label>
+                    <label>Pendidikan Terakhir *</label>
                     <select name="pendidikan_terakhir_wali" value="" type="text" class="form-control">
                         <option {{ (old('pendidikan_terakhir_wali') ? old('pendidikan_terakhir_wali') : ($wali ? $wali->pendidikan_terakhir : null) ) == '' ? 'selected' : '' }} value="">Pilih Pendidikan Terakhir</option>
                         <option {{ (old('pendidikan_terakhir_wali') ? old('pendidikan_terakhir_wali') : ($wali ? $wali->pendidikan_terakhir : null) ) == 'Tidak Bersekolah' ? 'selected' : '' }} value="Tidak Bersekolah">Tidak Bersekolah</option>
@@ -319,28 +320,28 @@
                     @endif
                 </div>
                 <div class="form-group">
-                    <label>Pekerjaaan / Jabatan</label>
+                    <label>Pekerjaaan / Jabatan *</label>
                     <input value="{{ old('pekerjaan_jabatan_wali') ? old('pekerjaan_jabatan_wali') : ($wali ? $wali->pekerjaan_jabatan : '') }}" name="pekerjaan_jabatan_wali" type="text" class="form-control">
                     @if($errors->has('pekerjaan_jabatan_wali'))
                         <p class="text-danger">{{ $errors->first('pekerjaan_jabatan_wali') }}</p>
                     @endif
                 </div>
                 <div class="form-group">
-                    <label>Alamat Lengkap</label>
+                    <label>Alamat Lengkap *</label>
                     <textarea name="alamat_lengkap_wali" class="form-control">{{ old('alamat_lengkap_wali') ? old('alamat_lengkap_wali') : ($wali ? $wali->alamat_lengkap : '') }}</textarea>
                     @if($errors->has('alamat_lengkap_wali'))
                         <p class="text-danger">{{ $errors->first('alamat_lengkap_wali') }}</p>
                     @endif
                 </div>
                 <div class="form-group">
-                    <label>No telepon / HP</label>
+                    <label>No telepon / HP *</label>
                     <input name="no_telepon_wali" value="{{ old('no_telepon_wali') ? old('no_telepon_wali') : ($wali ? $wali->no_telepon : '') }}" type="text" class="form-control">
                     @if($errors->has('no_telepon_wali'))
                         <p class="text-danger">{{ $errors->first('no_telepon_wali') }}</p>
                     @endif
                 </div>
                 <div class="form-group">
-                    <label>Keterangan</label>
+                    <label>Keterangan *</label>
                     <br>
                     <input name="keterangan_wali" {{ (old('keterangan_wali') ? old('keterangan_wali') : ($wali ? $wali->keterangan : '')) == 'Masih Hidup' ? 'checked' : '' }} value="Masih Hidup" type="radio"> Masih Hidup <input type="radio" {{ (old('keterangan_wali') ? old('keterangan_wali') : ($wali ? $wali->keterangan : '')) == 'Sudah Wafat' ? 'checked' : '' }} value='Sudah Wafat' name="keterangan_wali" class="ml-2"> Sudah Wafat
                     @if($errors->has('keterangan_wali'))
@@ -348,7 +349,7 @@
                     @endif
                 </div>
                 <div class="form-group">
-                    <label>Penghasilan perbulan</label>
+                    <label>Penghasilan perbulan *</label>
                     <br>
                     <input {{ (old('penghasilan_perbulan_wali') ? old('penghasilan_perbulan_wali') : ($wali ? $wali->penghasilan_perbulan : '')) == '1' ? 'checked' : '' }} value='1' type="radio" name="penghasilan_perbulan_wali"> < 5.000.000 <br>
                     <input {{ (old('penghasilan_perbulan_wali') ? old('penghasilan_perbulan_wali') : ($wali ? $wali->penghasilan_perbulan : '')) == '2' ? 'checked' : '' }} value='2' type="radio" name="penghasilan_perbulan_wali"> 5.000.000 - 10.000.0000 <br>

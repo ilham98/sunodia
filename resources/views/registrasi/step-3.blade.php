@@ -23,17 +23,18 @@
     <div class="container p-0 bg-white register-box mt-3">
         <h5 class="m-0"><img height='40' src="https://img.icons8.com/dotty/80/000000/note.png"> Registrasi - Keterangan Pendidikan Sebelumnya (3/7)</h5>
         @include('registrasi.sesi-button')
+        <div class="m-1 alert alert-warning font-italic">Ket: Semua field yang bertanda bintang wajib diisi</div>
         <form action="{{ url('registrasi/3') }}" class="p-3" method="POST" enctype="multipart/form-data">
             <div class="form-group">
-                <label>Asal Sekolah</label>
-                <input name="asal_sekolah" placeholder="@if($reg->tingkat == 1 || $reg->tingkat == 2) (Kosongkan Jika Tidak Ada) @endif" type="text" class="form-control" value="{{ old('asal_sekolah') ? old('asal_sekolah') : $reg->asal_sekolah }}">
+                <label>Asal Sekolah {{ !in_array($reg->tingkat, [1,2,3,4,5]) ? '*' : '' }}</label>
+                <input name="asal_sekolah" placeholder="@if(in_array($reg->tingkat, [1,2,3,4,5])) (Kosongkan Jika Tidak Ada) @endif" type="text" class="form-control" value="{{ old('asal_sekolah') ? old('asal_sekolah') : $reg->asal_sekolah }}">
                 @if($errors->has('asal_sekolah'))
                     <p class="text-danger">{{ $errors->first('asal_sekolah') }}</p>
                 @endif
             </div>
             <div class="form-group">
-                <label>Alamat Sekolah</label>
-                <textarea name="alamat_sekolah" id="" placeholder="@if($reg->tingkat == 1 || $reg->tingkat == 2) (Kosongkan Jika Tidak Ada) @endif" class="form-control">{{ old('alamat_sekolah') ? old('alamat_sekolah') : $reg->alamat_sekolah }}</textarea>
+                <label>Alamat Sekolah {{ !in_array($reg->tingkat, [1,2,3,4,5]) ? '*' : '' }}</label>
+                <textarea name="alamat_sekolah" id="" placeholder="@if(in_array($reg->tingkat, [1,2,3,4,5])) (Kosongkan Jika Tidak Ada) @endif" class="form-control">{{ old('alamat_sekolah') ? old('alamat_sekolah') : $reg->alamat_sekolah }}</textarea>
                 @if($errors->has('alamat_sekolah'))
                     <p class="text-danger">{{ $errors->first('alamat_sekolah') }}</p>
                 @endif
@@ -47,8 +48,8 @@
                     @endif
                 </div>
                 <div class="form-group col-sm-6">
-                    <label>Lama Belajar</label>
-                    <input name="lama_belajar" placeholder="@if($reg->tingkat == 1 || $reg->tingkat == 2) (Kosongkan Jika Tidak Ada) @endif" value="{{ old('lama_belajar') ? old('lama_belajar') : $reg->lama_belajar}}" type="text" class="form-control">
+                    <label>Lama Belajar {{ !in_array($reg->tingkat, [1,2,3,4,5]) ? '*' : '' }}</label>
+                    <input name="lama_belajar" placeholder="@if(in_array($reg->tingkat, [1,2,3,4,5])) (Kosongkan Jika Tidak Ada) @endif" value="{{ old('lama_belajar') ? old('lama_belajar') : $reg->lama_belajar}}" type="text" class="form-control">
                     @if($errors->has('lama_belajar'))
                         <p class="text-danger">{{ $errors->first('lama_belajar') }}</p>
                     @endif
