@@ -236,7 +236,7 @@
                 <div class="form-group">
                     <label>Keterangan *</label>
                     <br>
-                    <input name="keterangan_ibu" value="Masih Hidup" type="radio" {{ (old('keterangan_ibu') ? old('keterangan_ibu') : ($ibu ? $ibu->keterangan : '')) == 'Masih Hidup' ? 'checked' : '' }}> Masih Hidup <input type="radio" value="Sudah Wafat" class="ml-2" {{ (old('keterangan_ibu') ? old('keterangan_ibu') : ($ibu ? $ibu->keterangan : '')) == 'Sudah Wafat' ? 'checked' : '' }}> Sudah Wafat
+                    <input name="keterangan_ibu" value="Masih Hidup" type="radio" {{ (old('keterangan_ibu') ? old('keterangan_ibu') : ($ibu ? $ibu->keterangan : '')) == 'Masih Hidup' ? 'checked' : '' }}> Masih Hidup <input type="radio" value="Sudah Wafat" name="keterangan_ibu" class="ml-2" {{ (old('keterangan_ibu') ? old('keterangan_ibu') : ($ibu ? $ibu->keterangan : '')) == 'Sudah Wafat' ? 'checked' : '' }}> Sudah Wafat
                     @if($errors->has('keterangan_ibu'))
                         <p class="text-danger">{{ $errors->first('keterangan_ibu') }}</p>
                     @endif

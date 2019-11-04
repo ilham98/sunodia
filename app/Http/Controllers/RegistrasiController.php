@@ -616,7 +616,7 @@ class RegistrasiController extends Controller
         $reg->saved = 1;
         $reg->saved_date = \Carbon\Carbon::now();
 
-        foreach($reg->dokumen as $d) {
+        foreach($reg->dokumen()->where('url', '<>', null)->get() as $d) {
             '/dokumen/nama.jpg';
             $explodes = explode('/', $d->url);
             $length = count($explodes);

@@ -63,6 +63,7 @@ class Kernel extends HttpKernel
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
         'registrasi' => \App\Http\Middleware\RegistrasiMiddleware::class,
         'registrasi_open' => \App\Http\Middleware\RegistrationOpenMiddleware::class,
+        'under_maintenance' => \App\Http\Middleware\UnderMaintenanceMiddleware::class,
     ];
 
     /**
