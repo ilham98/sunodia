@@ -144,6 +144,32 @@
         font-size: 20px;
     }
 
+    @media(max-width: 1000px) {
+        .quotes {
+            display: block;
+            height: auto;
+        }
+
+        .quotes img {
+            position: static;
+            width: 100%;
+        }
+
+        .quotes div {
+            position: static;
+        }
+
+        .quotes p {
+            font-size: 16px;
+            bottom: 3px;
+        }
+    }
+
+    @media(max-width: 768px) {
+        .quotes p {
+            font-size: 12px;
+        }
+    }
     
 
     </style>
@@ -200,7 +226,7 @@
     <div class="mt-5 quotes">
         <img src="{{ asset('/img/quotes.jpg') }}" alt="">
         <div>
-            <p></span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam officiis laboriosam minima dolore voluptatum neque quidem voluptatem exercitationem doloremque praesentium, tempore fuga obcaecati excepturi porro repellendus necessitatibus aperiam natus delectus.</p>
+            <p></span>“Didiklah orang muda menurut jalan yang patut baginya, maka pada masa tuanya pun ia tidak akan menyimpang dari pada jalan itu” (Amsal 22:6)</p>
         </div>
     </div>
     <div class="visi-misi mt-5 container">

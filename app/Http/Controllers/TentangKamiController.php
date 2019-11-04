@@ -20,7 +20,8 @@ class TentangKamiController extends Controller
     public function visi_misi() {
         $visi = Profil::first()->visi;
         $misi = Profil::first()->misi;
-        return view('public.visi_misi', compact('visi', 'misi'));
+        $nilai = Profil::first()->nilai;
+        return view('public.visi_misi', compact('visi', 'misi', 'nilai'));
     }
 
     public function mars() {

@@ -17,6 +17,7 @@ class VisiMisiController extends Controller
         $profil = Profil::first();
         $profil->visi = $request->visi;
         $profil->misi = $request->misi;
+        $profil->nilai = $request->nilai;
         $profil->save();
 
         return redirect(url()->previous())->with('success', 'Update Visi & Misi Sukses');

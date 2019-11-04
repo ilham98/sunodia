@@ -13,7 +13,7 @@
                 <i class="header-icon lnr-apartment icon-gradient bg-love-kiss"> </i> Visi & Misi
             </div>
         </div>
-        <div class="card-body" style='height: 680px'>
+        <div class="card-body" style='height: 1000px'>
             <h6>Visi</h6>
             <div id="editor" style="height: 200px">
                 {!! $profil->visi !!}
@@ -28,6 +28,13 @@
             @if($errors->has('misi'))
                 <p class="text-danger">{{$errors->first('misi') }}</p>
             @endif
+            <h6 class="mt-3">Nilai</h6>
+            <div id="editor3" style="height: 200px">
+                {!! $profil->nilai !!}
+            </div>
+            @if($errors->has('nilai'))
+                <p class="text-danger">{{$errors->first('nilai') }}</p>
+            @endif
             <div class="d-flex justify-content-end">
                 <input type="button" value="Simpan" id="btn-save" class="btn btn-primary mt-2">
             </div>
@@ -37,6 +44,7 @@
     <form action="{{ url('a/visi-misi') }}" id="form" method="POST" hidden>
         <textarea name="visi" id="visi" id="" cols="30" rows="10"></textarea>
         <textarea name="misi" id="misi" id="" cols="30" rows="10"></textarea>
+        <textarea name="nilai" id="nilai" id="" cols="30" rows="10"></textarea>
         @csrf
         @method('PUT')
     </form>
@@ -83,9 +91,19 @@
             theme: 'snow'
         });
 
+        const editor3 = new Quill('#editor3', {
+            bounds: '#editor3',
+            modules: {
+                toolbar: toolbarOptions,
+            },
+            placeholder: 'Free Write...',
+            theme: 'snow'
+        });
+
         $('#btn-save').click(function() {
             $('#visi').val(editor.container.firstChild.innerHTML);
             $('#misi').val(editor2.container.firstChild.innerHTML);
+            $('#nilai').val(editor3.container.firstChild.innerHTML);
             $('#form').submit();
         });
     </script>

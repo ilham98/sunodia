@@ -58,6 +58,10 @@
                 <div class="my-3">
                     {!! $misi !!}
                 </div>
+                <h3>Nilai</h3>
+                <div class="my-3">
+                    {!! $nilai !!}
+                </div>
             </div>
         </div>
     </div>
