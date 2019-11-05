@@ -15,7 +15,7 @@
 
         .berita-single img {
             margin: 10px 0px;
-            max-height: 200px;
+            max-height: 300px;
         }
 
         .berita-single-big {
@@ -25,7 +25,7 @@
 
         .berita-single-big img {
             width: 100%;
-            
+	    height: auto;            
         }
 
         @media only screen and (max-width: 800px) {
@@ -34,6 +34,11 @@
             }
         }
 
+
+	img {
+		max-height: 300px;
+		width: auto;
+	}
     </style>
     <link rel="stylesheet" type="text/css" href="slick/slick.css"/>
     <link rel="stylesheet" type="text/css" href="slick/slick-theme.css"/>

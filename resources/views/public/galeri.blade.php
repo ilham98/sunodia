@@ -67,7 +67,7 @@
                                     <a href="{{ $p->url }}" itemprop="contentUrl" data-size="{{ $p->width }}x{{ $p->height }}">
                                         <img src="{{ $p->url }}" style="max-width: 100%" itemprop="thumbnail" alt="Image description" />
                                     </a>                               
-                                    <figcaption hidden itemprop="caption description">Image caption</figcaption> 
+                                    <figcaption hidden itemprop="caption description">{{ $p->caption }}</figcaption> 
                                 </figure>
                             @endforeach
                             </div>

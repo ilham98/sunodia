@@ -94,7 +94,7 @@
                     @endif
                 </div>
                 <div class="form-group col-sm-6">
-                    <label>Aktif / Pelajayan sebagai *</label>
+                    <label>Aktif / Pelayanan sebagai *</label>
                     <input type="text" class='form-control' name='aktif_pelayan' value="{{ old('aktif_pelayan') ? old('aktif_pelayan') : $reg->aktif_pelayan }}">
                     @if($errors->has('aktif_pelayan'))
                         <p class="text-danger">{{ $errors->first('aktif_pelayan') }}</p>
@@ -333,7 +333,7 @@
             }
         });
 
-        @if(old('agama') == 'Kristen' || old('agama') == 'Katolik')
+        @if((old('agama') ? old('agama') : $reg->agama) == 'Kristen' || (old('agama') ? old('agama') : $reg->agama) == 'Katolik')
             $('#tambahan-kristen').show();
         @endif
 

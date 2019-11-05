@@ -47,9 +47,15 @@
                         <p class="text-danger">{{ $errors->first('nomor_ijazah') }}</p>
                     @endif
                 </div>
+                
                 <div class="form-group col-sm-6">
-                    <label>Lama Belajar {{ !in_array($reg->tingkat, [1,2,3,4,5]) ? '*' : '' }}</label>
-                    <input name="lama_belajar" placeholder="@if(in_array($reg->tingkat, [1,2,3,4,5])) (Kosongkan Jika Tidak Ada) @endif" value="{{ old('lama_belajar') ? old('lama_belajar') : $reg->lama_belajar}}" type="text" class="form-control">
+                        <label>Lama Belajar {{ !in_array($reg->tingkat, [1,2,3,4,5]) ? '*' : '' }}</label>
+                    <div class="input-group mb-3">
+                        <input name="lama_belajar" type="text" value="{{ old('lama_belajar') ? old('lama_belajar') : $reg->jarak_tempuh_sekolah }}" class="form-control" placeholder="@if(in_array($reg->tingkat, [1,2,3,4,5])) (Kosongkan Jika Tidak Ada) @endif" aria-label="Recipient's username" aria-describedby="basic-addon2">
+                        <div class="input-group-append">
+                            <span class="input-group-text" id="basic-addon2">Tahun</span>
+                        </div>
+                    </div>
                     @if($errors->has('lama_belajar'))
                         <p class="text-danger">{{ $errors->first('lama_belajar') }}</p>
                     @endif

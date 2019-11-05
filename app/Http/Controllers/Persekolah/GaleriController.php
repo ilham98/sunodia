@@ -9,8 +9,8 @@ use Illuminate\Http\Request;
 class GaleriController extends Controller
 {
     public function index($tingkat) {
-        $album = Album::orderBy('created_at', 'desc')->where(function($query) {
-            $query->where('tingkat', '')->orWhere('tingkat', null);
+        $album = Album::orderBy('created_at', 'desc')->where(function($query) use($tingkat){
+            $query->where('tingkat', $tingkat);
         })->whereHas('photos')->paginate(4);
         return view('persekolah.galeri', compact('album', 'tingkat'));
     }

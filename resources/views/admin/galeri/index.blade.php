@@ -14,7 +14,7 @@
             <div class="my-3 d-flex justify-content-end">
                 <a href="{{ url('a/galeri/tambah') }}" class="btn btn-primary">Tambah Album</a>
             </div>
-            <table class="table">
+            <table class="table w-100">
                 <thead>
                     <tr>
                         <th>No</th>

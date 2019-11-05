@@ -104,7 +104,7 @@
             const fd = new FormData();
             fd.append('image', file);
             const xhr = new XMLHttpRequest();
-            xhr.open('POST', '/api/file/upload', true);
+            xhr.open('POST', '/api/upload', true);
             xhr.onload = () => {
                 if (xhr.status === 200) {
                 // this is callback data: url

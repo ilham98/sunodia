@@ -19,6 +19,10 @@ Route::get('getcurrentip', function() {
     return \Request::ip();
 });
 
+Route::get('panduan-pendaftaran-online', function() {
+    return view('panduan-pendaftaran-online');
+});
+
 Route::get('under-maintenance', function() {
     return view('under-maintenance');
 });

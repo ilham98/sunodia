@@ -1,6 +1,8 @@
 <link href="https://fonts.googleapis.com/css?family=Neuton:700&display=swap" rel="stylesheet"> 
 <style>
 .registrasi-siswa-header {
+    padding-top: 10px;
+    padding-bottom: 10px;
     margin: 0;
     width: 100%;
     font-family: 'Neuton', serif;
@@ -31,9 +33,10 @@
 </style>
 
 
-<div class="registrasi-siswa-header background" style="height: 150px; display: flex; justify-content: center; align-items: center; ">
+<div class="registrasi-siswa-header background" style="display: flex; justify-content: center; align-items: center; ">
     <div class="text-center">
         <div style="font-size: 25px" class="registrasi-siswa-header-text">Pendaftaran Peserta Didik Baru <br> Tahun Pembelajaran  {{ \App\Konfigurasi::first()->tahun_pembelajaran }}/{{ \App\Konfigurasi::first()->tahun_pembelajaran + 1 }} Telah Dibuka</div>
-        <a href="/registrasi" class="btn btn-daftar mt-2"> Registrasi</a>
+        <a href="/registrasi" class="btn btn-daftar mt-2"> REGISTRASI</a>
+        <a href="/panduan-pendaftaran-online" target='_blank' class="btn btn-primary mt-2"> PANDUAN PENDAFTARAN ONLINE</a>
     </div>
 </div>

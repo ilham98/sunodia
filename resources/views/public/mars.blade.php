@@ -16,7 +16,7 @@
 
         .berita-single img {
             margin: 10px 0px;
-            max-height: 200px;
+            width: 100%;
         }
 
         .berita-single-big {
@@ -25,7 +25,7 @@
         }
 
         .berita-single-big img {
-            width: 100%;
+            width: 80%;
             
         }
 
@@ -51,9 +51,12 @@
         <div class="berita">
             <div class="my-3 p-3 berita-single" style="background: white; box-shadow: 0px 0px 16px -5px rgba(74,74,74,1);">
                 <h3>Mars</h3>
-                <div class="my-3">
-                    {!! $mars !!}
+                <div class="d-flex justify-content-center">
+                    <div class="my-3 col-lg-8">
+                        {!! $mars !!}
+                    </div>
                 </div>
+                
             </div>
         </div>
     </div>

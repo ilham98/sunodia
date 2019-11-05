@@ -212,7 +212,11 @@ class RegistrasiController extends Controller
 
     public function step3_submit(Request $request) {
         $reg = RegistrasiSiswa::find($this->reg_id);
-        $validate = [];
+        $validate = [
+            'lama_belajar' => 'nullable|numeric',
+            'nomor_ijazah' => 'nullable|numeric',
+            'jumlah_nilai_ijazah' => 'nullable|numeric'
+        ];
 
         if(!in_array($reg->tingkat, [1,2,3,4,5])) {
             $validate = array_merge($validate, [

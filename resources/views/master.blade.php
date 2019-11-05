@@ -75,6 +75,11 @@
                 color: white;
                 z-index: 89;
             }
+
+            .sunodia-main-title {
+                background-image: linear-gradient(rgba(30,136,229,0.8), rgba(30,136,229,1)),url(/img/heading.jpg);
+                background-size: cover;
+            }
         </style>
         @yield('footer-css')
     </head>
@@ -82,14 +87,14 @@
         @if(!(Request::is('registrasi/*') || url()->current() == url('registrasi')) && \App\Konfigurasi::first()->registrasi_open)
             @include('components/registrasi-header')
         @endif
-        <div class="d-flex justify-content-center sunodia-main-title" style="background: #1e88e5">
+        <div class="d-flex justify-content-center sunodia-main-title">
             <div class="text-center">
                 <img src="{{ asset('img/logo.png') }}" width="150" height="150" alt="">
                 <h4 class="text-white">Sekolah Kristen  Sunodia Samarinda</h4>
             </div>
         </div>
         <div id="navbarContainer" style="z-index: 99; width: 100%;">
-            <nav id="navbar" style='{{ url()->current() != url('/') ? "background: #0067c2;" : "background: #1e88e5;" }}' class="navbar {{ url()->current() == url('/') ? 'navbar-border-bottom' : '' }} navbar-expand-md navbar-dark">
+            <nav id="navbar" style='{{ url()->current() != url('/') ? "background: #0067c2;" : "background: rgba(30,136,229,0.9);" }}' class="navbar {{ url()->current() == url('/') ? 'navbar-border-bottom' : '' }} navbar-expand-md navbar-dark">
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
