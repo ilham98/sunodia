@@ -16,7 +16,7 @@
 
         .berita-single img {
             margin: 10px 0px;
-            max-height: 200px;
+            max-width: 400px;
         }
 
         .berita-single-big {
@@ -38,6 +38,11 @@
         @media only screen and (max-width: 800px) {
             #highlight {
                 top: 56px;
+            }
+
+            .berita-single img {
+                margin: 10px 0px;
+                max-width: 100%;
             }
         }
 

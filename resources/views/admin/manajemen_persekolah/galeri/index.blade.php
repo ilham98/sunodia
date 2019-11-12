@@ -3,7 +3,6 @@
 @section('title', 'Sunodia ~ Galeri')
 
 @section('content')
-    @component('admin.components.content')
     <div class="mb-3 card">
         <div class="card-header-tab card-header-tab-animation card-header">
             <div class="card-header-title">

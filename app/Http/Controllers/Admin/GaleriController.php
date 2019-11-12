@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Storage;
 class GaleriController extends Controller
 {
     public function index() {
-        $album = Album::orderBy('created_at', 'desc')->paginate(10);
+        $album = Album::where('tingkat', null)->orderBy('created_at', 'desc')->paginate(10);
         return view('admin.galeri.index', compact('album'));
     }
 

@@ -12,17 +12,7 @@
                 background-color:#1e88e5;
                 background-size: 64px 128px;
         }
-
-        .berita-single img {
-            margin: 10px 0px;
-            max-height: 300px;
-        }
-
-        .berita-single-big {
-            max-height: 300px;
-            overflow: hidden;
-        }
-
+    
         .berita-single-big img {
             width: 100%;
 	    height: auto;            
@@ -34,11 +24,6 @@
             }
         }
 
-
-	img {
-		max-height: 300px;
-		width: auto;
-	}
     </style>
     <link rel="stylesheet" type="text/css" href="slick/slick.css"/>
     <link rel="stylesheet" type="text/css" href="slick/slick-theme.css"/>

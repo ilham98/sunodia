@@ -117,7 +117,6 @@
                                     <th>Nama Guru</th>
                                     <th>Jabatan</th>
                                     <th>Pengampu Mata Pelajaran</th>
-                                    <th>Option</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -127,10 +126,6 @@
                                         <td>{{ $g->nama }}</td>
                                         <td>{{ $g->jabatan }}</td>
                                         <td>{{ $g->pengampu_mata_pelajaran }}</td>
-                                        <td>
-                                            <a href="{{ url('/a/'.$tingkat.'/guru/'.$g->id.'/edit') }}">Edit</a>
-                                            <a href="" data-id='{{ $g->id }}' id="btn-hapus" class="text-danger">Hapus</a>
-                                        </td>
                                     </tr>
                                 @endforeach
                             </tbody>

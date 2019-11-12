@@ -39,6 +39,10 @@
             height: 320px;
         }
 
+        .quotes div {
+            background: linear-gradient(270deg,#ff8f00,#ff8f00,#ff8f00,rgba(242,231,19,0),rgba(242,231,19,0));
+        }
+
     body {
       background: white;
       font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
@@ -162,13 +166,26 @@
         .quotes p {
             font-size: 16px;
             bottom: 3px;
+            padding: 10px;
+            background: yellow;
+            color: black;
+            border-left: 2px solid white;
         }
     }
 
     @media(max-width: 768px) {
         .quotes p {
-            font-size: 12px;
+            font-size: 14px;
         }
+    }
+
+    .berita-main-title {
+        padding: 5px 20px;
+        color: #fff;
+        border-radius: 25px;
+        font-size: 20px;
+        display: inline-block;
+        background: #1e88e5;
     }
     
 
@@ -198,7 +215,7 @@
         </div>
     </div>
     <div class="container mt-3 mt-md-5">
-        <h3 class="text-warning">Berita</h3>
+        <h3 class="berita-main-title">Berita</h3>
         <div class="row mt-3">
             @foreach(array_slice($berita->toArray(), 0, 2) as $b)
                 <div class="col-md-6 berita-single" style="border-right: 1px solid rgba(0, 0, 0, 0.1)">

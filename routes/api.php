@@ -17,6 +17,6 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::post('upload', 'API\FileController@upload');
+//Route::post('upload', 'API\FileController@upload');
 Route::delete('upload', 'API\FileController@destroy');
 Route::post('dokumen-upload', 'API\DokumenUploadController@upload');
