@@ -14,9 +14,14 @@
 use App\RegistrasiSiswa;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Str;
 
 Route::get('getcurrentip', function() {
     return \Request::ip();
+});
+
+Route::get('str', function() {
+    dd(\Illuminate\Support\Str::random(60));
 });
 
 Route::get('panduan-pendaftaran-online', function() {

@@ -105,6 +105,7 @@
             });
             const fn = new FormData();
             fn.append('file', file);
+            fn.append('api_token', '{!! Auth::user()->api_token !!}');
             
             $.ajax({
                 url: `{!! url('/api/upload') !!}`,
@@ -157,7 +158,7 @@
                 $.ajax({
                     url: `{!! url('/api/upload') !!}?url=${deleted}`,
                     method: 'DELETE',
-                    data: { url: deleted },
+                    data: { url: deleted, api_token: '{!! Auth::user()->api_token !!}' },
                     success: function(res)  {
                         console.log('success')
                     },
